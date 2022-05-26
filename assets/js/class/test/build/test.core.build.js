@@ -14,7 +14,7 @@ export default class{
         // this.group.scale.set(this.param.scale, this.param.scale, this.param.scale)
         this.group.rotation.x = 65 * RADIAN
         this.group.rotation.y = -60 * RADIAN
-        
+
         this.init()
     }
 
@@ -130,15 +130,16 @@ export default class{
     createFrame({}, finalGroup){
         const localGroup = new THREE.Group()
 
-        const radius = 18
-        const count = 12
+        const frameLen = 1.75
+        const radius = 17
+        const count = 10
         const degree = 360 / count
 
         const curve = new THREE.SplineCurve([
             new THREE.Vector2(0, 0),
-            new THREE.Vector2(2, 1),
-            new THREE.Vector2(4, 6),
-            new THREE.Vector2(8, 7)
+            new THREE.Vector2(frameLen, 1),
+            new THREE.Vector2(frameLen * 2, 6),
+            new THREE.Vector2(frameLen * 3, 7)
         ])
         const points = curve.getPoints(20).map(e => [0, e.y, e.x]).flat()
 
