@@ -31,13 +31,11 @@ export default class{
         this.group.add(finalGroup)
     }
     createBone(finalGroup){
-        const localGroup = new THREE.Group()
-
         const degree = 2
         const count = 100
-        const maxY = 60
+        const maxY = 50
         const stepY = maxY / (count - 1)
-        const radius = 20
+        const radius = 10
         const position = []
 
         for(let i = 0; i < count; i++){
@@ -58,7 +56,7 @@ export default class{
         const particle = new Particle({
             materialName: 'PointsMaterial',
             materialOpt: {
-                size: 1,
+                size: 0.75,
                 color: 0xffffff
             }
         })
