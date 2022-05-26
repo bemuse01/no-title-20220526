@@ -78,7 +78,22 @@ export default class{
             groupName: 'frameGroup',
             frameLen: 1.75,
             frameHeight: 6,
-            radius: 16,
+            radius: 17,
+            count: 10,
+            distZ: 5,
+            materialOpt: {
+                size: 1,
+                color: 0xffffff,
+                transparent: true,
+                opacity: 0.6
+            }
+        }
+
+        const frame2 = {
+            groupName: 'frame2Group',
+            frameLen: 1.75,
+            frameHeight: 6,
+            radius: 23,
             count: 10,
             distZ: 5,
             materialOpt: {
@@ -94,6 +109,8 @@ export default class{
         this.createCylinder(cylinder, finalGroup)
         this.createFrame({...frame}, finalGroup)
         this.createFrame({...frame, rotZ: -2}, finalGroup)
+        this.createFrame2({...frame2}, finalGroup)
+        this.createFrame2({...frame2, rotZ: -2}, finalGroup)
 
         finalGroup.rotation.x = rotX * RADIAN
         finalGroup.position.z = posZ
@@ -143,8 +160,9 @@ export default class{
 
         finalGroup.add(cylinder.get())
     }
-    createFrame({frameLen, frameHeight, radius, count, materialOpt, distZ, rotZ = 2}, finalGroup){
+    createFrame({groupName, frameLen, frameHeight, radius, count, materialOpt, distZ, rotZ = 2}, finalGroup){
         const localGroup = new THREE.Group()
+        localGroup.name = groupName
 
         const degree = 360 / count
 
@@ -174,6 +192,41 @@ export default class{
         }
 
         localGroup.position.z = distZ
+        localGroup.rotation.z = rotZ * RADIAN
+
+        finalGroup.add(localGroup)
+    }
+    createFrame2({groupName, frameLen, frameHeight, radius, count, materialOpt, distZ, rotZ = 2}, finalGroup){
+        const localGroup = new THREE.Group()
+        localGroup.name = groupName
+
+        const degree = 360 / count
+
+        const curve = new THREE.SplineCurve([
+            new THREE.Vector2(-1, frameHeight + 1),
+            new THREE.Vector2(frameLen - 1, frameHeight),
+            new THREE.Vector2(frameLen * 2 - 1, frameHeight)
+        ])
+        const points = curve.getPoints(10).map(e => [0, e.y, e.x]).flat()
+
+        for(let i = 0; i < count; i++){
+            const particle = new Particle({
+                materialName: 'PointsMaterial',
+                materialOpt
+            })
+    
+            particle.setAttribute('position', new Float32Array(points), 3)
+    
+            const deg = degree * i
+            particle.get().position.x = Math.cos(deg * RADIAN) * radius
+            particle.get().position.y = Math.sin(deg * RADIAN) * radius
+
+            particle.get().rotation.z = (90 + deg) * RADIAN
+
+            localGroup.add(particle.get())
+        }
+
+        // localGroup.position.z = distZ
         localGroup.rotation.z = rotZ * RADIAN
 
         finalGroup.add(localGroup)
