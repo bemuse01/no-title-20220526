@@ -12,7 +12,9 @@ export default class{
         }
 
         // this.group.scale.set(this.param.scale, this.param.scale, this.param.scale)
-
+        this.group.rotation.x = 65 * RADIAN
+        this.group.rotation.y = -60 * RADIAN
+        
         this.init()
     }
 
@@ -134,9 +136,9 @@ export default class{
 
         const curve = new THREE.SplineCurve([
             new THREE.Vector2(0, 0),
-            new THREE.Vector2(3, 0),
-            new THREE.Vector2(6, 5),
-            new THREE.Vector2(9, 5)
+            new THREE.Vector2(2, 1),
+            new THREE.Vector2(4, 6),
+            new THREE.Vector2(8, 7)
         ])
         const points = curve.getPoints(20).map(e => [0, e.y, e.x]).flat()
 
@@ -145,7 +147,9 @@ export default class{
                 materialName: 'PointsMaterial',
                 materialOpt: {
                     size: 1,
-                    color: 0xffffff
+                    color: 0xffffff,
+                    transparent: true,
+                    opacity: 0.75
                 }
             })
     
@@ -160,14 +164,14 @@ export default class{
             localGroup.add(particle.get())
         }
 
-        localGroup.position.z = 4
+        localGroup.position.z = 5
 
         finalGroup.add(localGroup)
     }
 
     // animate
     animate(){
-        this.group.rotation.y += 0.01
+        // this.group.rotation.y += 0.01
         this.group.rotation.z += 0.01
     }
 }
