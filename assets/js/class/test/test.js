@@ -3,7 +3,8 @@ import * as THREE from '../../lib/three.module.js'
 import Param from './param/test.param.js'
 import PublicMethod from '../../method/method.js'
 
-import Core from './build/test.core.build.js'
+// import Core from './build/test.core.build.js'
+import DnaBone from './build/test.dnaBone.build.js'
 
 export default class{
     constructor({app, src, element, canvas}){
@@ -19,7 +20,8 @@ export default class{
         this.context = this.canvas.getContext('2d')
 
         this.modules = {
-            Core
+            // Core,
+            DnaBone
         }
         this.group = {}
         this.comp = {}
