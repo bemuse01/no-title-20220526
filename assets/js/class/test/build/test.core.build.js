@@ -78,7 +78,7 @@ export default class{
             groupName: 'frameGroup',
             frameLen: 1.75,
             frameHeight: 6,
-            radius: 17,
+            radius: 16,
             count: 10,
             distZ: 5,
             materialOpt: {
