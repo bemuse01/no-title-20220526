@@ -12,7 +12,7 @@ export default class{
         }
 
         // this.group.scale.set(this.param.scale, this.param.scale, this.param.scale)
-        this.group.rotation.x = 65 * RADIAN
+        this.group.rotation.x = 45 * RADIAN
         this.group.rotation.y = -60 * RADIAN
 
         this.init()
@@ -74,10 +74,26 @@ export default class{
             }
         }
 
+        const frame = {
+            groupName: 'frameGroup',
+            frameLen: 1.75,
+            frameHeight: 6,
+            radius: 17,
+            count: 10,
+            distZ: 5,
+            materialOpt: {
+                size: 1,
+                color: 0xffffff,
+                transparent: true,
+                opacity: 0.6
+            }
+        }
+
         this.createCore(outerCore, finalGroup)
         this.createCore(innerCore, finalGroup)
         this.createCylinder(cylinder, finalGroup)
-        this.createFrame({}, finalGroup)
+        this.createFrame({...frame}, finalGroup)
+        this.createFrame({...frame, rotZ: -2}, finalGroup)
 
         finalGroup.rotation.x = rotX * RADIAN
         finalGroup.position.z = posZ
@@ -127,31 +143,23 @@ export default class{
 
         finalGroup.add(cylinder.get())
     }
-    createFrame({}, finalGroup){
+    createFrame({frameLen, frameHeight, radius, count, materialOpt, distZ, rotZ = 2}, finalGroup){
         const localGroup = new THREE.Group()
 
-        const frameLen = 1.75
-        const radius = 17
-        const count = 10
         const degree = 360 / count
 
         const curve = new THREE.SplineCurve([
             new THREE.Vector2(0, 0),
             new THREE.Vector2(frameLen, 1),
-            new THREE.Vector2(frameLen * 2, 6),
-            new THREE.Vector2(frameLen * 3, 7)
+            new THREE.Vector2(frameLen * 2, frameHeight),
+            new THREE.Vector2(frameLen * 3, frameHeight + 1)
         ])
         const points = curve.getPoints(20).map(e => [0, e.y, e.x]).flat()
 
         for(let i = 0; i < count; i++){
             const particle = new Particle({
                 materialName: 'PointsMaterial',
-                materialOpt: {
-                    size: 1,
-                    color: 0xffffff,
-                    transparent: true,
-                    opacity: 0.75
-                }
+                materialOpt
             })
     
             particle.setAttribute('position', new Float32Array(points), 3)
@@ -165,7 +173,8 @@ export default class{
             localGroup.add(particle.get())
         }
 
-        localGroup.position.z = 5
+        localGroup.position.z = distZ
+        localGroup.rotation.z = rotZ * RADIAN
 
         finalGroup.add(localGroup)
     }
