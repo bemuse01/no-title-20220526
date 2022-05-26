@@ -35,7 +35,7 @@ export default class{
         const outerCore = {
             groupName: 'outerCoreGroup',
             rads: [-1, 0, 1, 2, 3, 3, 2].reverse().map(e => e + 12),
-            distY: 5,
+            distZ: 5,
             seg: 64,
             materialOpt: {
                 size: 1,
@@ -45,7 +45,7 @@ export default class{
 
         const innerCore = {
             groupName: 'innerCoreGroup',
-            distY: 2,
+            distZ: 2,
             rads: [0, 3].reverse().map(e => e + 8),
             seg: 48,
             materialOpt: {
@@ -54,50 +54,12 @@ export default class{
             }
         }
 
-        this.createCore(outerCore, finalGroup)
-        this.createCore(innerCore, finalGroup)
-        this.createCylinder({}, finalGroup)
-
-        finalGroup.rotation.x = rotX * RADIAN
-        finalGroup.position.z = posZ
-
-        this.group.add(finalGroup)
-    }
-    createCore({groupName, rads, distY, seg, materialOpt}, finalGroup){
-        const localGroup = new THREE.Group()
-        localGroup.name = groupName
-
-        const len = rads.length
-        const stepY = distY / (len - 1)
-
-        const posYs = Array.from({length: len}, (_, i) => stepY * i) 
-
-        rads.forEach((rad, idx) => {
-            
-            const posY = posYs[idx]
-            const position = [...new THREE.CircleGeometry(rad, seg).attributes.position.array].slice(3)
-
-            const particle = new Particle({
-                materialName: 'PointsMaterial',
-                materialOpt
-            })
-
-            particle.setAttribute('position', new Float32Array(position), 3)
-
-            particle.get().position.z = posY
-
-            localGroup.add(particle.get())
-
-        })
-
-        finalGroup.add(localGroup)
-    }
-    createCylinder({}, finalGroup){
-        const cylinder = new Cylinder({
-            radius: 2,
+        const cylinder = {
+            groupName: 'cylinderGroup',
+            radius: 1.6,
             height: 4,
             seg: 32,
-            materialName: 'ShaderMaterial',
+            distZ: 4,
             materialOpt: {
                 vertexShader: Shader.cylinder.vertex,
                 fragmentShader: Shader.cylinder.fragment,
@@ -108,12 +70,99 @@ export default class{
                     uOpacity: {value: 1},
                 }
             }
+        }
+
+        this.createCore(outerCore, finalGroup)
+        this.createCore(innerCore, finalGroup)
+        this.createCylinder(cylinder, finalGroup)
+        this.createFrame({}, finalGroup)
+
+        finalGroup.rotation.x = rotX * RADIAN
+        finalGroup.position.z = posZ
+
+        this.group.add(finalGroup)
+    }
+    createCore({groupName, rads, distZ, seg, materialOpt}, finalGroup){
+        const localGroup = new THREE.Group()
+        localGroup.name = groupName
+
+        const len = rads.length
+        const stepZ = distZ / (len - 1)
+
+        const posZs = Array.from({length: len}, (_, i) => stepZ * i) 
+
+        rads.forEach((rad, idx) => {
+            
+            const posZ = posZs[idx]
+            const position = [...new THREE.CircleGeometry(rad, seg).attributes.position.array].slice(3)
+
+            const particle = new Particle({
+                materialName: 'PointsMaterial',
+                materialOpt
+            })
+
+            particle.setAttribute('position', new Float32Array(position), 3)
+
+            particle.get().position.z = posZ
+
+            localGroup.add(particle.get())
+
         })
 
-        cylinder.get().position.z = 4
+        finalGroup.add(localGroup)
+    }
+    createCylinder({radius, height, seg, materialOpt, distZ}, finalGroup){
+        const cylinder = new Cylinder({
+            radius,
+            height,
+            seg,
+            materialName: 'ShaderMaterial',
+            materialOpt
+        })
+
+        cylinder.get().position.z = distZ
         cylinder.get().rotation.x = 90 * RADIAN
 
         finalGroup.add(cylinder.get())
+    }
+    createFrame({}, finalGroup){
+        const localGroup = new THREE.Group()
+
+        const radius = 18
+        const count = 12
+        const degree = 360 / count
+
+        const curve = new THREE.SplineCurve([
+            new THREE.Vector2(0, 0),
+            new THREE.Vector2(3, 0),
+            new THREE.Vector2(6, 5),
+            new THREE.Vector2(9, 5)
+        ])
+        const points = curve.getPoints(20).map(e => [0, e.y, e.x]).flat()
+
+        for(let i = 0; i < count; i++){
+            const particle = new Particle({
+                materialName: 'PointsMaterial',
+                materialOpt: {
+                    size: 1,
+                    color: 0xffffff
+                }
+            })
+    
+            particle.setAttribute('position', new Float32Array(points), 3)
+    
+            const deg = degree * i
+            particle.get().position.x = Math.cos(deg * RADIAN) * radius
+            particle.get().position.y = Math.sin(deg * RADIAN) * radius
+
+            particle.get().rotation.z = (90 + deg) * RADIAN
+
+            localGroup.add(particle.get())
+        }
+
+        localGroup.position.z = 4
+
+        finalGroup.add(localGroup)
     }
 
     // animate
