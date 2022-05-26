@@ -5,6 +5,8 @@ export default class{
     constructor({group}){
         this.group = group
 
+        this.group.rotation.z = -90 * RADIAN
+
         this.init()
     }
 
@@ -69,6 +71,6 @@ export default class{
 
     // animate
     animate(){
-        this.group.rotation.y += 0.01
+        this.group.rotation.x += 0.01
     }
 }
