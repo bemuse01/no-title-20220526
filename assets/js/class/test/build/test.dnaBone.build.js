@@ -1,6 +1,7 @@
 import * as THREE from '../../../lib/three.module.js'
 import Particle from '../../objects/particle.js'
 import Shader from '../shader/test.dnaBone.shader.js'
+import Method from '../../../method/method.js'
 
 export default class{
     constructor({group}){
@@ -41,22 +42,6 @@ export default class{
         const maxY = 50
         const stepY = maxY / (count - 1)
         const radius = 10
-        const position = []
-
-        for(let i = 0; i < count; i++){
-            const deg = i * degree % 360
-            const x = Math.cos(deg * RADIAN) * radius
-            const y = stepY * i
-            const z = Math.sin(deg * RADIAN) * radius
-
-            const deg2 = (180 + i * degree) % 360
-            const x2 = Math.cos(deg2 * RADIAN) * radius
-            const y2 = stepY * i
-            const z2 = Math.sin(deg2 * RADIAN) * radius
-            
-            position.push(x, y, z)
-            position.push(x2, y2, z2)
-        }
 
         const particle = new Particle({
             materialName: 'ShaderMaterial',
@@ -72,9 +57,37 @@ export default class{
             }
         })
 
+        const {position, size} = this.createBoneAttributes({degree, count, stepY, radius})
+
         particle.setAttribute('position', new Float32Array(position), 3)
+        particle.setAttribute('aPointSize', new Float32Array(size), 1)
 
         finalGroup.add(particle.get())
+    }
+    createBoneAttributes({degree, count, stepY, radius}){
+        const position = []
+        const size = []
+
+        for(let i = 0; i < count; i++){
+            const deg = i * degree % 360
+            const x = Math.cos(deg * RADIAN) * radius
+            const y = stepY * i
+            const z = Math.sin(deg * RADIAN) * radius
+
+            const deg2 = (180 + i * degree) % 360
+            const x2 = Math.cos(deg2 * RADIAN) * radius
+            const y2 = stepY * i
+            const z2 = Math.sin(deg2 * RADIAN) * radius
+            
+            position.push(x, y, z)
+            position.push(x2, y2, z2)
+
+            const s = THREE.Math.randFloat(6, 20)
+
+            size.push(s, s)
+        }
+
+        return {position, size}
     }
 
 
@@ -89,8 +102,19 @@ export default class{
         const time = window.performance.now()
 
         this[groupName].children.forEach(particle => {
+            const aPointSize = particle.geometry.attributes.aPointSize
+            const psizeArr = aPointSize.array
             const uniforms = particle.material.uniforms
+
             uniforms['uTime'].value = time
+
+            for(let i = 0; i < psizeArr.length; i++){
+                const r = SIMPLEX.noise2D(i * 0.1, time * 0.002)
+                const n = Method.normalize(r, 6, 20, -1, 1)
+                psizeArr[i] = n
+            }
+
+            aPointSize.needsUpdate = true
         })
     }
 }
