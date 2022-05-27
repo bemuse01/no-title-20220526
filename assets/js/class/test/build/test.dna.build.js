@@ -40,6 +40,8 @@ export default class{
                 vertexShader: Shader.bone.vertex,
                 fragmentShader: Shader.bone.fragment,
                 transparent: true,
+                depthWrite: false,
+                depthTest: false,
                 uniforms: {
                     uColor: {value: new THREE.Color(0x00ffd7)},
                     uTime: {value: 0}
@@ -54,6 +56,8 @@ export default class{
                 vertexShader: Shader.nucleo.vertex,
                 fragmentShader: Shader.nucleo.fragment,
                 transparent: true,
+                depthWrite: false,
+                depthTest: false,
                 uniforms: {
                     uColor: {value: new THREE.Color(0x00ffd7)},
                     uPointSize: {value: 4.0},

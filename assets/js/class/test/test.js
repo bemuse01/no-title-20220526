@@ -5,6 +5,7 @@ import PublicMethod from '../../method/method.js'
 
 // import Core from './build/test.core.build.js'
 import Dna from './build/test.dna.build.js'
+import Lines from './build/test.lines.build.js'
 
 export default class{
     constructor({app, src, element, canvas}){
@@ -21,6 +22,7 @@ export default class{
 
         this.modules = {
             // Core,
+            Lines,
             Dna
         }
         this.group = {}

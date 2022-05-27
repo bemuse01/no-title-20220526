@@ -1,7 +1,8 @@
 import * as THREE from '../../lib/three.module.js'
 
 export default class{
-    constructor({materialName, materialOpt}){
+    constructor({meshName = 'Line', materialName, materialOpt}){
+        this.meshName = meshName
         this.materialName = materialName
         this.materialOpt = materialOpt
         
@@ -20,7 +21,7 @@ export default class{
         const geometry = this.createGeometry()
         const material = this.createMaterial()
 
-        this.mesh = new THREE.Line(geometry, material)
+        this.mesh = new THREE[this.meshName](geometry, material)
     }
     createGeometry(){
         const geometry = new THREE.BufferGeometry()
