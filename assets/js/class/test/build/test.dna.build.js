@@ -138,8 +138,14 @@ export default class{
             const y2 = bonePosArr[idx + 4]
             const z2 = bonePosArr[idx + 5]
 
-            const p1 = new THREE.Vector3(x1, y1, z1)
-            const p2 = new THREE.Vector3(x2, y2, z2)
+            // const rx1 = THREE.Math.randFloat(0.8, 1.2)
+            // const rz1 = THREE.Math.randFloat(0.8, 1.2)
+            
+            // const rx2 = THREE.Math.randFloat(0.8, 1.2)
+            // const rz2 = THREE.Math.randFloat(0.8, 1.2)
+
+            const p1 = new THREE.Vector3(x1, y1, z1) //.multiply(new THREE.Vector3(rx1, 1, rz1))
+            const p2 = new THREE.Vector3(x2, y2, z2) //.multiply(new THREE.Vector3(rx2, 1, rz2))
 
             for(let j = 0; j < pCount; j++){
                 const np = new THREE.Vector3().lerpVectors(p1, p2, j * stepP)
