@@ -101,6 +101,30 @@ export default class{
         const len = ~~((bonePosArr.length / 2) / stepIdx)
         const pCount = 20
         const stepP = 1 / (pCount - 1)
+
+        const particle = new Particle({
+            materialName: 'ShaderMaterial',
+            materialOpt: {
+                vertexShader: Shader.nucleo.vertex,
+                fragmentShader: Shader.nucleo.fragment,
+                transparent: true,
+                uniforms: {
+                    uColor: {value: new THREE.Color(0xffffff)},
+                    uPointSize: {value: 4.0},
+                    uTime: {value: 0}
+                }
+            }
+        })
+
+        const {position} = this.createNucleoAttributes({stepIdx, bonePosArr, len, pCount, stepP})
+
+        particle.setAttribute('position', new Float32Array(position), 3)
+
+        this.nucleos.push(particle)
+
+        finalGroup.add(particle.get())
+    }
+    createNucleoAttributes({stepIdx, bonePosArr, len, pCount, stepP}){
         const position = []
 
         for(let i = 0; i < len; i++){
@@ -123,34 +147,19 @@ export default class{
             }
         }
 
-        const particle = new Particle({
-            materialName: 'ShaderMaterial',
-            materialOpt: {
-                vertexShader: Shader.nucleo.vertex,
-                fragmentShader: Shader.nucleo.fragment,
-                transparent: true,
-                uniforms: {
-                    uColor: {value: new THREE.Color(0xffffff)},
-                    uPointSize: {value: 4.0}
-                }
-            }
-        })
-
-        particle.setAttribute('position', new Float32Array(position), 3)
-
-        finalGroup.add(particle.get())
+        return {position}
     }
 
 
     // animate
     animate(){
         this.group.rotation.x += 0.015
-
-        this.updateBones()
-    }
-    updateBones(){
         const time = window.performance.now()
 
+        this.updateBones(time)
+        this.updateNucleos(time)
+    }
+    updateBones(time){
         this.bones.forEach(bone => {
             const aPointSize = bone.getAttribute('aPointSize')
             const psizeArr = aPointSize.array
@@ -166,7 +175,9 @@ export default class{
             aPointSize.needsUpdate = true
         })
     }
-    updateNucleos(){
-        
+    updateNucleos(time){
+        this.nucleos.forEach(nucleo => {
+            nucleo.setUniform('uTime', time)
+        })
     }
 }
