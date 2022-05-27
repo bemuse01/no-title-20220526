@@ -4,7 +4,7 @@ import Param from './param/test.param.js'
 import PublicMethod from '../../method/method.js'
 
 // import Core from './build/test.core.build.js'
-import DnaBone from './build/test.dnaBone.build.js'
+import Dna from './build/test.dna.build.js'
 
 export default class{
     constructor({app, src, element, canvas}){
@@ -21,7 +21,7 @@ export default class{
 
         this.modules = {
             // Core,
-            DnaBone
+            Dna
         }
         this.group = {}
         this.comp = {}
