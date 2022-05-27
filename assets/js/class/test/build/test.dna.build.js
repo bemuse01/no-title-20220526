@@ -1,6 +1,6 @@
 import * as THREE from '../../../lib/three.module.js'
 import Particle from '../../objects/particle.js'
-import Shader from '../shader/test.dnaBone.shader.js'
+import Shader from '../shader/test.dna.shader.js'
 import Method from '../../../method/method.js'
 
 export default class{
@@ -32,6 +32,7 @@ export default class{
     }
     createObjects(finalGroup, rotX = 0){
         this.createBone(finalGroup)
+        this.createNucleo(finalGroup)
 
         finalGroup.rotation.x = rotX * RADIAN
 
@@ -48,8 +49,8 @@ export default class{
         const particle = new Particle({
             materialName: 'ShaderMaterial',
             materialOpt: {
-                vertexShader: Shader.vertex,
-                fragmentShader: Shader.fragment,
+                vertexShader: Shader.bone.vertex,
+                fragmentShader: Shader.bone.fragment,
                 transparent: true,
                 uniforms: {
                     uColor: {value: new THREE.Color(0xffffff)},
@@ -94,8 +95,50 @@ export default class{
         return {position, size}
     }
     // nucleo
-    createNucleo(){
+    createNucleo(finalGroup){
+        const stepIdx = 2
+        const bonePosArr = this.bones[0].getAttribute('position').array
+        const len = ~~((bonePosArr.length / 2) / stepIdx)
+        const pCount = 20
+        const stepP = 1 / (pCount - 1)
+        const position = []
 
+        for(let i = 0; i < len; i++){
+            const idx = i * 3 * 2 * stepIdx
+
+            const x1 = bonePosArr[idx + 0]
+            const y1 = bonePosArr[idx + 1]
+            const z1 = bonePosArr[idx + 2]
+
+            const x2 = bonePosArr[idx + 3]
+            const y2 = bonePosArr[idx + 4]
+            const z2 = bonePosArr[idx + 5]
+
+            const p1 = new THREE.Vector3(x1, y1, z1)
+            const p2 = new THREE.Vector3(x2, y2, z2)
+
+            for(let j = 0; j < pCount; j++){
+                const np = new THREE.Vector3().lerpVectors(p1, p2, j * stepP)
+                position.push(np.x, np.y, np.z)
+            }
+        }
+
+        const particle = new Particle({
+            materialName: 'ShaderMaterial',
+            materialOpt: {
+                vertexShader: Shader.nucleo.vertex,
+                fragmentShader: Shader.nucleo.fragment,
+                transparent: true,
+                uniforms: {
+                    uColor: {value: new THREE.Color(0xffffff)},
+                    uPointSize: {value: 4.0}
+                }
+            }
+        })
+
+        particle.setAttribute('position', new Float32Array(position), 3)
+
+        finalGroup.add(particle.get())
     }
 
 
