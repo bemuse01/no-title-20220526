@@ -1,5 +1,6 @@
 import Particle from '../../objects/particle.js'
 import Line from '../../objects/line.js'
+import { AdditiveBlending } from '../../../lib/three.module.js'
 
 export default class{
     constructor({group}){
@@ -10,6 +11,7 @@ export default class{
         this.h = 38
         this.wh = this.w / 2
         this.hh = this.h / 2
+        this.maxDist = 24
 
         this.position = new Float32Array(this.count * 3)
         this.dirs = Array.from({length: this.count}, () => ({x: 1, y: 1}))
@@ -65,7 +67,7 @@ export default class{
             materialName: 'LineBasicMaterial',
             materialOpt: {
                 transparent: true,
-                opacity: 0.03,
+                opacity: 0.1,
                 color: 0x00ffd7,
                 depthWrite: false,
                 depthTest: false,
@@ -74,16 +76,23 @@ export default class{
 
         this.line.setAttribute('position', new Float32Array(this.count * this.count * 3), 3)
 
+        this.line.getGeometry().setDrawRange(0, 0)
+
         this.group.add(this.line.get())
     }
 
 
     // animate
     animate(){
-        // let lineIdx = 0
         const time = window.performance.now()
         const pPosition = this.particle.getAttribute('position')
+        const lPosition = this.line.getAttribute('position')
+        const lPosArr = lPosition.array
+        const lGeometry = this.line.getGeometry()
         const dir = this.dirs
+
+        let lIdx = 0
+        let connected = 0
 
         for(let i = 0; i < this.count; i++){
             const idx = i * 3
@@ -97,21 +106,30 @@ export default class{
             if(this.wh < this.position[idx + 0] || -this.wh > this.position[idx + 0]) dir[i].x *= -1
             if(this.hh < this.position[idx + 1] || -this.hh > this.position[idx + 1]) dir[i].y *= -1
 
-            // for(let j = i + 1; j < this.count; j++){
-            //     const idx2 = j * 3
+            for(let j = i + 1; j < this.count; j++){
+                const idx2 = j * 3
 
-            //     const x2 = this.position[idx2 + 0]
-            //     const y2 = this.position[idx2 + 1]
-            //     const z2 = this.position[idx2 + 2]
+                const dx = this.position[idx + 0] - this.position[idx2 + 0]
+                const dy = this.position[idx + 1] - this.position[idx2 + 1]
+                const dist = Math.sqrt(dx ** 2 + dy ** 2)
 
-            //     if(Math.random() > 0.5) continue
+                if(dist > this.maxDist) continue
 
-            //     position.push(x, y, z)
-            //     position.push(x2, y2, z2)
-            // }
+                lPosArr[lIdx++] = this.position[idx + 0]
+                lPosArr[lIdx++] = this.position[idx + 1]
+                lIdx++
+
+                lPosArr[lIdx++] = this.position[idx2 + 0]
+                lPosArr[lIdx++] = this.position[idx2 + 1]
+                lIdx++
+
+                connected++
+            }
         }
 
-        pPosition.needsUpdate = true
+        lGeometry.setDrawRange(0, connected * 2)
 
+        pPosition.needsUpdate = true
+        lPosition.needsUpdate = true
     }
 }
