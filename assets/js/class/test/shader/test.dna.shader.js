@@ -57,6 +57,9 @@ export default {
     },
     nucleo: {
         vertex: `
+            attribute vec3 sPoints;
+            attribute vec3 ePoints;
+
             uniform float uPointSize;
             uniform float uTime;
 
@@ -69,7 +72,13 @@ export default {
                 float rx = snoise3D(vec3(position.xz * 8.0, uTime * 0.002));
                 float ry = snoise3D(vec3(position.xz * 9.0, uTime * 0.00175));
                 float rz = snoise3D(vec3(position.xz * 10.0, uTime * 0.0015));
+                
+                float rp = snoise3D(vec3(position.xz * 0.5, uTime * 0.0005));
+                float rpn = executeNormalizing(rp, 0.0, 1.0, -1.0, 1.0);
 
+                vec3 p = mix(sPoints, ePoints, rpn);
+
+                nPosition = p;
                 nPosition.xyz += vec3(rx, ry, rz) * 0.5;
 
                 gl_Position = projectionMatrix * modelViewMatrix * vec4(nPosition, 1.0);

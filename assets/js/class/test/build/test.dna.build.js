@@ -99,7 +99,7 @@ export default class{
         const stepIdx = 2
         const bonePosArr = this.bones[0].getAttribute('position').array
         const len = ~~((bonePosArr.length / 2) / stepIdx)
-        const pCount = 20
+        const pCount = 30
         const stepP = 1 / (pCount - 1)
 
         const particle = new Particle({
@@ -116,9 +116,11 @@ export default class{
             }
         })
 
-        const {position} = this.createNucleoAttributes({stepIdx, bonePosArr, len, pCount, stepP})
+        const {position, ePoints, sPoints} = this.createNucleoAttributes({stepIdx, bonePosArr, len, pCount, stepP})
 
         particle.setAttribute('position', new Float32Array(position), 3)
+        particle.setAttribute('ePoints', new Float32Array(ePoints), 3)
+        particle.setAttribute('sPoints', new Float32Array(sPoints), 3)
 
         this.nucleos.push(particle)
 
@@ -126,6 +128,8 @@ export default class{
     }
     createNucleoAttributes({stepIdx, bonePosArr, len, pCount, stepP}){
         const position = []
+        const sPoints = []
+        const ePoints = []
 
         for(let i = 0; i < len; i++){
             const idx = i * 3 * 2 * stepIdx
@@ -150,10 +154,12 @@ export default class{
             for(let j = 0; j < pCount; j++){
                 const np = new THREE.Vector3().lerpVectors(p1, p2, j * stepP)
                 position.push(np.x, np.y, np.z)
+                sPoints.push(p1.x, p1.y, p1.z)
+                ePoints.push(p2.x, p2.y, p2.z)
             }
         }
 
-        return {position}
+        return {position, sPoints, ePoints}
     }
 
 
