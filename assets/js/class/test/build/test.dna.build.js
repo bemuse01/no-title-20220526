@@ -31,33 +31,51 @@ export default class{
         this.createObjects(this.leftGroup, 180)
     }
     createObjects(finalGroup, rotX = 0){
-        this.createBone(finalGroup)
-        this.createNucleo(finalGroup)
+        const bone = {
+            degree: 8,
+            count: 30,
+            maxY: 50,
+            radius: 10,
+            materialOpt: {
+                vertexShader: Shader.bone.vertex,
+                fragmentShader: Shader.bone.fragment,
+                transparent: true,
+                uniforms: {
+                    uColor: {value: new THREE.Color(0x00ffd7)},
+                    uTime: {value: 0}
+                }
+            }
+        }
+
+        const nucleo = {
+            pCount: 30,
+            stepIdx: 2,
+            materialOpt: {
+                vertexShader: Shader.nucleo.vertex,
+                fragmentShader: Shader.nucleo.fragment,
+                transparent: true,
+                uniforms: {
+                    uColor: {value: new THREE.Color(0x00ffd7)},
+                    uPointSize: {value: 4.0},
+                    uTime: {value: 0}
+                }
+            }
+        }
+
+        this.createBone(bone, finalGroup)
+        this.createNucleo(nucleo, finalGroup)
 
         finalGroup.rotation.x = rotX * RADIAN
 
         this.group.add(finalGroup)
     }
     // bone
-    createBone(finalGroup){
-        const degree = 8
-        const count = 30
-        const maxY = 50
+    createBone({degree, count, maxY, radius, materialOpt}, finalGroup){
         const stepY = maxY / (count - 1)
-        const radius = 10
 
         const particle = new Particle({
             materialName: 'ShaderMaterial',
-            materialOpt: {
-                vertexShader: Shader.bone.vertex,
-                fragmentShader: Shader.bone.fragment,
-                transparent: true,
-                uniforms: {
-                    uColor: {value: new THREE.Color(0xffffff)},
-                    uPointSize: {value: 16.0},
-                    uTime: {value: 0}
-                }
-            }
+            materialOpt
         })
 
         const {position, size} = this.createBoneAttributes({degree, count, stepY, radius})
@@ -95,25 +113,14 @@ export default class{
         return {position, size}
     }
     // nucleo
-    createNucleo(finalGroup){
-        const stepIdx = 2
+    createNucleo({stepIdx, pCount, materialOpt}, finalGroup){
         const bonePosArr = this.bones[0].getAttribute('position').array
         const len = ~~((bonePosArr.length / 2) / stepIdx)
-        const pCount = 30
         const stepP = 1 / (pCount - 1)
 
         const particle = new Particle({
             materialName: 'ShaderMaterial',
-            materialOpt: {
-                vertexShader: Shader.nucleo.vertex,
-                fragmentShader: Shader.nucleo.fragment,
-                transparent: true,
-                uniforms: {
-                    uColor: {value: new THREE.Color(0xffffff)},
-                    uPointSize: {value: 4.0},
-                    uTime: {value: 0}
-                }
-            }
+            materialOpt
         })
 
         const {position, ePoints, sPoints} = this.createNucleoAttributes({stepIdx, bonePosArr, len, pCount, stepP})
@@ -142,14 +149,8 @@ export default class{
             const y2 = bonePosArr[idx + 4]
             const z2 = bonePosArr[idx + 5]
 
-            // const rx1 = THREE.Math.randFloat(0.8, 1.2)
-            // const rz1 = THREE.Math.randFloat(0.8, 1.2)
-            
-            // const rx2 = THREE.Math.randFloat(0.8, 1.2)
-            // const rz2 = THREE.Math.randFloat(0.8, 1.2)
-
-            const p1 = new THREE.Vector3(x1, y1, z1) //.multiply(new THREE.Vector3(rx1, 1, rz1))
-            const p2 = new THREE.Vector3(x2, y2, z2) //.multiply(new THREE.Vector3(rx2, 1, rz2))
+            const p1 = new THREE.Vector3(x1, y1, z1)
+            const p2 = new THREE.Vector3(x2, y2, z2)
 
             for(let j = 0; j < pCount; j++){
                 const np = new THREE.Vector3().lerpVectors(p1, p2, j * stepP)

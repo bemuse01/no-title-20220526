@@ -73,7 +73,7 @@ export default {
                 float ry = snoise3D(vec3(position.xz * 9.0, uTime * 0.00175));
                 float rz = snoise3D(vec3(position.xz * 10.0, uTime * 0.0015));
                 
-                float rp = snoise3D(vec3(position.xz * 0.5, uTime * 0.0005));
+                float rp = snoise3D(vec3(position.xz * 20.0, uTime * 0.0005));
                 float rpn = executeNormalizing(rp, 0.0, 1.0, -1.0, 1.0);
 
                 vec3 p = mix(sPoints, ePoints, rpn);
