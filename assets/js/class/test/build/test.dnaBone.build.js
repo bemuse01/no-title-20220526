@@ -93,7 +93,7 @@ export default class{
 
     // animate
     animate(){
-        this.group.rotation.x += 0.01
+        this.group.rotation.x += 0.015
 
         this.updateUniforms('rightGroup')
         this.updateUniforms('leftGroup')

@@ -4,10 +4,23 @@ export default {
     vertex: `
         attribute float aPointSize;
 
+        uniform float uTime;
+
         varying vec3 vPosition;
 
+        ${ShaderMethod.snoise3D()}
+        ${ShaderMethod.executeNormalizing()}
+
         void main(){
-            gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+            vec3 nPosition = position;
+
+            float rx = snoise3D(vec3(position.xz * 8.0, uTime * 0.0015));
+            float ry = snoise3D(vec3(position.xz * 9.0, uTime * 0.00125));
+            float rz = snoise3D(vec3(position.xz * 10.0, uTime * 0.001));
+
+            nPosition.xyz += vec3(rx, ry, rz) * 0.5;
+            
+            gl_Position = projectionMatrix * modelViewMatrix * vec4(nPosition, 1.0);
             gl_PointSize = aPointSize;
 
             vPosition = position;
