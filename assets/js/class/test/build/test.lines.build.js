@@ -11,7 +11,7 @@ export default class{
         this.h = 38
         this.wh = this.w / 2
         this.hh = this.h / 2
-        this.maxDist = 24
+        this.maxDist = 28
 
         this.position = new Float32Array(this.count * 3)
         this.dirs = Array.from({length: this.count}, () => ({x: 1, y: 1}))
@@ -67,8 +67,9 @@ export default class{
             materialName: 'LineBasicMaterial',
             materialOpt: {
                 transparent: true,
-                opacity: 0.1,
+                opacity: 0.075,
                 color: 0x00ffd7,
+                // blending: AdditiveBlending,
                 depthWrite: false,
                 depthTest: false,
             }
