@@ -11,10 +11,13 @@ export default class{
         this.h = 38
         this.wh = this.w / 2
         this.hh = this.h / 2
-        this.maxDist = 28
+        this.dist = 0
+        this.maxDist = 25
 
         this.position = new Float32Array(this.count * 3)
         this.dirs = Array.from({length: this.count}, () => ({x: 1, y: 1}))
+
+        this.realTime = 1000
 
         this.init()
     }
@@ -23,6 +26,7 @@ export default class{
     // init
     init(){
         this.create()
+        this.open()
     }
 
 
@@ -67,7 +71,7 @@ export default class{
             materialName: 'LineBasicMaterial',
             materialOpt: {
                 transparent: true,
-                opacity: 0.075,
+                opacity: 0.1,
                 color: 0x00ffd7,
                 // blending: AdditiveBlending,
                 depthWrite: false,
@@ -114,7 +118,7 @@ export default class{
                 const dy = this.position[idx + 1] - this.position[idx2 + 1]
                 const dist = Math.sqrt(dx ** 2 + dy ** 2)
 
-                if(dist > this.maxDist) continue
+                if(dist > this.dist) continue
 
                 lPosArr[lIdx++] = this.position[idx + 0]
                 lPosArr[lIdx++] = this.position[idx + 1]
@@ -132,5 +136,23 @@ export default class{
 
         pPosition.needsUpdate = true
         lPosition.needsUpdate = true
+    }
+
+
+    // open
+    open(){
+        this.createTween()
+    }
+    createTween(){
+        const start = {dist: 0}
+        const end = {dist: this.maxDist}
+
+        const tw = new TWEEN.Tween(start)
+        .to(end, this.realTime)
+        .onUpdate(() => this.onUpdateTween(start))
+        .start()
+    }
+    onUpdateTween({dist}){
+        this.dist = dist
     }
 }
