@@ -11,11 +11,21 @@ const vueApp = Vue.createApp({
         'canvas-container': CanvasContainer
     },
     setup(){
-        // const {onMounted} = Vue
+        const {onMounted} = Vue
         const store = Vuex.useStore()
 
         Vue.nextTick(() => {
             store.dispatch('setApp', new App())
+        })
+
+        const animate = () => {
+            TWEEN.update()
+
+            requestAnimationFrame(animate)
+        }
+
+        onMounted(() => {
+            animate()
         })
     }
 })

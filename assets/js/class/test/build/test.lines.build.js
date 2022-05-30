@@ -6,7 +6,7 @@ export default class{
     constructor({group}){
         this.group = group
 
-        this.count = 50
+        this.count = 60
         this.w = 110
         this.h = 38
         this.wh = this.w / 2
