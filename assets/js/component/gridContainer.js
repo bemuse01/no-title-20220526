@@ -39,9 +39,22 @@ export default {
 
             const rh = Math.ceil(height / squareHeight)
             const ph = rh === 0 ? 1 : rh
+            const count = pw * ph
 
             style.value.gridTemplateColumns = `repeat(${pw}, ${squareWidth}px)`
             style.value.gridTemplateRows = `repeat(${ph}, ${squareHeight}px)`
+
+            updateItems(count)
+        }
+
+        const updateItems = (count) => {
+            const len = items.value.length
+
+            if(len > count){
+                items.value.splice(count, count)
+            }else{
+                for(let i = 0; i < count - len; i++) items.value.push({key: len + i})
+            }
         }
         
         onMounted(() => {
