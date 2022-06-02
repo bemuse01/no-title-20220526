@@ -2,14 +2,12 @@ import Store from './store/index.js'
 
 import App from './class/app/app.js'
 
-import ObjectContainer from './component/objectContainer.js'
-import CanvasContainer from './component/canvasContainer.js'
-import GridContainer from './component/gridContainer.js'
+import ObjectContainer from './component/container/objectContainer.js'
+import GridContainer from './component/container/gridContainer.js'
 
 const vueApp = Vue.createApp({
     components: {
         'object-container': ObjectContainer,
-        'canvas-container': CanvasContainer,
         'grid-container': GridContainer
     },
     setup(){

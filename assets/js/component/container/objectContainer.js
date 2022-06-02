@@ -1,4 +1,4 @@
-import TestObject from './testObject.js'
+import TestObject from '../object/testObject.js'
 
 export default {
     components: {

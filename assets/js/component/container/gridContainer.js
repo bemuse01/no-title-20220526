@@ -1,6 +1,17 @@
+import vSection from '../section/vSection.js' 
+
 export default {
+    components: {
+        'v-section': vSection
+    },
     template: `
         <div id="grid-container">
+
+            <v-section :style="centerSectionStyle" />
+            <v-section :style="topSectionStyle" />
+            <v-section :style="rightSectionStyle" />
+            <v-section :style="bottomSectionStyle" />
+            <v-section :style="leftSectionStyle" />
             
             <div class="grid-left">
                 <div class="left-box" 
@@ -23,6 +34,38 @@ export default {
         const size = 80
         const squareWidth = size * 3
         const squareHeight = size * 2
+
+        const centerSectionStyle = ref({
+            width: '60%',
+            height: '60%',
+            top: '50%',
+            left: '50%',
+            transform: 'translate(-50%, -50%)'
+        })
+        const topSectionStyle = ref({
+            width: '80%',
+            height: '20%',
+            top: '0',
+            left: '0'
+        })
+        const rightSectionStyle = ref({
+            width: '20%',
+            height: '80%',
+            top: '0',
+            right: '0'
+        })
+        const bottomSectionStyle = ref({
+            width: '80%',
+            height: '20%',
+            right: '0',
+            bottom: '0'
+        })
+        const leftSectionStyle = ref({
+            width: '20%',
+            height: '80%',
+            left: '0',
+            bottom: '0'
+        })
 
         const items = ref(Array.from({length: 8}, (_, key) => ({key})))
         const leftBox = ref()
@@ -65,7 +108,12 @@ export default {
         return{
             leftBox,
             style,
-            items
+            items,
+            centerSectionStyle,
+            leftSectionStyle,
+            topSectionStyle,
+            rightSectionStyle,
+            bottomSectionStyle
         }
     }
 }

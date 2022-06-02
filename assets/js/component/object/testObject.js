@@ -1,4 +1,4 @@
-import Test from '../class/test/test.js'
+import Test from '../../class/test/test.js'
 
 export default {
     template: `
