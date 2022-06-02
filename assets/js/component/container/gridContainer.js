@@ -13,7 +13,7 @@ export default {
             <v-section :style="bottomSectionStyle" />
             <v-section :style="leftSectionStyle" />
             
-            <div class="grid-left">
+            <!--<div class="grid-left">
                 <div class="left-box" 
                     :ref="el => leftBox = el" 
                     :style="style"
@@ -24,7 +24,7 @@ export default {
                     >
                     </div>
                 </div>
-            </div>
+            </div>-->
 
         </div>
     `,
