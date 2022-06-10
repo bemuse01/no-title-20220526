@@ -36,35 +36,19 @@ export default {
         const squareHeight = size * 2
 
         const centerSectionStyle = ref({
-            width: '60%',
-            height: '60%',
-            top: '50%',
-            left: '50%',
-            transform: 'translate(-50%, -50%)'
+            gridArea: 'center'
         })
         const topSectionStyle = ref({
-            width: '80%',
-            height: '20%',
-            top: '0',
-            left: '0'
+            gridArea: 'top'
         })
         const rightSectionStyle = ref({
-            width: '20%',
-            height: '80%',
-            top: '0',
-            right: '0'
+            gridArea: 'right'
         })
         const bottomSectionStyle = ref({
-            width: '80%',
-            height: '20%',
-            right: '0',
-            bottom: '0'
+            gridArea: 'bottom'
         })
         const leftSectionStyle = ref({
-            width: '20%',
-            height: '80%',
-            left: '0',
-            bottom: '0'
+            gridArea: 'left'
         })
 
         const items = ref(Array.from({length: 8}, (_, key) => ({key})))
@@ -101,8 +85,8 @@ export default {
         }
         
         onMounted(() => {
-            resize()
-            window.addEventListener('resize', () => resize())
+            // resize()
+            // window.addEventListener('resize', () => resize())
         })
 
         return{

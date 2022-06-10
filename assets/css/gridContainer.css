@@ -4,7 +4,13 @@ div#grid-container{
     height: 100%;
     display: grid;
     grid-template-columns: repeat(5, 1fr);
-    grid-template-areas: none;
+    grid-template-rows: repeat(5, 1fr);
+    grid-template-areas: 
+        "top  top    top    top    right"
+        "left center center center right"
+        "left center center center right"
+        "left center center center right"
+        "left bottom bottom bottom bottom";
 }
 /* div.grid-left{
     position: absolute;
