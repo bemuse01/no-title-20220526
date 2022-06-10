@@ -1,6 +1,6 @@
 export default {
     template: `
-        <div class="section" :style="rootStyle">
+        <div class="vSection" :style="rootStyle">
             
         </div>
     `,
