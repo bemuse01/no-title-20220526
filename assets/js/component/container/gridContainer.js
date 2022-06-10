@@ -7,11 +7,11 @@ export default {
     template: `
         <div id="grid-container">
 
-            <v-section :style="centerSectionStyle" />
-            <v-section :style="topSectionStyle" />
-            <v-section :style="rightSectionStyle" />
-            <v-section :style="bottomSectionStyle" />
-            <v-section :style="leftSectionStyle" />
+            <!--<v-section :style="centerSectionStyle" />-->
+            <v-section :params="topSection" />
+            <v-section :params="rightSection" />
+            <v-section :params="bottomSection" />
+            <v-section :params="leftSection" />
             
             <!--<div class="grid-left">
                 <div class="left-box" 
@@ -35,20 +35,25 @@ export default {
         const squareWidth = size * 3
         const squareHeight = size * 2
 
-        const centerSectionStyle = ref({
-            gridArea: 'center'
+        const centerSection = ref({
+            style: {gridArea: 'center'},
+            position: 'center'
         })
-        const topSectionStyle = ref({
-            gridArea: 'top'
+        const topSection = ref({
+            style: {gridArea: 'top'},
+            position: 'top'
         })
-        const rightSectionStyle = ref({
-            gridArea: 'right'
+        const rightSection = ref({
+            style: {gridArea: 'right'},
+            position: 'right'
         })
-        const bottomSectionStyle = ref({
-            gridArea: 'bottom'
+        const bottomSection = ref({
+            style: {gridArea: 'bottom'},
+            position: 'bottom'
         })
-        const leftSectionStyle = ref({
-            gridArea: 'left'
+        const leftSection = ref({
+            style: {gridArea: 'left'},
+            position: 'left'
         })
 
         const items = ref(Array.from({length: 8}, (_, key) => ({key})))
@@ -93,11 +98,11 @@ export default {
             leftBox,
             style,
             items,
-            centerSectionStyle,
-            leftSectionStyle,
-            topSectionStyle,
-            rightSectionStyle,
-            bottomSectionStyle
+            centerSection,
+            leftSection,
+            topSection,
+            rightSection,
+            bottomSection
         }
     }
 }

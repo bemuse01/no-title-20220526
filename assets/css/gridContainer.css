@@ -11,6 +11,7 @@ div#grid-container{
         "left center center center right"
         "left center center center right"
         "left bottom bottom bottom bottom";
+    gap: 10px;
 }
 /* div.grid-left{
     position: absolute;
