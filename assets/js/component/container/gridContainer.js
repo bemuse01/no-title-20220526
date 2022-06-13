@@ -1,103 +1,91 @@
-import vSection from '../section/vSection.js' 
+import vSection from '../section/vSection.js'
+import vSectionBox from '../section/vSectionBox.js'
+import vSectionElementItem from '../section/vSectionElementItem.js'
 
 export default {
     components: {
-        'v-section': vSection
+        'v-section': vSection,
+        'v-section-box': vSectionBox,
+        'v-section-element-item': vSectionElementItem
     },
     template: `
         <div id="grid-container">
 
-            <!--<v-section :style="centerSectionStyle" />-->
-            <v-section :params="topSection" />
-            <v-section :params="rightSection" />
-            <v-section :params="bottomSection" />
-            <v-section :params="leftSection" />
-            
-            <!--<div class="grid-left">
-                <div class="left-box" 
-                    :ref="el => leftBox = el" 
-                    :style="style"
-                >
-                    <div
-                        v-for="item in items"
-                        :key="item.key"
-                    >
-                    </div>
-                </div>
-            </div>-->
+            <v-section :params="centerSection">
 
+                <v-section-box class="vSection-box-center" :params="centerSection">
+                </v-section-box>
+
+            </v-section>
+
+            <v-section :params="topSection">
+
+                <v-section-box class="vSection-box-top" :params="topSection">
+                    <v-section-element-item />
+                </v-section-box>
+
+            </v-section>
+
+            <v-section :params="rightSection">
+                
+                <v-section-box class="vSection-box-right" :params="rightSection">
+                </v-section-box>
+            
+            </v-section>
+
+            <v-section :params="bottomSection">
+
+                <v-section-box class="vSection-box-bottom" :params="bottomSection">
+                </v-section-box>
+
+            </v-section>
+
+            <v-section :params="leftSection">
+
+                <v-section-box class="vSection-box-left" :params="leftSection">
+                </v-section-box>
+
+            </v-section>
+            
         </div>
     `,
     setup(){
-        const {ref, onMounted} = Vue
+        const {ref} = Vue
 
         const size = 80
-        const squareWidth = size * 3
-        const squareHeight = size * 2
 
         const centerSection = ref({
             style: {gridArea: 'center'},
-            position: 'center'
+            position: 'center',
         })
         const topSection = ref({
             style: {gridArea: 'top'},
-            position: 'top'
+            position: 'top',
+            size
         })
         const rightSection = ref({
             style: {gridArea: 'right'},
-            position: 'right'
+            position: 'right',
+            size
         })
         const bottomSection = ref({
             style: {gridArea: 'bottom'},
-            position: 'bottom'
+            position: 'bottom',
+            size
         })
         const leftSection = ref({
             style: {gridArea: 'left'},
-            position: 'left'
+            position: 'left',
+            size
         })
 
-        const items = ref(Array.from({length: 8}, (_, key) => ({key})))
-        const leftBox = ref()
-        const style = ref({
-            gridTemplateColumns: 'none',
-            gridTemplateRows: 'none'
-        })
-
-        const resize = () => {
-            const {width, height} = leftBox.value.getBoundingClientRect()
-
-            const rw = Math.ceil(width / squareWidth)
-            const pw = rw === 0 ? 1 : rw
-
-            const rh = Math.ceil(height / squareHeight)
-            const ph = rh === 0 ? 1 : rh
-            const count = pw * ph
-
-            style.value.gridTemplateColumns = `repeat(${pw}, ${squareWidth}px)`
-            style.value.gridTemplateRows = `repeat(${ph}, ${squareHeight}px)`
-
-            updateItems(count)
-        }
-
-        const updateItems = (count) => {
-            const len = items.value.length
-
-            if(len > count){
-                items.value.splice(count, count)
-            }else{
-                for(let i = 0; i < count - len; i++) items.value.push({key: len + i})
-            }
-        }
-        
-        onMounted(() => {
-            // resize()
-            // window.addEventListener('resize', () => resize())
-        })
+        const centerItems = ref(Array.from({length: 0}, (_, key) => ({key})))
+        const topItems = ref(Array.from({length: 0}, (_, key) => ({key})))
+        const rightItems = ref(Array.from({length: 0}, (_, key) => ({key})))
+        const bottomItems = ref(Array.from({length: 0}, (_, key) => ({key})))
+        const leftItems = ref(Array.from({length: 0}, (_, key) => ({key})))
 
         return{
-            leftBox,
-            style,
-            items,
             centerSection,
             leftSection,
             topSection,

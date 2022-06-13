@@ -13,24 +13,3 @@ div#grid-container{
         "left bottom bottom bottom bottom";
     gap: 10px;
 }
-/* div.grid-left{
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 30%;
-    height: 100%;
-}
-div.left-box{
-    position: absolute;
-    display: grid;
-    width: 100%;
-    height: 100%;
-    gap: 10px;
-    right: 0px;
-    justify-content: end;
-    align-content: center;
-}
-div.left-box > div{
-    background: white;
-    width: 100%;
-} */

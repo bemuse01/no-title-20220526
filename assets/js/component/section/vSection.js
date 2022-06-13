@@ -1,17 +1,34 @@
+const getCount = ({width, height, size, sw, sh}) => {
+    if(!size) return {count: 1, pw: 1, ph: 1, squareHeight: width, squareHeight: height}
+
+    const squareWidth = size * sw
+    const squareHeight = size * sh
+
+    const rw = Math.ceil(width / squareWidth)
+    const pw = rw === 0 ? 1 : rw
+
+    const rh = Math.ceil(height / squareHeight)
+    const ph = rh === 0 ? 1 : rh
+    const count = pw * ph
+
+    return {count, pw, ph, squareWidth, squareHeight}
+}
+
 export default {
     template: `
         <div class="vSection" :style="rootStyle" :ref="el => box = el">
             
-            <div :class="boxClassName" :style="boxStyle">
+            <!--<div :class="boxClassName" :style="boxStyle">
 
-                <div 
+                <div
                     class="vSection-item"
                     v-for="i in items"
                     :key="i.key"
                 >
                 </div>
 
-            </div>
+            </div>-->
+            <slot></slot>
 
         </div>
     `,
@@ -26,9 +43,9 @@ export default {
         const rootStyle = params.value.style
         const boxClassName = `vSection-box vSection-box-${params.value.position}`
 
-        const size = 80
-        const squareWidth = size * 3
-        const squareHeight = size * 2
+        const size = params.value.size
+        const sw = 3
+        const sh = 2
 
         const box = ref()
         const items = ref(Array.from({length: 0}, (_, key) => ({key})))
@@ -40,13 +57,8 @@ export default {
         const resize = () => {
             const {width, height} = box.value.getBoundingClientRect()
 
-            const rw = Math.ceil(width / squareWidth)
-            const pw = rw === 0 ? 1 : rw
-
-            const rh = Math.ceil(height / squareHeight)
-            const ph = rh === 0 ? 1 : rh
-            const count = pw * ph
-
+            const {count, pw, ph, squareWidth, squareHeight} = getCount({width, height, size, sw, sh})
+            
             boxStyle.value.gridTemplateColumns = `repeat(${pw}, ${squareWidth}px)`
             boxStyle.value.gridTemplateRows = `repeat(${ph}, ${squareHeight}px)`
 
