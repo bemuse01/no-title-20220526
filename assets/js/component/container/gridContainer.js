@@ -1,12 +1,12 @@
 import vSection from '../section/vSection.js'
 import vSectionBox from '../section/vSectionBox.js'
-import vSectionElementItem from '../section/vSectionElementItem.js'
+import vSectionElementItems from '../section/vSectionElementItems.js'
 
 export default {
     components: {
         'v-section': vSection,
         'v-section-box': vSectionBox,
-        'v-section-element-item': vSectionElementItem
+        'v-section-element-items': vSectionElementItems
     },
     template: `
         <div id="grid-container">
@@ -21,7 +21,7 @@ export default {
             <v-section :params="topSection">
 
                 <v-section-box class="vSection-box-top" :params="topSection">
-                    <v-section-element-item />
+                    <v-section-element-items />
                 </v-section-box>
 
             </v-section>
