@@ -53,6 +53,8 @@ export default {
         const sw = 3
         const sh = 2
 
+        // const positions = ['center', 'top', 'right', 'bottom', 'left']
+
         const sections = ref([
             {
                 sectionStyle: {gridArea: 'center'},
