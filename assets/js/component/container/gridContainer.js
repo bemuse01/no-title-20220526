@@ -79,12 +79,6 @@ export default {
             size
         })
 
-        const centerItems = ref(Array.from({length: 0}, (_, key) => ({key})))
-        const topItems = ref(Array.from({length: 0}, (_, key) => ({key})))
-        const rightItems = ref(Array.from({length: 0}, (_, key) => ({key})))
-        const bottomItems = ref(Array.from({length: 0}, (_, key) => ({key})))
-        const leftItems = ref(Array.from({length: 0}, (_, key) => ({key})))
-
         return{
             centerSection,
             leftSection,
