@@ -39,7 +39,7 @@ export default {
                 >
                     <v-section-element-item
                         v-for="item in section.items"
-                        :key="item.key"                    
+                        :key="item.key"
                     />
                 </v-section-box>
             </v-section>
