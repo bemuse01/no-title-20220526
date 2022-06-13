@@ -25,8 +25,7 @@ export default {
         const src = ''
         let object = null
 
-        const selectObject = (cur) => {
-
+        const selectObject = () => {
             switch(type){
                 case 'Test':
                     object = new Test({app: app.value, src, element: element.value, canvas: canvas.value})
