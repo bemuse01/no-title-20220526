@@ -29,7 +29,8 @@ export default {
 
             <v-section
                 v-for="section in sections"
-                :key="section.position"
+                :class="section.sectionClassName"
+                :key="section.key"
                 :sectionStyle="section.sectionStyle"
             >
                 <v-section-box
@@ -55,8 +56,10 @@ export default {
         const sh = 2
 
         const sections = ref(positions.map((position, key) => ({
+            key,
             sectionStyle: {gridArea: position},
             position,
+            sectionClassName: `vSection-${position}`,
             boxClassName: `vSection-box-${position}`,
             size: position === 'center' ? undefined : size,
             boxRef: null,
