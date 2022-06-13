@@ -1,6 +1,7 @@
 import vSection from '../section/vSection.js'
 import vSectionBox from '../section/vSectionBox.js'
 import vSectionElementItem from '../section/vSectionElementItem.js'
+import vSectionObjectItem from '../section/vSectionObjectItem.js'
 
 const getCount = ({width, height, size, sw, sh}) => {
     if(!size) return {count: 1}
@@ -22,7 +23,8 @@ export default {
     components: {
         'v-section': vSection,
         'v-section-box': vSectionBox,
-        'v-section-element-item': vSectionElementItem
+        'v-section-element-item': vSectionElementItem,
+        'v-section-object-item': vSectionObjectItem
     },
     template: `
         <div id="grid-container">
@@ -38,9 +40,13 @@ export default {
                     :size="section.size"
                     :ref="el => section.boxRef = el"
                 >
-                    <v-section-element-item
+                    <v-section-object-item
+                        v-if="section.position === 'center'"
                         v-for="item in section.items"
-                        :key="item.key"
+                    />
+                    <v-section-element-item
+                        v-else
+                        v-for="item in section.items"
                     />
                 </v-section-box>
             </v-section>

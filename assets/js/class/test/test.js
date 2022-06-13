@@ -38,6 +38,7 @@ export default class{
         this.initGroup()
         this.initRenderObject()
         this.create()
+        this.expand()
 
         this.animate()
                 
@@ -88,6 +89,12 @@ export default class{
         for(const group in this.group) this.build.add(this.group[group])
         
         this.scene.add(this.build)
+    }
+
+
+    // 
+    expand(){
+        this.build.scale.set(Param.scale, Param.scale, Param.scale)
     }
 
 
