@@ -49,53 +49,19 @@ export default {
     setup(){
         const {ref, onMounted} = Vue
 
+        const positions = ['center', 'top', 'right', 'bottom', 'left']
         const size = 80
         const sw = 3
         const sh = 2
 
-        // const positions = ['center', 'top', 'right', 'bottom', 'left']
-
-        const sections = ref([
-            {
-                sectionStyle: {gridArea: 'center'},
-                position: 'center',
-                boxClassName: 'vSection-box-center',
-                boxRef: null,
-                items: []
-            },
-            {
-                sectionStyle: {gridArea: 'top'},
-                position: 'top',
-                boxClassName: 'vSection-box-top',
-                size,
-                boxRef: null,
-                items: []
-            },
-            {
-                sectionStyle: {gridArea: 'right'},
-                position: 'right',
-                boxClassName: 'vSection-box-right',
-                size,
-                boxRef: null,
-                items: []
-            },
-            {
-                sectionStyle: {gridArea: 'bottom'},
-                position: 'bottom',
-                boxClassName: 'vSection-box-bottom',
-                size,
-                boxRef: null,
-                items: []
-            },
-            {
-                sectionStyle: {gridArea: 'left'},
-                position: 'left',
-                boxClassName: 'vSection-box-left',
-                size,
-                boxRef: null,
-                items: []
-            }
-        ])
+        const sections = ref(positions.map((position, key) => ({
+            sectionStyle: {gridArea: position},
+            position,
+            boxClassName: `vSection-box-${position}`,
+            size: position === 'center' ? undefined : size,
+            boxRef: null,
+            items: []
+        })))
 
         const resize = () => {
             sections.value.forEach(section => {
@@ -124,7 +90,6 @@ export default {
             resize()
             window.addEventListener('resize', () => resize())
         })
-
 
         return{
             sections
