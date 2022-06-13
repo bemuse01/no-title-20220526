@@ -1,12 +1,10 @@
 export default {
     template: `
-        <div>
+        <div class="vSection-item element-item"> 
         </div>
     `,
     props: {
-
     },
     setup(props){
-        
     }
 }

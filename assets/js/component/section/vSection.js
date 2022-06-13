@@ -16,7 +16,7 @@ const getCount = ({width, height, size, sw, sh}) => {
 
 export default {
     template: `
-        <div class="vSection" :style="rootStyle" :ref="el => box = el">
+        <div class="vSection" :style="sectionStyle" :ref="el => box = el">
             
             <!--<div :class="boxClassName" :style="boxStyle">
 
@@ -33,59 +33,59 @@ export default {
         </div>
     `,
     props: {
-        params: Object,
+        sectionStyle: Object,
     },
     setup(props){
         const {toRefs, ref, onMounted} = Vue
 
-        const {params} = toRefs(props)
+        const {sectionStyle} = toRefs(props)
 
-        const rootStyle = params.value.style
-        const boxClassName = `vSection-box vSection-box-${params.value.position}`
+        // const rootStyle = sectionStyle.value
+        // const boxClassName = `vSection-box vSection-box-${params.value.position}`
 
-        const size = params.value.size
-        const sw = 3
-        const sh = 2
+        // const size = params.value.size
+        // const sw = 3
+        // const sh = 2
 
-        const box = ref()
-        const items = ref(Array.from({length: 0}, (_, key) => ({key})))
-        const boxStyle = ref({
-            gridTemplateColumns: 'none',
-            gridTemplateRows: 'none'
-        })
+        // const box = ref()
+        // const items = ref(Array.from({length: 0}, (_, key) => ({key})))
+        // const boxStyle = ref({
+        //     gridTemplateColumns: 'none',
+        //     gridTemplateRows: 'none'
+        // })
 
-        const resize = () => {
-            const {width, height} = box.value.getBoundingClientRect()
+        // const resize = () => {
+        //     const {width, height} = box.value.getBoundingClientRect()
 
-            const {count, pw, ph, squareWidth, squareHeight} = getCount({width, height, size, sw, sh})
+        //     const {count, pw, ph, squareWidth, squareHeight} = getCount({width, height, size, sw, sh})
             
-            boxStyle.value.gridTemplateColumns = `repeat(${pw}, ${squareWidth}px)`
-            boxStyle.value.gridTemplateRows = `repeat(${ph}, ${squareHeight}px)`
+        //     boxStyle.value.gridTemplateColumns = `repeat(${pw}, ${squareWidth}px)`
+        //     boxStyle.value.gridTemplateRows = `repeat(${ph}, ${squareHeight}px)`
 
-            updateItems(count)
-        }
+        //     updateItems(count)
+        // }
 
-        const updateItems = (count) => {
-            const len = items.value.length
+        // const updateItems = (count) => {
+        //     const len = items.value.length
 
-            if(len > count){
-                for(let i = 0; i < len - count; i++) items.value.pop()
-            }else{
-                for(let i = 0; i < count - len; i++) items.value.push({key: len + i})
-            }
-        }
+        //     if(len > count){
+        //         for(let i = 0; i < len - count; i++) items.value.pop()
+        //     }else{
+        //         for(let i = 0; i < count - len; i++) items.value.push({key: len + i})
+        //     }
+        // }
         
-        onMounted(() => {
-            resize()
-            window.addEventListener('resize', () => resize())
-        })
+        // onMounted(() => {
+        //     resize()
+        //     window.addEventListener('resize', () => resize())
+        // })
 
         return{
-            rootStyle,
-            boxStyle,
-            items,
-            box,
-            boxClassName
+            sectionStyle,
+            // boxStyle,
+            // items,
+            // box,
+            // boxClassName
         }
     }
 }

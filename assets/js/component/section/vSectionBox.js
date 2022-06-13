@@ -1,8 +1,8 @@
-const getCount = ({width, height, size, sw, sh}) => {
-    if(!size) return {pw: 1, ph: 1, squareWidth: width, squareHeight: height}
+const getCount = ({width, height, s, sw, sh}) => {
+    if(!s) return {pw: 1, ph: 1, squareWidth: width, squareHeight: height}
 
-    const squareWidth = size * sw
-    const squareHeight = size * sh
+    const squareWidth = s * sw
+    const squareHeight = s * sh
 
     const rw = Math.ceil(width / squareWidth)
     const pw = rw === 0 ? 1 : rw
@@ -24,14 +24,14 @@ export default {
         </div>
     `,
     props: {
-        params: Object
+        size: Number,
     },
     setup(props){
         const {ref, toRefs, onMounted} = Vue
 
-        const {params} = toRefs(props)
+        const {size} = toRefs(props)
 
-        const size = params.value.size
+        const s = size.value
         const sw = 3
         const sh = 2
 
@@ -44,7 +44,7 @@ export default {
         const resize = () => {
             const {width, height} = box.value.getBoundingClientRect()
 
-            const {pw, ph, squareWidth, squareHeight} = getCount({width, height, size, sw, sh})
+            const {pw, ph, squareWidth, squareHeight} = getCount({width, height, s, sw, sh})
             
             boxStyle.value.gridTemplateColumns = `repeat(${pw}, ${squareWidth}px)`
             boxStyle.value.gridTemplateRows = `repeat(${ph}, ${squareHeight}px)`
