@@ -14,19 +14,26 @@ export default {
                     </div>
 
                     <div class="search-box-text">
+
                         <div
-                            v-for="item in items"
-                            :key="item.key"
+                            v-for="num in numbers"
+                            :key="num.key"
                         >
                             <p
-                                v-for="num in item.numbers"
-                                :key="num.key"
-                            >{{num.text}}</p>
+                                v-for="child in num.childs"
+                                :key="child.key"
+                            >{{child.text}}</p>
                         </div>
-                        <div>
-                            <div></div>
-                            <div></div>
+
+                        <div class="horizon-bars">
+                            <div
+                                v-for="bar in bars"
+                                :key="bar.key"
+                                :style="bar.style1"
+                            ><div :style="bar.style2"></div>
+                            </div>
                         </div>
+
                     </div>
 
                 </div>
@@ -39,12 +46,22 @@ export default {
 
         const root = ref()
 
-        const items = ref(Array.from({length: 2}, (_, key) => ({
+        const numbers = ref(Array.from({length: 2}, (_, key) => ({
             key,
-            numbers: Array.from({length: 3}, (_, idx) => ({
+            childs: Array.from({length: 3}, (_, idx) => ({
                 key: idx,
                 text: ~~(Math.random() * 100000)
             }))
+        })))
+        const bars = ref(Array.from({length: 3}, (_, key) => ({
+            key,
+            style1: {
+                transform: `scaleX(${Math.random() * 0.5 + 0.5})`
+            },
+            style2: {
+                opacity: `${0.5 * key}`,
+                background: '#00ffd7',
+            }
         })))
 
         const searchBoxStyle = ref({
@@ -73,7 +90,8 @@ export default {
         return{
             root,
             searchBoxStyle,
-            items
+            numbers,
+            bars
         }
     }
 }
