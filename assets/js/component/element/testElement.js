@@ -14,15 +14,18 @@ export default {
                     </div>
 
                     <div class="search-box-text">
-                        <div>
-                            <p>123 456</p>
-                            <p>123 456</p>
-                            <p>123 456</p>
+                        <div
+                            v-for="item in items"
+                            :key="item.key"
+                        >
+                            <p
+                                v-for="num in item.numbers"
+                                :key="num.key"
+                            >{{num.text}}</p>
                         </div>
                         <div>
-                            <p>123 456</p>
-                            <p>123 456</p>
-                            <p>123 456</p>
+                            <div></div>
+                            <div></div>
                         </div>
                     </div>
 
@@ -35,6 +38,14 @@ export default {
         const {ref, onMounted} = Vue
 
         const root = ref()
+
+        const items = ref(Array.from({length: 2}, (_, key) => ({
+            key,
+            numbers: Array.from({length: 3}, (_, idx) => ({
+                key: idx,
+                text: ~~(Math.random() * 100000)
+            }))
+        })))
 
         const searchBoxStyle = ref({
             transform: 'none'
@@ -61,7 +72,8 @@ export default {
 
         return{
             root,
-            searchBoxStyle
+            searchBoxStyle,
+            items
         }
     }
 }
