@@ -1,5 +1,6 @@
 .test{
     position: absolute;
+    color: #00ffd7;
 }
 .test-object{
     width: 100%;
@@ -12,4 +13,26 @@
 .test-element{
     width: 100%;
     height: 100%;
+}
+.test-search-box{
+    position: absolute;
+    width: auto;
+    height: 100%;
+    /* background: #00ffd7; */
+}
+.test-search-box-texts{
+    position: absolute;
+    bottom: 10%;
+    transform: translate(10%, 0);
+    font-size: 10px;
+    white-space: nowrap;
+}
+.test-search-box-line{
+    position: absolute;
+    width: 2px;
+    height: 100%;
+    top: 50%;
+    left: 0;
+    transform: translate(-100%, -50%);
+    background: linear-gradient(to bottom, transparent, #00ffd7, transparent);
 }
