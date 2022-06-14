@@ -33,6 +33,9 @@
     justify-content: end;
     gap: 4px;
 }
+.search-box-title{
+    color: white;
+}
 .search-box-text{
     display: flex;
     flex-direction: row;

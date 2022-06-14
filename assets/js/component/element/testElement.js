@@ -22,6 +22,7 @@ export default {
                             <p
                                 v-for="child in num.childs"
                                 :key="child.key"
+                                :style="child.style"
                             >{{child.text}}</p>
                         </div>
 
@@ -48,9 +49,12 @@ export default {
 
         const numbers = ref(Array.from({length: 2}, (_, key) => ({
             key,
-            childs: Array.from({length: 3}, (_, idx) => ({
+            childs: Array.from({length: 4}, (_, idx) => ({
                 key: idx,
-                text: ~~(Math.random() * 100000)
+                text: ~~(Math.random() * (100000 - 20000 * idx)),
+                style: {
+                    color: idx === 0 || idx === 3 ? '#00ffd7' : 'white'
+                }
             }))
         })))
         const bars = ref(Array.from({length: 3}, (_, key) => ({
@@ -68,6 +72,25 @@ export default {
             transform: 'none'
         })
 
+        const generateRandNum = () => {
+            numbers.value.forEach(({childs}) => {
+                childs.forEach(child => {
+                    child.text = ~~(Math.random() * 100000)
+                })
+            })
+
+            setTimeout(generateRandNum, 500)
+        }
+
+        const scaleBar = (time) => {
+            bars.value.forEach((bar, i) => {
+                const r = SIMPLEX.noise2D(i * 0.5, time * 0.0005)
+                const p = Method.normalize(r, 0.1, 1, -1, 1)
+
+                bar.style1.transform = `scaleX(${p})`
+            })
+        }
+
         const moveSearchBox = (width, time) => {
             const r = SIMPLEX.noise2D(0.1, time * 0.000075)
             const p = Method.normalize(r, width * 0.1, width * 0.9, -1, 1)
@@ -80,11 +103,13 @@ export default {
             const time = window.performance.now()
 
             moveSearchBox(width, time)
+            scaleBar(time)
             requestAnimationFrame(animate)
         }
 
         onMounted(() => {
             animate()
+            generateRandNum()
         })
 
         return{
