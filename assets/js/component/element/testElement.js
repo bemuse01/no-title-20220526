@@ -74,8 +74,8 @@ export default {
 
         const generateRandNum = () => {
             numbers.value.forEach(({childs}) => {
-                childs.forEach(child => {
-                    child.text = ~~(Math.random() * 100000)
+                childs.forEach((child, idx) => {
+                    child.text = ~~(Math.random() * (100000 - 30000 * idx))
                 })
             })
 
