@@ -4,13 +4,30 @@ export default {
     template: `
         <div class="test test-element" :ref="el => root = el">
             <div class="test-search-box" :style="searchBoxStyle">
-                <div class="test-search-box-line"></div>
-                <div class="test-search-box-texts">
-                    <p>RESEQUENCE CODE</p>
-                    <p>123 456</p>
-                    <p>123 456</p>
-                    <p>123 456</p>
+                
+                <div class="search-box-line"></div>
+
+                <div class="search-box-texts">
+
+                    <div class="search-box-title">
+                        <p>RESEQUENCE CODE</p>
+                    </div>
+
+                    <div class="search-box-text">
+                        <div>
+                            <p>123 456</p>
+                            <p>123 456</p>
+                            <p>123 456</p>
+                        </div>
+                        <div>
+                            <p>123 456</p>
+                            <p>123 456</p>
+                            <p>123 456</p>
+                        </div>
+                    </div>
+
                 </div>
+
             </div>
         </div>
     `,

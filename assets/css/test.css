@@ -20,15 +20,25 @@
     height: 100%;
     /* background: #00ffd7; */
 }
-.test-search-box-texts{
+.search-box-texts{
     position: absolute;
+    height: 100%;
     bottom: 10%;
     transform: translate(12%, 0);
     font-family: rainyhearts;
     font-size: 4px;
     white-space: nowrap;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    gap: 4px;
 }
-.test-search-box-line{
+.search-box-text{
+    display: flex;
+    flex-direction: row;
+    gap: 12px;
+}
+.search-box-line{
     position: absolute;
     width: 2px;
     height: 100%;
