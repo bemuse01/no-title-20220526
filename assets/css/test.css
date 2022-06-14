@@ -1,0 +1,15 @@
+.test{
+    position: absolute;
+}
+.test-object{
+    width: 100%;
+    height: 100%;
+}
+.test-object canvas{
+    width: 100%;
+    height: 100%;
+}
+.test-element{
+    width: 100%;
+    height: 100%;
+}

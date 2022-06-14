@@ -1,9 +1,17 @@
-import Test from '../../class/test/test.js'
+import TestObject from '../object/testObject.js'
+import TestElement from '../element/testElement.js'
 
 export default {
+    components: {
+        'test-object': TestObject,
+        'test-element': TestElement
+    },
     template: `
-        <div class="vSection-item object-item" :ref="el => element = el">
-            <canvas :ref="el => canvas = el"/>
+        <div class="vSection-item object-item">
+            <template v-if="type === 'Test'">    
+                <test-object />
+                <test-element />
+            </template>
         </div>
     `,
     props: {
@@ -13,35 +21,10 @@ export default {
         }
     },
     setup(props){
-        const {ref, onMounted, computed, watch, nextTick} = Vue
-        const {useStore} = Vuex
-
         const type = props.type
-        
-        const store = useStore()
-        const app = computed(() => store.getters['getApp'])
-        const element = ref()
-        const canvas = ref()
-        const src = ''
-        let object = null
-
-        const selectObject = () => {
-            switch(type){
-                case 'Test':
-                    object = new Test({app: app.value, src, element: element.value, canvas: canvas.value})
-                    break
-                default:
-                    break
-            }
-        }
-
-        onMounted(() => {
-            selectObject()
-        })
 
         return{
-            element,
-            canvas
+            type
         }
     }
 }

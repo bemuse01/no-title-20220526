@@ -2,27 +2,33 @@ import Test from '../../class/test/test.js'
 
 export default {
     template: `
-        <div class="object-child test" :ref="el => element = el">
+        <div class="test test-object" :ref="el => element = el">
             <canvas :ref="el => canvas = el"/>
         </div>
     `,
+    props: {
+        type: {
+            default: 'Test',
+            type: String
+        }
+    },
     setup(){
-        const {ref, onMounted, computed, watch} = Vue
+        const {ref, onMounted, computed} = Vue
         const {useStore} = Vuex
-        
+
         const store = useStore()
         const app = computed(() => store.getters['getApp'])
         const element = ref()
         const canvas = ref()
         const src = ''
-        let test = null
+        let object = null
+
+        const createObject = () => {
+            object = new Test({app: app.value, src, element: element.value, canvas: canvas.value})
+        }
 
         onMounted(() => {
-            watch(app, cur => {
-                if(cur){
-                    test = new Test({app: cur, src, element: element.value, canvas: canvas.value})
-                }
-            })
+            createObject()
         })
 
         return{
