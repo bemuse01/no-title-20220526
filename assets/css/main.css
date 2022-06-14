@@ -2,6 +2,21 @@
 @import url('vSection.css');
 @import url('test.css');
 
+
+@font-face {
+    font-family: OxaniumRegular;
+    src: url('../font/Oxanium-Regular.ttf');
+}
+@font-face {
+    font-family: OxaniumSemiBold;
+    src: url('../font/Oxanium-SemiBold.ttf');
+}
+@font-face {
+    font-family: rainyhearts;
+    src: url('../font/rainyhearts.ttf');
+}
+
+
 /* init */
 html{
     font-size: 10px;

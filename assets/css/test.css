@@ -23,8 +23,9 @@
 .test-search-box-texts{
     position: absolute;
     bottom: 10%;
-    transform: translate(10%, 0);
-    font-size: 10px;
+    transform: translate(12%, 0);
+    font-family: rainyhearts;
+    font-size: 4px;
     white-space: nowrap;
 }
 .test-search-box-line{
