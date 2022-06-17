@@ -71,7 +71,7 @@ export default class{
             materialName: 'LineBasicMaterial',
             materialOpt: {
                 transparent: true,
-                opacity: 0.1,
+                opacity: 0.075,
                 color: 0x00ffd7,
                 // blending: AdditiveBlending,
                 depthWrite: false,

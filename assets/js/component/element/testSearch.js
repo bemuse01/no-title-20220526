@@ -56,7 +56,7 @@ export default {
                 key: idx,
                 text: ~~(Math.random() * (100000 - 20000 * idx)),
                 style: {
-                    color: idx === 0 || idx === 3 ? '#00ffd7' : 'white'
+                    color: idx === 0 || idx === 3 ? MAIN_COLOR_CSS_HEX : 'white'
                 }
             }))
         })))
@@ -67,7 +67,7 @@ export default {
             },
             style2: {
                 opacity: `${0.5 * key}`,
-                background: '#00ffd7',
+                background: MAIN_COLOR_CSS_HEX,
             }
         })))
 
