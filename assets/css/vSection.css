@@ -28,4 +28,6 @@
     background: rgba(255, 255, 255, 0.06);
     width: 100%;
     overflow: hidden;
+    /* border: 1px #00ffd755 solid;
+    box-sizing: border-box; */
 }

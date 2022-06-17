@@ -1,6 +1,15 @@
+const generateStyle = (size, gap) => {
+    return{
+        width: `${size}px`,
+        height: `${size}px`,
+        marginLeft: `${gap}px`,
+        animation: `blink ${Math.random() * 2 + 2}s infinite`
+    }
+}
+
 export default {
     template: `
-        <div class="test-child test-bottom" :ref="el => root = el">
+        <div class="test-child test-bottom">
 
             <div class="bottom-box">
 
@@ -30,36 +39,39 @@ export default {
         const {ref, onMounted} = Vue
 
         const size = 5
+        const gap = 1
 
         const root = ref()
         const circlesRef = ref()
 
         const circles = ref(Array.from({length: 0}, (_, key) => ({
             key,
-            style: {
-                width: `${size}px`,
-                height: `${size}px`
-            }
+            style: generateStyle(size, gap)
         })))
+
+        const initCircles = () => {
+            const {width} = circlesRef.value.getBoundingClientRect()
+            const count = ~~(width / size)
+            const w = width - count * gap
+            const len = ~~(w / size)
+            for(let i = 0; i < len; i++) circles.value.push({style: generateStyle(size, gap), key: i})
+            console.log(width)
+        }
 
         const updateCircles = () => {
             const {width} = circlesRef.value.getBoundingClientRect()
             const len = circles.value.length
-            const count = ~~(width / size)
+            const w = width - len * gap
+            const count = ~~(w / size)
 
-            console.log(len)
-            console.log(count)
+            console.log(width)
 
-            const item = {style: {
-                width: `${size}px`,
-                height: `${size}px`
-            }}
-            
             if(len > count){
                 for(let i = 0; i < len - count; i++) circles.value.pop()
             }else{
-                for(let i = 0; i < count - len; i++) circles.value.push({...item, key: len + i})
+                for(let i = 0; i < count - len; i++) circles.value.push({style: generateStyle(size, gap), key: len + i})
             }
+            console.log(count)
         }
 
         const resize = () => {
@@ -67,8 +79,9 @@ export default {
         }
 
         onMounted(() => {
+            initCircles()
             updateCircles()
-            // window.addEventListener('resize', resize)
+            window.addEventListener('resize', resize)
         })
 
         return{

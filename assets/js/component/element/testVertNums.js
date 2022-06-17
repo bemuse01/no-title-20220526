@@ -24,11 +24,16 @@ export default {
 
         const rootStyle = props.rootStyle
 
-        const numbers = ref(Array.from({length: 7}, (_, key) => ({
+        const len = 7
+        const top = 100 / (len - 1)
+
+        const numbers = ref(Array.from({length: len}, (_, key) => ({
             key,
             text: ~~(Math.random() * 100000),
             style: {
-                color: MAIN_COLOR_CSS_HEX
+                color: MAIN_COLOR_CSS_HEX,
+                top: `${top * key}%`,
+                transform: `translate(0, -${top * key}%)`
             }
         })))
 

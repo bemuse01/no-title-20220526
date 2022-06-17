@@ -2,7 +2,7 @@ import Method from '../../method/method.js'
 
 export default {
     template: `
-        <div class="test-child test-search" :ref="el => root = el">
+        <div class="test-search" :ref="el => root = el">
 
             <div class="search-box" :style="searchBoxStyle">
                             

@@ -1,0 +1,6 @@
+.vColumns{
+    display: flex;
+}
+.vColumn{
+    flex: 1;
+}
