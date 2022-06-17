@@ -14,6 +14,11 @@
     width: 100%;
     height: 100%;
 }
+.test-search{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
 .test-search-box{
     position: absolute;
     width: auto;
@@ -56,14 +61,14 @@
     display: flex;
     flex-direction: column-reverse;
 }
-.horizon-bars > div{
+.horizon-bar{
     position: relative;    
     width: 100%;
     height: 100%;
     transform: scaleX(0);
     transform-origin: left;
 }
-.horizon-bars > div > div{
+.horizon-bar > div{
     position: absolute;
     top: 50%;
     transform: translate(0, -50%);
