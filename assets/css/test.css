@@ -54,7 +54,7 @@
 .search-box-line{
     position: absolute;
     width: 2px;
-    height: 100%;
+    height: 90%;
     top: 50%;
     left: 0;
     transform: translate(-100%, -50%);
@@ -97,4 +97,41 @@
     flex: 1;
     display: flex;
     align-items: center;
+}
+
+
+/* bottom */
+.test-bottom{
+    left: 50%;
+    bottom: 0;
+    transform: translate(-50%, 0);
+    width: 90%;
+    height: 32px;
+}
+.bottom-box{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    gap: 3%;
+}
+/* bottom circles */
+.bottom-circles{
+    flex: 0.45;
+    display: flex;
+    align-items: center;
+}
+.bottom-circle{
+    width: 6px;
+    height: 6px;
+    background: #00ffd7;
+    border-radius: 50%;
+    margin-left: 1px;
+}
+/* bottom texts */
+.bottom-texts{
+    flex: 0.25
+}
+/* bottom empty */
+.bottom-empty{
+    flex: 1;
 }

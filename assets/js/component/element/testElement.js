@@ -1,10 +1,12 @@
 import TestSearch from './testSearch.js'
 import TestVertNums from './testVertNums.js'
+import TestBottom from './testBottom.js'
 
 export default {
     components: {
         'test-search': TestSearch,
-        'test-vertNums': TestVertNums
+        'test-vertNums': TestVertNums,
+        'test-bottom': TestBottom
     },
     template: `
         <div class="test test-element">
@@ -12,6 +14,7 @@ export default {
             <test-search />
             <test-vertNums :rootStyle="leftVertNumsStyle" />
             <test-vertNums :rootStyle="rightVertNumsStyle" />
+            <test-bottom />
 
         </div>
     `,

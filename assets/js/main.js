@@ -11,10 +11,10 @@ const vueApp = Vue.createApp({
         'grid-container': GridContainer
     },
     setup(){
-        const {onMounted} = Vue
+        const {onMounted, nextTick} = Vue
         const store = Vuex.useStore()
 
-        Vue.nextTick(() => {
+        nextTick(() => {
             store.dispatch('setApp', new App())
         })
 
