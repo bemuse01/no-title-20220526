@@ -15,12 +15,16 @@ export default {
 
                 <div class="bottom-circles" :ref="el => circlesRef = el">
 
-                    <div 
-                        class="bottom-circle"
-                        v-for="circle in circles"
-                        :key="circle.key"
-                        :style="circle.style"
-                    >
+                    <div class="bottom-circles-box">
+
+                        <div 
+                            class="bottom-circle"
+                            v-for="circle in circles"
+                            :key="circle.key"
+                            :style="circle.style"
+                        >
+                        </div>
+                        
                     </div>
 
                 </div>

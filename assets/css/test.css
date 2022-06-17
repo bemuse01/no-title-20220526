@@ -123,8 +123,15 @@
 }
 /* bottom circles */
 .bottom-circles{
+    position: relative;
     width: 30%;
     overflow: hidden;
+}
+.bottom-circles-box{
+    width: 100%;
+    height: auto;
+    position: absolute;
+    bottom: 0;
 }
 .bottom-circle{
     display: inline-block;
