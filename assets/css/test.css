@@ -14,12 +14,17 @@
     width: 100%;
     height: 100%;
 }
-.test-search{
+.test-child{
     position: absolute;
+}
+
+
+/* search */
+.test-search{
     width: 100%;
     height: 100%;
 }
-.test-search-box{
+.search-box{
     position: absolute;
     width: auto;
     height: 100%;
@@ -56,22 +61,30 @@
     background: linear-gradient(to bottom, transparent, #00ffd7, transparent);
 }
 
-.horizon-bars{
+.search-horizon-bars{
     width: 30px;
     display: flex;
     flex-direction: column-reverse;
 }
-.horizon-bar{
+.search-horizon-bar{
     position: relative;    
     width: 100%;
     height: 100%;
     transform: scaleX(0);
     transform-origin: left;
 }
-.horizon-bar > div{
+.search-horizon-bar > div{
     position: absolute;
     top: 50%;
     transform: translate(0, -50%);
     width: 100%;
     height: 50%;
+}
+
+
+/* vertical numbers */
+.test-vertNums{
+    width: 30px;
+    height: 100%;
+    overflow: hidden;
 }

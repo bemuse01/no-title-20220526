@@ -2,9 +2,9 @@ import Method from '../../method/method.js'
 
 export default {
     template: `
-        <div class="test-search" :ref="el => root = el">
+        <div class="test-child test-search" :ref="el => root = el">
 
-            <div class="test-search-box" :style="searchBoxStyle">
+            <div class="search-box" :style="searchBoxStyle">
                             
                 <div class="search-box-line"></div>
 
@@ -27,12 +27,12 @@ export default {
                             >{{child.text}}</p>
                         </div>
 
-                        <div class="horizon-bars">
+                        <div class="search-horizon-bars">
                             <div
                                 v-for="bar in bars"
                                 :key="bar.key"
                                 :style="bar.style1"
-                                class="horizon-bar"
+                                class="search-horizon-bar"
                             ><div :style="bar.style2"></div>
                             </div>
                         </div>
