@@ -125,7 +125,6 @@
 .bottom-circles{
     width: 30%;
     overflow: hidden;
-    box-sizing: border-box;
 }
 .bottom-circle{
     display: inline-block;

@@ -49,29 +49,24 @@ export default {
             style: generateStyle(size, gap)
         })))
 
-        const initCircles = () => {
-            const {width} = circlesRef.value.getBoundingClientRect()
-            const count = ~~(width / size)
-            const w = width - count * gap
-            const len = ~~(w / size)
-            for(let i = 0; i < len; i++) circles.value.push({style: generateStyle(size, gap), key: i})
-            console.log(width)
-        }
-
         const updateCircles = () => {
             const {width} = circlesRef.value.getBoundingClientRect()
+            const count1 = Math.ceil(width / size)
+            const w = width - count1 * gap
+
             const len = circles.value.length
-            const w = width - len * gap
-            const count = ~~(w / size)
+            const count2 = Math.ceil(w / size)
 
-            console.log(width)
-
-            if(len > count){
-                for(let i = 0; i < len - count; i++) circles.value.pop()
+            if(len > count2){
+                for(let i = 0; i < len - count2; i++) circles.value.pop()
             }else{
-                for(let i = 0; i < count - len; i++) circles.value.push({style: generateStyle(size, gap), key: len + i})
+                for(let i = 0; i < count2 - len; i++) circles.value.push({style: generateStyle(size, gap), key: len + i})
             }
-            console.log(count)
+
+            console.log('w: ', w)
+            console.log('width: ', width)
+            console.log('count2: ', count2)
+            console.log('len: ', len)
         }
 
         const resize = () => {
@@ -79,7 +74,6 @@ export default {
         }
 
         onMounted(() => {
-            initCircles()
             updateCircles()
             window.addEventListener('resize', resize)
         })
