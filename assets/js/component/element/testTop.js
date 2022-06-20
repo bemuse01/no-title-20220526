@@ -9,8 +9,8 @@ export default {
 
             <div class="top-box">
 
-                <test-top-code width="55%"/>
-                <test-top-code width="75%"/>
+                <test-top-code width="50%"/>
+                <test-top-code width="68%"/>
 
             </div>
 
