@@ -158,9 +158,7 @@
     flex: 0.2;
 }
 .bottom-texts-box{
-    width: 90%;
     height: 100%;
-    gap: 3px;
 }
 .bottom-text{
     flex: 1;
@@ -170,28 +168,6 @@
 }
 .bottom-text p{
     flex: 1;
-}
-/* bottom texts2 */
-.bottom-texts2{
-    flex: 0.2;
-    margin-left: 6%;
-}
-.bottom-texts2-box{
-    height: 100%;
-}
-.bottom-text2{
-    gap: 25%;
-}
-/* bottom texts3 */
-.bottom-texts3{
-    flex: 0.2;
-    margin-left: 4%;
-}
-.bottom-texts3-box{
-    height: 100%;
-}
-.bottom-text3{
-    gap: 50%;
 }
 /* bottom empty */
 .bottom-empty{
