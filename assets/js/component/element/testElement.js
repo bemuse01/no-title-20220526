@@ -1,5 +1,6 @@
 import TestSearch from './testSearch.js'
 import TestVertNums from './testVertNums.js'
+import TestTop from './testTop.js'
 import TestBottom from './testBottom.js'
 import vColumn from '../column/vColumn.js'
 import vColumns from '../column/vColumns.js'
@@ -8,6 +9,7 @@ export default {
     components: {
         'test-search': TestSearch,
         'test-vertNums': TestVertNums,
+        'test-top': TestTop,
         'test-bottom': TestBottom,
         'v-column': vColumn,
         'v-columns': vColumns
@@ -24,6 +26,7 @@ export default {
                 </v-column>
                 
                 <v-column class="test-column">
+                    <test-top />
                     <test-bottom />
                 </v-column>
 
