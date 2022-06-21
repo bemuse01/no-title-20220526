@@ -7,7 +7,7 @@ export default class{
         this.group = group
 
         this.iter = 2
-        this.count = 180
+        this.count = 160
         this.gap = 30
         this.w = 40
         this.hw = this.w / 2
