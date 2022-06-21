@@ -11,6 +11,7 @@ export default class{
         this.gap = 30
         this.w = 40
         this.hw = this.w / 2
+        this.opacity = 0.25
 
         this.particles = []
 
@@ -35,7 +36,7 @@ export default class{
                 uniforms: {
                     uPointSize: {value: 2.5},
                     uColor: {value: new THREE.Color(0x00ffd7)},
-                    uOpacity: {value: 1.0}
+                    uOpacity: {value: this.opacity}
                 }
             }
         })
