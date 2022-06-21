@@ -44,45 +44,17 @@ export default {
 
         const len = 4
         const animSpeed = 2
-        const delay = (len - animSpeed) / len
+        const delay = animSpeed / len
 
         const items = ref(Array.from({length: len}, (_, key) => ({
             key,
             style: {
-                // top: '100%',
-                // transform: 'translate(0, 0)'
                 animation: `moveBottomToTop ${animSpeed}s ${delay * key}s infinite linear`
             },
             text: `${Method.uuidv4(uuid[genRand(uuid.length)]).toUpperCase()} // ${texts[genRand(texts.length)]}`
         })))
 
-        // const initTween = () => {
-        //     items.value.forEach((item, idx) => {
-        //         createTween(item, idx)
-        //     })
-        // }
-        // const createTween = (item, idx) => {
-        //     const start = {top: 100, tranY: 0}
-        //     const end = {top: -10, tranY: -100}
-
-        //     const tw = new TWEEN.Tween(start)
-        //     .to(end, 1000)
-        //     .delay(idx * 500)
-        //     .onUpdate(() => onUpdateTween(item, start))
-        //     .onComplete(() =>  onCompleteTween(item, idx))
-        //     .start()
-        // }
-        // const onUpdateTween = (item, {top, tranY}) => {
-        //     item.style.transform = `translate(0, ${tranY}%)`
-        //     item.style.top = `${top}%`
-        // }
-        // const onCompleteTween = (item, idx) => {
-        //     createTween(item, idx)
-        // }
-
-        // onMounted(() => {
-        //     initTween()
-        // })
+        console.log(items.value)
 
         return{
             items
