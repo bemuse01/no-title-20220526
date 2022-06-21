@@ -38,7 +38,13 @@ export default {
                     :key="text.key"
                     :style="text.rootStyle"
                 >
-                        
+                
+                    <div class="bottom-version" v-if="text.key === 4">
+                        <div><span>VER OS 01</span></div>
+                        <div><span>TUE 06 21</span></div>
+                        <div><span>2022</span></div>
+                    </div>
+                            
                     <div class="bottom-texts-box" :style="text.boxStyle">
 
                         <div
@@ -58,6 +64,8 @@ export default {
                     </div>
 
                 </div>
+
+        
 
             </div>
         
