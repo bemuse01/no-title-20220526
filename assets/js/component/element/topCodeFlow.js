@@ -23,25 +23,66 @@ export default {
         </div>
     `,
     setup(){
-        const {ref} = Vue
+        const {ref, onMounted} = Vue
 
         const uuid = [
-            'xxxx_xxxx_xxxx_xxxx_xxxxxxx',
-            'xxxxxxxx_xxxx_xxxx_xxxx_xxxxxxxxxxxx',
-            'xxxxxxxx_xxxx_xxxx_xxxx_xxxx',
-            'xxxx_xxxx_xxxx_xxxx',
+            'xxxx_xxxx_xxxx_xxxx_xxxxxx',
+            'xxxxxxxx_xxxx_xxxx_xxxx_xxxxxxxx',
+            'xxxxxxxx_xxxx_xxxx_xxxx',
+            'xxxx_xxxx_xxxx',
             'xxxxxx_xxxx_xxxx_xxxxxx',
-            'xxxx_xxxxxx_xxxxxxxx_xxxx_xxxxxx',
-            'xxxx_xxxx_xxxxxx_xxxxxxxxxx'
+            'xxxx_xxxxxx_xxxxxxx_xxxx',
+            'xxxx_xxxx_xxxxxx_xxxxxxxx'
         ]
 
-        const items = ref(Array.from({length: 3}, (_, key) => ({
+        const texts = [
+            'ACCESS DENIED',
+            'COMPLETE',
+            'NOW LOADING',
+            'DONE'
+        ]
+
+        const len = 4
+        const animSpeed = 2
+        const delay = (len - animSpeed) / len
+
+        const items = ref(Array.from({length: len}, (_, key) => ({
             key,
             style: {
-                animation: `moveBottomToTop 3s ${1 * key}s infinite linear`
+                // top: '100%',
+                // transform: 'translate(0, 0)'
+                animation: `moveBottomToTop ${animSpeed}s ${delay * key}s infinite linear`
             },
-            text: Method.uuidv4(uuid[genRand(uuid.length)]).toUpperCase()
+            text: `${Method.uuidv4(uuid[genRand(uuid.length)]).toUpperCase()} // ${texts[genRand(texts.length)]}`
         })))
+
+        // const initTween = () => {
+        //     items.value.forEach((item, idx) => {
+        //         createTween(item, idx)
+        //     })
+        // }
+        // const createTween = (item, idx) => {
+        //     const start = {top: 100, tranY: 0}
+        //     const end = {top: -10, tranY: -100}
+
+        //     const tw = new TWEEN.Tween(start)
+        //     .to(end, 1000)
+        //     .delay(idx * 500)
+        //     .onUpdate(() => onUpdateTween(item, start))
+        //     .onComplete(() =>  onCompleteTween(item, idx))
+        //     .start()
+        // }
+        // const onUpdateTween = (item, {top, tranY}) => {
+        //     item.style.transform = `translate(0, ${tranY}%)`
+        //     item.style.top = `${top}%`
+        // }
+        // const onCompleteTween = (item, idx) => {
+        //     createTween(item, idx)
+        // }
+
+        // onMounted(() => {
+        //     initTween()
+        // })
 
         return{
             items
