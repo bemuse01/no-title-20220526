@@ -18,3 +18,13 @@
         opacity: 1;
     }
 }
+@keyframes moveBottomToTop{
+    from{
+        top: 100%;
+        transform: translate(0, 0);
+    }
+    to{
+        top: 0;
+        transform: translate(0, -100%);
+    }
+}

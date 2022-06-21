@@ -7,6 +7,7 @@ export default {
                 <div class="code-bg code-head"></div>
                 
                 <div class="code-bg code-body">
+                    <slot></slot>
                 </div>
 
             </div>

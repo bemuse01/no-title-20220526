@@ -199,4 +199,46 @@
 }
 .code-body{
     flex: 1;
+    position: relative;
+    overflow: hidden;
+}
+/* top code num */
+.code-numbers{
+    display: flex;
+}
+.code-number p{
+    transform: scale(0.6);
+    transform-origin: left;
+}
+/* top code title */
+.top-code-title{
+    position: absolute;
+    right: 0;
+}
+.code-title{
+    font-size: 10px;
+    letter-spacing: 2px;
+}
+/* top code flow */
+.top-code-flow{
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+.code-flow-box{
+    position: absolute;
+    right: 0;
+    width: 97%;
+    height: 100%;
+    overflow: hidden;
+}
+.code-flow-text{
+    position: absolute;
+    top: 100%;
+    transform: translate(0, 0);
+    letter-spacing: 2px;
+}
+.code-flow-text p{
+    transform-origin: left;
+    transform: scale(0.6);
 }
