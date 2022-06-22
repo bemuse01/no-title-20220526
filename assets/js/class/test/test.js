@@ -9,10 +9,11 @@ import Lines from './build/test.lines.build.js'
 import Wave from './build/test.wave.build.js'
 
 export default class{
-    constructor({app, src, element, canvas}){
+    constructor({app, src, element, canvas, openTime}){
         this.src = src
         this.renderer = app.renderer
         this.element = element
+        this.openTime = openTime
 
         const {width, height} = this.element.getBoundingClientRect()
         this.canvas = canvas

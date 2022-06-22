@@ -18,13 +18,14 @@ export default {
 
         const store = useStore()
         const app = computed(() => store.getters['getApp'])
+        const openTimeToMs = computed(() => store.getters['test/getOpenTime'] * 1000)
         const element = ref()
         const canvas = ref()
         const src = ''
         let object = null
 
         const createObject = () => {
-            object = new Test({app: app.value, src, element: element.value, canvas: canvas.value})
+            object = new Test({app: app.value, src, element: element.value, canvas: canvas.value, openTime: openTimeToMs.value})
         }
 
         onMounted(() => {
