@@ -1,9 +1,20 @@
+import ShaderMethod from '../../../method/method.shader.js'
+
 export default {
     vertex: `
         uniform float uPointSize;
+        uniform float uTime;
+
+        ${ShaderMethod.snoise3D()}
 
         void main(){
-            gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+            vec3 nPosition = position;
+
+            float n = snoise3D(vec3(nPosition.xy, uTime * 0.001));
+
+            nPosition.y += n * 0.5;
+            
+            gl_Position = projectionMatrix * modelViewMatrix * vec4(nPosition, 1.0);
             gl_PointSize = uPointSize;
         }
     `,

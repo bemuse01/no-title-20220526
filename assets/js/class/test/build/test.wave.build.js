@@ -8,9 +8,10 @@ export default class{
 
         this.iter = 2
         this.count = 160
-        this.gap = 30
+        this.gap = 50
         this.w = 40
         this.hw = this.w / 2
+        this.offsetX = -8
         this.opacity = 0.25
 
         this.particles = []
@@ -21,12 +22,19 @@ export default class{
 
     // init
     init(){
-        this.create()
+        const params = [
+            {posY: 25},
+            {posY: -25}
+        ]
+
+        params.forEach(param => {
+            this.create(param)
+        })
     }
 
 
     // create
-    create(){
+    create({posY}){
         const particle = new Particle({
             materialName: 'ShaderMaterial',
             materialOpt: {
@@ -36,12 +44,13 @@ export default class{
                 uniforms: {
                     uPointSize: {value: 2.5},
                     uColor: {value: new THREE.Color(0x00ffd7)},
-                    uOpacity: {value: this.opacity}
+                    uOpacity: {value: this.opacity},
+                    uTime: {value: 0}
                 }
             }
         })
 
-        const {position} = this.createAttributes({posY: 23})
+        const {position} = this.createAttributes({posY})
 
         particle.setAttribute('position', new Float32Array(position), 3)
 
@@ -57,11 +66,21 @@ export default class{
         const stepX = w / (this.count - 1)
 
         for(let i = 0; i < this.count; i++){
-            const x = -hw + stepX * i
+            const x = this.offsetX + -hw + stepX * i
             const y = posY
             position.push(x, y, 0)
         }
 
         return {position}
+    }
+
+
+    // animate
+    animate(){
+        const time = window.performance.now()
+
+        this.particles.forEach(particle => {
+            particle.setUniform('uTime', time)
+        })
     }
 }
