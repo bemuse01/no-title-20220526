@@ -4,8 +4,9 @@ import Shader from '../shader/test.dna.shader.js'
 import Method from '../../../method/method.js'
 
 export default class{
-    constructor({group}){
+    constructor({group, openTime}){
         this.group = group
+        this.openTime = openTime
 
         this.group.rotation.z = -90 * RADIAN
 
@@ -27,7 +28,7 @@ export default class{
     // init
     init(){
         this.create()
-        this.open()
+        setTimeout(() => this.open(), this.openTime)
     }
 
 

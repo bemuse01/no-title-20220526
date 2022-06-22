@@ -3,8 +3,9 @@ import Particle from '../../objects/particle.js'
 import Shader from '../shader/test.wave.shader.js'
 
 export default class{
-    constructor({group}){
+    constructor({group, openTime}){
         this.group = group
+        this.openTime = openTime
 
         this.iter = 2
         this.count = 160
@@ -30,6 +31,8 @@ export default class{
         params.forEach(param => {
             this.create(param)
         })
+
+        setTimeout(() => this.open(), this.openTime)
     }
 
 
@@ -44,7 +47,7 @@ export default class{
                 uniforms: {
                     uPointSize: {value: 2.5},
                     uColor: {value: new THREE.Color(0x00ffd7)},
-                    uOpacity: {value: this.opacity},
+                    uOpacity: {value: 0},
                     uTime: {value: 0}
                 }
             }
@@ -72,6 +75,24 @@ export default class{
         }
 
         return {position}
+    }
+
+
+    // open
+    open(){
+        this.createTween()
+    }
+    createTween(){
+        const start = {opacity: 0}
+        const end = {opacity: 1 * this.opacity}
+
+        const tw = new TWEEN.Tween(start)
+        .to(end, 600)
+        .onUpdate(() => this.onUpdateTween(start))
+        .start()
+    }
+    onUpdateTween({opacity}){
+        this.particles.forEach(particle => particle.setUniform('uOpacity', opacity))
     }
 
 

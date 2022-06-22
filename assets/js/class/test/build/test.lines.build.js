@@ -3,8 +3,9 @@ import Line from '../../objects/line.js'
 import { AdditiveBlending } from '../../../lib/three.module.js'
 
 export default class{
-    constructor({group}){
+    constructor({group, openTime}){
         this.group = group
+        this.openTime = openTime
 
         this.count = 60
         this.w = 110
@@ -26,7 +27,7 @@ export default class{
     // init
     init(){
         this.create()
-        this.open()
+        setTimeout(() => this.open(), this.openTime)
     }
 
 
@@ -53,7 +54,7 @@ export default class{
             materialName: 'PointsMaterial',
             materialOpt: {
                 transparent: true,
-                opacity: 1,
+                opacity: 0,
                 color: 0x00ffd7,
                 size: 0.35,
                 depthWrite: false,
@@ -141,18 +142,19 @@ export default class{
 
     // open
     open(){
-        this.createTween()
+        this.createTween({dist: 0}, {dist: this.maxDist}, 'onUpdateTweenLine', this.realTime)
+        this.createTween({opacity: 0}, {opacity: 1}, 'onUpdateTweenParticle', 600)
     }
-    createTween(){
-        const start = {dist: 0}
-        const end = {dist: this.maxDist}
-
+    createTween(start, end, name, time){
         const tw = new TWEEN.Tween(start)
-        .to(end, this.realTime)
-        .onUpdate(() => this.onUpdateTween(start))
+        .to(end, time)
+        .onUpdate(() => this[name](start))
         .start()
     }
-    onUpdateTween({dist}){
+    onUpdateTweenLine({dist}){
         this.dist = dist
+    }
+    onUpdateTweenParticle({opacity}){
+        this.particle.getMaterial().opacity = opacity
     }
 }

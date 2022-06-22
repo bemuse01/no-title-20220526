@@ -86,7 +86,7 @@ export default class{
             const instance = this.modules[module]
             const group = this.group[module]
 
-            this.comp[module] = new instance({group, size: this.size, name: module, src: this.src})
+            this.comp[module] = new instance({group, size: this.size, name: module, src: this.src, openTime: this.openTime})
         }
 
         for(const group in this.group) this.build.add(this.group[group])
