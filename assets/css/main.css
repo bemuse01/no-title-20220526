@@ -3,6 +3,7 @@
 @import url('vSection.css');
 @import url('vColumn.css');
 @import url('test.css');
+@import url('lineGraph.css');
 
 
 @font-face {
@@ -31,6 +32,10 @@ body{
     background: black;
     overflow: hidden;
     position: absolute;
+}
+canvas{
+    width: 100%;
+    height: 100%;
 }
 div#wrap{
     position: absolute;

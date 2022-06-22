@@ -3,14 +3,8 @@ import * as THREE from '../../lib/three.module.js'
 import Param from './param/test.param.js'
 import PublicMethod from '../../method/method.js'
 
-// import Core from './build/test.core.build.js'
-import Dna from './build/test.dna.build.js'
-import Lines from './build/test.lines.build.js'
-import Wave from './build/test.wave.build.js'
-
 export default class{
-    constructor({app, src, element, canvas, openTime}){
-        this.src = src
+    constructor({app, element, canvas, openTime}){
         this.renderer = app.renderer
         this.element = element
         this.openTime = openTime
@@ -23,10 +17,6 @@ export default class{
         this.context = this.canvas.getContext('2d')
 
         this.modules = {
-            // Core,
-            Lines,
-            Dna,
-            Wave
         }
         this.group = {}
         this.comp = {}
@@ -41,7 +31,6 @@ export default class{
         this.initGroup()
         this.initRenderObject()
         this.create()
-        this.expand()
 
         this.animate()
                 
@@ -96,9 +85,9 @@ export default class{
 
 
     // 
-    expand(){
-        this.build.scale.set(Param.scale, Param.scale, Param.scale)
-    }
+    // expand(){
+    //     this.build.scale.set(Param.scale, Param.scale, Param.scale)
+    // }
 
 
     // remove

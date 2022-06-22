@@ -2,6 +2,7 @@ import vSection from '../section/vSection.js'
 import vSectionBox from '../section/vSectionBox.js'
 import vSectionElementItem from '../section/vSectionElementItem.js'
 import vSectionObjectItem from '../section/vSectionObjectItem.js'
+import vSectionItem from '../section/vSectionItem.js'
 
 const getCount = ({width, height, size, sw, sh}) => {
     if(!size) return {count: 1}
@@ -24,7 +25,8 @@ export default {
         'v-section': vSection,
         'v-section-box': vSectionBox,
         'v-section-element-item': vSectionElementItem,
-        'v-section-object-item': vSectionObjectItem
+        'v-section-object-item': vSectionObjectItem,
+        'v-section-item': vSectionItem
     },
     template: `
         <div id="grid-container">
@@ -40,13 +42,9 @@ export default {
                     :size="section.size"
                     :ref="el => section.boxRef = el"
                 >
-                    <v-section-object-item
-                        v-if="section.position === 'center'"
+                    <v-section-item
                         v-for="item in section.items"
-                    />
-                    <v-section-element-item
-                        v-else
-                        v-for="item in section.items"
+                        :type="section.type"
                     />
                 </v-section-box>
             </v-section>
@@ -65,6 +63,7 @@ export default {
             key,
             sectionStyle: {gridArea: position},
             position,
+            type: position === 'center' ? NO_RANDOM_APP : RANDOM_APP,
             sectionClassName: `vSection-${position}`,
             boxClassName: `vSection-box-${position}`,
             size: position === 'center' ? undefined : size,

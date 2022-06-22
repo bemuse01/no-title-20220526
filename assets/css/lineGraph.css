@@ -1,0 +1,11 @@
+.lineGraph{
+    position: absolute;
+    color: #00ffd7;
+    font-family: rainyhearts;
+    font-size: 4px;
+    white-space: nowrap;
+}
+.lineGraph-object{
+    width: 100%;
+    height: 100%;
+}
