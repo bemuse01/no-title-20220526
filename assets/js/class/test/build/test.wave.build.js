@@ -45,6 +45,8 @@ export default class{
 
         particle.setAttribute('position', new Float32Array(position), 3)
 
+        this.particles.push(particle)
+
         this.group.add(particle.get())
     }
     createAttributes({posY = 0}){
