@@ -46,7 +46,12 @@ export default {
         </div>
     `,
     setup(){
-        const {ref, onMounted} = Vue
+        const {ref, onMounted, computed} = Vue
+        const {useStore} = Vuex
+
+        const store = useStore()
+
+        const openTime = computed(() => store.getters['test/getOpenTime'])
 
         const root = ref()
 
@@ -72,7 +77,9 @@ export default {
         })))
 
         const searchBoxStyle = ref({
-            transform: 'none'
+            opacity: '0',
+            transform: 'none',
+            animation: 'none'
         })
 
         const generateRandNum = () => {
@@ -110,9 +117,14 @@ export default {
             requestAnimationFrame(animate)
         }
 
+        const open = () => {
+            searchBoxStyle.value.animation = `blink2 0.06s ${openTime.value}s 2 forwards`
+        }
+
         onMounted(() => {
             animate()
             generateRandNum()
+            open()
         })
 
         return{

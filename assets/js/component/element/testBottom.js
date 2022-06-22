@@ -18,7 +18,7 @@ export default {
 
                 <div class="bottom-circles" :ref="el => circlesRef = el">
 
-                    <div class="bottom-circles-box">
+                    <div class="bottom-circles-box" :style="circlesBoxStyle">
 
                         <div 
                             class="bottom-circle"
@@ -72,10 +72,17 @@ export default {
         </div>
     `,
     setup(){
-        const {ref, onMounted} = Vue
+        const {ref, onMounted, computed} = Vue
+        const {useStore} = Vuex
 
         const size = 5
         const gap = 1.5
+
+        const store = useStore()
+
+        const openTime = computed(() => store.getters['test/getOpenTime'])
+
+        const circlesBoxStyle = ref({opacity: '0', animation: 'none'})
 
         const root = ref()
         const circlesRef = ref()
@@ -88,6 +95,7 @@ export default {
         const texts = ref([
             {
                 key: 1,
+                rootStyle: {opacity: '0', animation: 'none'},
                 boxStyle: {width: '90%', gap: '3%'},
                 rows: Array.from({length: 3}, (_, key) => ({
                     key,
@@ -99,7 +107,7 @@ export default {
             },
             {
                 key: 2,
-                rootStyle: {marginLeft: '6%'},
+                rootStyle: {marginLeft: '6%', opacity: '0', animation: 'none'},
                 itemStyle: {gap: '25%'},
                 rows: Array.from({length: 2}, (_, key) => ({
                     key,
@@ -111,7 +119,7 @@ export default {
             },
             {
                 key: 3,
-                rootStyle: {marginLeft: '4%', flex: '1'},
+                rootStyle: {marginLeft: '4%', flex: '1', opacity: '0', animation: 'none'},
                 itemStyle: {gap: '15%'},
                 textStyle: {display: 'inline-block'},
                 rows: Array.from({length: 2}, (_, key) => ({
@@ -124,7 +132,7 @@ export default {
             },
             {
                 key: 4,
-                rootStyle: {flex: '0.45'},
+                rootStyle: {flex: '0.45', opacity: '0', animation: 'none'},
                 rows: [
                     {
                         key: 0,
@@ -160,8 +168,17 @@ export default {
             updateCircles()
         }
 
+        const open = () => {
+            circlesBoxStyle.value.animation = `blink2 0.08s ${openTime.value + Math.random()}s 2 forwards`
+
+            texts.value.forEach(text => {
+                text.rootStyle.animation = `blink2 0.08s ${openTime.value + Math.random()}s 2 forwards`
+            })
+        }
+
         onMounted(() => {
             updateCircles()
+            open()
             window.addEventListener('resize', resize)
         })
 
@@ -170,6 +187,7 @@ export default {
             circlesRef,
             circles,
             texts,
+            circlesBoxStyle
         }
     }
 }

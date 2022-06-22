@@ -1,3 +1,5 @@
+import Test from './test.js'
+
 export default Vuex.createStore({
     state: {
         app: null
@@ -16,5 +18,6 @@ export default Vuex.createStore({
         }
     },
     modules: {
+        test: Test
     }
 })
