@@ -1,7 +1,5 @@
 import vSection from '../section/vSection.js'
 import vSectionBox from '../section/vSectionBox.js'
-import vSectionElementItem from '../section/vSectionElementItem.js'
-import vSectionObjectItem from '../section/vSectionObjectItem.js'
 import vSectionItem from '../section/vSectionItem.js'
 
 const getCount = ({width, height, size, sw, sh}) => {
@@ -24,8 +22,6 @@ export default {
     components: {
         'v-section': vSection,
         'v-section-box': vSectionBox,
-        'v-section-element-item': vSectionElementItem,
-        'v-section-object-item': vSectionObjectItem,
         'v-section-item': vSectionItem
     },
     template: `
