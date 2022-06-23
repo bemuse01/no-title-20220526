@@ -35,7 +35,8 @@ export default {
             >
                 <v-section-box
                     :class="section.boxClassName" 
-                    :size="section.size"
+                    :size="size"
+                    :position="section.position"
                     :ref="el => section.boxRef = el"
                 >
                     <v-section-item
@@ -51,7 +52,7 @@ export default {
         const {ref, onMounted} = Vue
 
         const positions = ['center', 'top', 'right', 'bottom', 'left']
-        const size = 100
+        const size = ref(100)
         const sw = 3
         const sh = 2
 
@@ -62,19 +63,19 @@ export default {
             type: position === 'center' ? NO_RANDOM_APP : RANDOM_APP,
             sectionClassName: `vSection-${position}`,
             boxClassName: `vSection-box-${position}`,
-            size: position === 'center' ? undefined : size,
             boxRef: null,
             items: []
         })))
 
         const resize = () => {
             sections.value.forEach(section => {
-                const {size, boxRef} = section
+                const {boxRef, position} = section
                 const box = boxRef.box
                 const items = section.items
                 const {width, height} = box.getBoundingClientRect()
+                const s = position === 'center' ? undefined : size.value
 
-                const {count} = getCount({width, height, size, sw, sh})
+                const {count} = getCount({width, height, size: s, sw, sh})
 
                 updateItems(items, count)
             })
@@ -96,7 +97,8 @@ export default {
         })
 
         return{
-            sections
+            sections,
+            size
         }
     }
 }

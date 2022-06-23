@@ -25,13 +25,14 @@ export default {
     `,
     props: {
         size: Number,
+        position: String
     },
     setup(props){
-        const {ref, toRefs, onMounted} = Vue
+        const {ref, toRefs, onMounted, computed} = Vue
 
-        const {size} = toRefs(props)
+        const {size, position} = toRefs(props)
 
-        const s = size.value
+        const s = computed(() => position.value === 'center' ? undefined : size.value)
         const sw = 3
         const sh = 2
 
@@ -44,10 +45,12 @@ export default {
         const resize = () => {
             const {width, height} = box.value.getBoundingClientRect()
 
-            const {pw, ph, squareWidth, squareHeight} = getCount({width, height, s, sw, sh})
+            const {pw, ph, squareWidth, squareHeight} = getCount({width, height, s: s.value, sw, sh})
             
             boxStyle.value.gridTemplateColumns = `repeat(${pw}, ${squareWidth}px)`
             boxStyle.value.gridTemplateRows = `repeat(${ph}, ${squareHeight}px)`
+            // boxStyle.value.gridTemplateColumns = `repeat(${pw}, 1fr)`
+            // boxStyle.value.gridTemplateRows = `repeat(${ph}, 1fr)`
         }
 
         onMounted(() => {

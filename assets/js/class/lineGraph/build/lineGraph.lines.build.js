@@ -5,6 +5,8 @@ export default class{
         this.group = group
         this.openTime = openTime
 
+        this.lines = []
+
         this.init()
     }
 
@@ -29,6 +31,8 @@ export default class{
 
         line.setAttribute('position', new Float32Array(position), 3)
 
+        this.lines.push(line)
+
         this.group.add(line.get())
     }
     createAttributes(){
@@ -38,5 +42,15 @@ export default class{
         position.push(10, 0, 0)
 
         return {position}
+    }
+
+    
+    // dispose
+    dispose(){
+        this.lines.forEach(line => {
+            line.dispose()
+        })
+        
+        this.group.clear()
     }
 }

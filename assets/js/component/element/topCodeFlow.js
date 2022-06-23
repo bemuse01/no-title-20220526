@@ -54,8 +54,6 @@ export default {
             text: `${Method.uuidv4(uuid[genRand(uuid.length)]).toUpperCase()} // ${texts[genRand(texts.length)]}`
         })))
 
-        console.log(items.value)
-
         return{
             items
         }

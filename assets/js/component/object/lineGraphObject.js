@@ -7,7 +7,7 @@ export default {
         </div>
     `,
     setup(){
-        const {ref, onMounted, computed} = Vue
+        const {ref, onMounted, computed, onUnmounted} = Vue
         const {useStore} = Vuex
 
         const store = useStore()
@@ -24,6 +24,10 @@ export default {
 
         onMounted(() => {
             createObject()
+        })
+
+        onUnmounted(() => {
+            object.dispose()
         })
 
         return{

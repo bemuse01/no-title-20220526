@@ -7,4 +7,4 @@ const MAIN_COLOR_CSS_HEX = '#00ffd7'
 const MAIN_COLOR_HEX = 0x00ffd7
 const RANDOM_APP = true
 const NO_RANDOM_APP = false
-let WIDTH = window.innerWidth, HEIGHT = window.innerHeight
+const WIDTH = window.innerWidth, HEIGHT = window.innerHeight
