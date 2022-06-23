@@ -51,7 +51,7 @@ export default {
         const {ref, onMounted} = Vue
 
         const positions = ['center', 'top', 'right', 'bottom', 'left']
-        const size = 80
+        const size = 100
         const sw = 3
         const sh = 2
 

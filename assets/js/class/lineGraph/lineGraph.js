@@ -1,7 +1,9 @@
 import * as THREE from '../../lib/three.module.js'
 
-import Param from './param/test.param.js'
+import Param from './param/lineGraph.param.js'
 import PublicMethod from '../../method/method.js'
+
+import Lines from './build/lineGraph.lines.build.js'
 
 export default class{
     constructor({app, element, canvas, openTime}){
@@ -17,6 +19,7 @@ export default class{
         this.context = this.canvas.getContext('2d')
 
         this.modules = {
+            Lines
         }
         this.group = {}
         this.comp = {}
