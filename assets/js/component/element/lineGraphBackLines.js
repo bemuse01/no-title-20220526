@@ -18,8 +18,10 @@ export default {
         const {ref, onMounted} = Vue
 
         const root = ref()
+        const rand = Math.random() * 0.5 + 0.5
+        const len = 4
 
-        const items = ref(Array.from({length: 5}, (_, key) => ({
+        const items = ref(Array.from({length: len}, (_, key) => ({
             key,
             style: {
                 backgroundColor: MAIN_COLOR_CSS_HEX,
@@ -34,7 +36,7 @@ export default {
             const time = window.performance.now()
 
             items.value.forEach((item, idx) => {
-                const r = SIMPLEX.noise2D(idx, time * 0.00025)
+                const r = SIMPLEX.noise2D(idx * rand, time * 0.00025)
                 const n = Method.normalize(r, 0, width, -1, 1)
 
                 item.style.transform = `translate(${n}px, 0)`
