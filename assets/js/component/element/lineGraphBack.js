@@ -2,7 +2,9 @@ import vColumns from '../column/vColumns.js'
 import vColumn from '../column/vColumn.js'
 import vRows from '../row/vRows.js'
 import vRow from '../row/vRow.js'
-import lineGraphBackAxisX from './lineGraphBackAxisX.js'
+import LineGraphBackAxisX from './lineGraphBackAxisX.js'
+import LineGraphBackAxisY from './lineGraphBackAxisY.js'
+import lineGraphBackLines from './lineGraphBackLines.js'
 
 export default {
     components: {
@@ -10,25 +12,43 @@ export default {
         'v-columns': vColumns,
         'v-row': vRow,
         'v-rows': vRows,
-        'lineGraph-back-axisX' :lineGraphBackAxisX
+        'lineGraph-back-axisX': LineGraphBackAxisX,
+        'lineGraph-back-axisY': LineGraphBackAxisY,
+        'lineGraph-back-lines': lineGraphBackLines
     },
     template: `
         <div class="lineGraph-back">
 
             <div class="lineGraph-back-box">
 
-                <v-columns class="lineGraph-back-column">
+                <v-columns class="lineGraph-back-columns">
 
-                    <v-column class="lineGraph-back-head lineGraph-back-side" flex="none" height="1px">
-                        <lineGraph-back-axisX :len="3" gap="40%"/>
+                    <v-column flex="none" height="12px">
+                        <lineGraph-back-axisX :len="4" gap="25%" />
                     </v-column>
 
-                    <v-column class="lineGraph-back-body" flex="1">
+                    <v-column flex="1">
+
+                        <v-rows class="lineGraph-back-rows">
+
+                            <v-row flex="none" width="8px">
+                                <lineGraph-back-axisY :len="10" gap="10%" />
+                            </v-row>
+
+                            <v-row flex="1">
+                                <lineGraph-back-lines />
+                            </v-row>
+
+                            <v-row flex="none" width="12px">
+                                <lineGraph-back-axisY :len="10" gap="10%" justifyContent="flex-end" />
+                            </v-row>
+
+                        </v-rows>
                         
                     </v-column>
 
-                    <v-column class="lineGraph-back-footer lineGraph-back-side" flex="none" height="1px">
-                        <lineGraph-back-axisX :len="15" gap="5%"/>
+                    <v-column flex="none" height="10px">
+                        <lineGraph-back-axisX :len="3" gap="40%" alignItems="flex-end" />
                     </v-column>
 
                 </v-columns>

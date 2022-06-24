@@ -39,3 +39,38 @@
         transform: translate(0, -100%);
     }
 }
+@keyframes translating{
+    0%{
+        left: 100%;
+    }
+    10%{
+        left: 50%;
+    }
+    20%{
+        left: 30%;
+    }
+    30%{
+        left: 70%;
+    }
+    40%{
+        left: 40%;
+    }
+    50%{
+        left: 0%;
+    }
+    60%{
+        left: 20%;
+    }
+    70%{
+        left: 50%;
+    }
+    80%{
+        left: 60%;
+    }
+    90%{
+        left: 90%;
+    }
+    100%{
+        left: 100%;
+    }
+}

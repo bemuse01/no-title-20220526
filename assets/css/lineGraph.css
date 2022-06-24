@@ -12,6 +12,7 @@
 .lineGraph-element{
     width: 100%;
     height: 100%;
+    opacity: 0.5;
 }
 
 
@@ -30,12 +31,22 @@
     width: 92%;
     height: 88%;
 }
-.lineGraph-back-column{
+.lineGraph-back-columns{
     width: 100%;
     height: 100%;
 }
-/* line graph axis x */
+.lineGraph-back-rows{
+    width: 100%;
+    height: 100%;
+}
+/* line graph axis */
+/* X */
 .lineGraph-back-axisX{
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+.lineGraph-back-axisX-box{
     width: 100%;
     height: 1px;
     display: flex;
@@ -43,4 +54,37 @@
 .axisX-point{
     flex: 1;
     background: #00ffd7;
+}
+/* Y */
+.lineGraph-back-axisY{
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+.lineGraph-back-axisY-box{
+    width: 4px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.axisY-point{
+    /* flex: 1; */
+    height: 1px;
+    background: #00ffd7;
+}
+/* line graph lines */
+.lineGraph-back-lines{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    border: 1px solid #00ffd7;
+    border-top: none;
+}
+.lineGraph-back-line{
+    position: absolute;
+    width: 2px;
+    height: 100%;
+    transform: translateZ(0);
 }
