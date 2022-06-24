@@ -1,6 +1,6 @@
 export default {
     template: `
-        <div class="vColumn" :style="style">
+        <div class="vRow" :style="style">
             <slot></slot>
         </div>
     `,

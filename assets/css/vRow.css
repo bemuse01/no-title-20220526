@@ -1,0 +1,7 @@
+.vRows{
+    display: flex;
+    flex-direction: row;
+}
+.vRow{
+    flex: 1;
+}

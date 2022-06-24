@@ -1,6 +1,6 @@
 export default {
     template: `
-        <div class="vColumns" :style="style">
+        <div class="vRows" :style="style">
             <slot></slot>
         </div>
     `,
@@ -15,7 +15,7 @@ export default {
         
         const reverse = props.reverse
 
-        const style = ref({flexDirection: reverse ? 'column-reverse' : 'column'})
+        const style = ref({flexDirection: reverse ? 'row-reverse' : 'row'})
 
         return {style}
     }

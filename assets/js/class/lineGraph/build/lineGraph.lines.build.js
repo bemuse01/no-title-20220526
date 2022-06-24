@@ -9,8 +9,9 @@ export default class{
 
         this.count = 4
         this.seg = 64
-        this.width = 150
-        this.rangeY = 10
+        this.width = 140
+        this.rangeY = 20
+        this.str = 0.05
 
         this.lines = []
 
@@ -20,12 +21,12 @@ export default class{
 
     // init
     init(){
-        for(let i = 0; i < this.count; i++) this.create(i)
+        for(let i = 0; i < this.count; i++) this.create()
     }
 
 
     // create
-    create(idx){
+    create(){
         const line = new Line({
             meshName: 'Line',
             materialName: 'ShaderMaterial',
@@ -34,7 +35,7 @@ export default class{
                 fragmentShader: Shader.fragment,
                 transparent: true,
                 uniforms: {
-                    uStr: {value: Math.random() * 0.1},
+                    uStr: {value: Math.random() * this.str},
                     uRangeY: {value: this.rangeY},
                     uColor: {value: new THREE.Color(MAIN_COLOR_HEX)},
                     uTime: {value: 0}

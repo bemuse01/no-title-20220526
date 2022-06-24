@@ -13,7 +13,7 @@ export default {
         void main(){
             vec3 nPosition = position;
 
-            float n = snoise3D(vec3(seed * uStr, uTime * 0.001));
+            float n = snoise3D(vec3(seed * uStr, uTime * 0.00075));
 
             nPosition.y = n * uRangeY;
             

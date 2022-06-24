@@ -2,8 +2,8 @@ import TestSearch from './testSearch.js'
 import TestVertNums from './testVertNums.js'
 import TestTop from './testTop.js'
 import TestBottom from './testBottom.js'
-import vColumn from '../column/vColumn.js'
-import vColumns from '../column/vColumns.js'
+import vRow from '../row/vRow.js'
+import vRows from '../row/vRows.js'
 
 export default {
     components: {
@@ -11,30 +11,30 @@ export default {
         'test-vertNums': TestVertNums,
         'test-top': TestTop,
         'test-bottom': TestBottom,
-        'v-column': vColumn,
-        'v-columns': vColumns
+        'v-row': vRow,
+        'v-rows': vRows
     },
     template: `
         <div class="test test-element">
 
             <test-search />
 
-            <v-columns class="test-columns">
+            <v-rows class="test-rows">
 
-                <v-column class="test-column" :style="leftColumnStyle">
+                <v-row class="test-row" :style="leftColumnStyle">
                     <test-vertNums />
-                </v-column>
+                </v-row>
                 
-                <v-column class="test-column">
+                <v-row class="test-row">
                     <test-top />
                     <test-bottom />
-                </v-column>
+                </v-row>
 
-                <v-column class="test-column" :style="rightColumnStyle">
+                <v-row class="test-row" :style="rightColumnStyle">
                     <test-vertNums />
-                </v-column>
+                </v-row>
 
-            </v-columns>
+            </v-rows>
 
         </div>
     `,

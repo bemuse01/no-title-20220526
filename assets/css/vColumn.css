@@ -1,5 +1,6 @@
 .vColumns{
     display: flex;
+    flex-direction: column;
 }
 .vColumn{
     flex: 1;
