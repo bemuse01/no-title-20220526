@@ -150,7 +150,7 @@ export default class{
         this.renderer.render(this.scene, this.camera)
 
         this.context.clearRect(0, 0, this.canvas.width, this.canvas.height)
-        this.context.drawImage(this.renderer.domElement, 0, 0)
+        this.context.drawImage(this.renderer.domElement, 0, 0, this.canvas.width, this.canvas.height, 0, 0, this.canvas.width, this.canvas.height)
     }
     animateObject(){
         for(const comp in this.comp){
