@@ -3,6 +3,7 @@ const generateStyle = (size, gap) => {
         width: `${size}px`,
         height: `${size}px`,
         marginLeft: `${gap}px`,
+        transform: 'translateZ(0)',
         animation: `blink ${Math.random() * 2 + 2}s infinite`
     }
 }

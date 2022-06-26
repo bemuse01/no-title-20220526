@@ -122,7 +122,7 @@ export default {
         }
 
         onMounted(() => {
-            animate()
+            // animate()
             generateRandNum()
             open()
         })
