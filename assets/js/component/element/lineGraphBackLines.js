@@ -39,7 +39,7 @@ export default {
                 const r = SIMPLEX.noise2D(idx * rand, time * 0.00025)
                 const n = Method.normalize(r, 0, width, -1, 1)
 
-                item.style.transform = `translate(${n}px, 0)`
+                item.style.transform = `translate(${n}px, 0) translateZ(0)`
             })
         }
 
@@ -49,7 +49,7 @@ export default {
         }
 
         onMounted(() => {
-            animate()
+            // animate()
         })
 
         return{

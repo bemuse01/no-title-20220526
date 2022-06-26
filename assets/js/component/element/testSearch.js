@@ -97,7 +97,7 @@ export default {
                 const r = SIMPLEX.noise2D(i * 0.5, time * 0.0005)
                 const p = Method.normalize(r, 0.1, 1, -1, 1)
 
-                bar.style1.transform = `scaleX(${p})`
+                bar.style1.transform = `scaleX(${p}) translateZ(0)`
             })
         }
 
@@ -105,7 +105,7 @@ export default {
             const r = SIMPLEX.noise2D(0.1, time * 0.000075)
             const p = Method.normalize(r, width * 0.1, width * 0.9, -1, 1)
 
-            searchBoxStyle.value.transform = `translate(${p}px, 0)`
+            searchBoxStyle.value.transform = `translate(${p}px, 0) translateZ(0)`
         }
 
         const animate = () => {
@@ -122,7 +122,7 @@ export default {
         }
 
         onMounted(() => {
-            // animate()
+            animate()
             generateRandNum()
             open()
         })

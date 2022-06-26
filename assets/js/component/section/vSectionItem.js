@@ -18,6 +18,11 @@ export default {
                 <test-element />
             </template>
 
+            <template v-else>
+                <!--<lineGraph-object />-->
+                <!--<lineGraph-element />-->
+            </template>
+
         </div>
     `,
     props: {
