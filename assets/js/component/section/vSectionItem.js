@@ -20,7 +20,7 @@ export default {
 
             <template v-else>
                 <lineGraph-object />
-                <!--<lineGraph-element />-->
+                <lineGraph-element />
             </template>
 
         </div>
