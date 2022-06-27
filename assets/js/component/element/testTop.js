@@ -1,12 +1,12 @@
 import TestTopCode from './testTopCode.js'
-import TopCodeNumbers from './topCodeNumbers.js'
-import TopCodeFlow from './topCodeFlow.js'
+import TestTopCodeNumbers from './testTopCodeNumbers.js'
+import TestTopCodeFlow from './testTopCodeFlow.js'
 
 export default {
     components: {
         'test-top-code': TestTopCode,
-        'top-code-numbers': TopCodeNumbers,
-        'top-code-flow': TopCodeFlow
+        'test-top-code-numbers': TestTopCodeNumbers,
+        'test-top-code-flow': TestTopCodeFlow
     },
     template: `
         <div class="test-child test-top">
@@ -15,12 +15,12 @@ export default {
 
                 <test-top-code width="50%">
 
-                    <top-code-numbers gap="2%" :len="3" />
+                    <test-top-code-numbers gap="2%" :len="3" />
 
                     <div class="top-code-title">
 
                         <div class="code-title"><span>DNA ANALYSIS</span></div>
-                        <top-code-numbers gap="2%" :len="3" />
+                        <test-top-code-numbers gap="2%" :len="3" />
 
                     </div>
 
@@ -28,7 +28,7 @@ export default {
 
                 <test-top-code width="68%">
 
-                    <top-code-flow />
+                    <test-top-code-flow />
 
                 </test-top-code>
 

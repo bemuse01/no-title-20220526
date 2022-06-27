@@ -8,14 +8,14 @@ export default class{
         this.size = size
         this.openTime = openTime
 
-        this.count = 4
+        this.count = 6
         this.seg = 2
         this.ratio = 154 / 200
         this.height = this.size.obj.h * this.ratio
         this.wh = this.size.obj.w / 2
         this.ratioX = 0.8
         this.rangeX = this.wh * this.ratioX
-        this.str = 2
+        this.str = 3
         this.vel = 0.0002
 
         this.lines = []
