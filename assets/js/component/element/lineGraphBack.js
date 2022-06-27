@@ -17,7 +17,7 @@ export default {
         'lineGraph-back-lines': lineGraphBackLines
     },
     template: `
-        <div class="lineGraph-back">
+        <div class="lineGraph-back" :style="rootStyle">
 
             <div class="lineGraph-back-box">
 
@@ -58,6 +58,25 @@ export default {
         </div>
     `,
     setup(){
+        const {ref, onMounted, computed} = Vue
+        const {useStore} = Vuex
 
+        const store = useStore()
+
+        const openTime = computed(() => store.getters['test/getOpenTime'])
+
+        const rootStyle = ref({opacity: '0', animation: 'none'})
+
+        const open = () => {
+            rootStyle.value.animation = `blink2 0.06s ${openTime.value + Math.random()}s 2 forwards`
+        }
+
+        onMounted(() => {
+            open()
+        })
+
+        return{
+            rootStyle
+        }
     }
 }

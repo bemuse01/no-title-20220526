@@ -22,6 +22,7 @@ export default class{
     // init
     init(){
         for(let i = 0; i < this.count; i++) this.create()
+        setTimeout(() => this.open(), this.openTime)
     }
 
 
@@ -38,7 +39,8 @@ export default class{
                     uStr: {value: Math.random() * this.str},
                     uRangeY: {value: this.rangeY},
                     uColor: {value: new THREE.Color(MAIN_COLOR_HEX)},
-                    uTime: {value: 0}
+                    uTime: {value: 0},
+                    uOpacity: {value: 0}
                 }
             }
         })
@@ -76,6 +78,25 @@ export default class{
         })
         
         this.group.clear()
+    }
+
+
+    // open
+    open(){
+        this.createTween()
+    }
+    createTween(){
+        const start = {opacity: 0}
+        const end = {opacity: 1}
+
+        const tw = new TWEEN.Tween(start)
+        .to(end, 600)
+        .onUpdate(() => this.onUpdateTween(start))
+        .delay(Math.random() * 1000)
+        .start()
+    }
+    onUpdateTween({opacity}){
+        this.lines.forEach(line => line.setUniform('uOpacity', opacity))
     }
 
 

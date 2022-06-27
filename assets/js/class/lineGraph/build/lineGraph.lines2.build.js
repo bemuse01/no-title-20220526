@@ -19,6 +19,7 @@ export default class{
         this.vel = 0.0002
 
         this.lines = []
+        this.opacities = []
 
         this.init()
     }
@@ -27,11 +28,14 @@ export default class{
     // init
     init(){
         for(let i = 0; i < this.count; i++) this.create()
+        setTimeout(() => this.open(), this.openTime)
     }
 
 
     // create
     create(){
+        const opacity = Math.random() * 0.25 + 0.25
+
         const line = new Line({
             meshName: 'Line',
             materialName: 'ShaderMaterial',
@@ -45,7 +49,7 @@ export default class{
                     uColor: {value: new THREE.Color(MAIN_COLOR_HEX)},
                     uTime: {value: 0},
                     uVel: {value: this.vel},
-                    uOpacity: {value: Math.random() * 0.25 + 0.25}
+                    uOpacity: {value: 0}
                 }
             }
         })
@@ -55,6 +59,7 @@ export default class{
         line.setAttribute('position', new Float32Array(position), 3)
 
         this.lines.push(line)
+        this.opacities.push(opacity)
 
         this.group.add(line.get())
     }
@@ -92,6 +97,25 @@ export default class{
         })
         
         this.group.clear()
+    }
+
+
+    // open
+    open(){
+        this.createTween()
+    }
+    createTween(){
+        const start = {opacity: 0}
+        const end = {opacity: 1}
+
+        const tw = new TWEEN.Tween(start)
+        .to(end, 600)
+        .onUpdate(() => this.onUpdateTween(start))
+        .delay(Math.random() * 1000)
+        .start()
+    }
+    onUpdateTween({opacity}){
+        this.lines.forEach((line, idx) => line.setUniform('uOpacity', opacity * this.opacities[idx]))
     }
 
 
