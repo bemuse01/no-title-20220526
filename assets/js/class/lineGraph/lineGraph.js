@@ -4,6 +4,7 @@ import Param from './param/lineGraph.param.js'
 import PublicMethod from '../../method/method.js'
 
 import Lines from './build/lineGraph.lines.build.js'
+import Lines2 from './build/lineGraph.lines2.build.js'
 
 export default class{
     constructor({app, element, openTime}){
@@ -12,7 +13,8 @@ export default class{
         this.openTime = openTime
 
         this.modules = {
-            Lines
+            Lines,
+            Lines2
         }
         this.group = {}
         this.comp = {}
