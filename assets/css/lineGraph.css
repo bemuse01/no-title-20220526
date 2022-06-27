@@ -41,40 +41,6 @@
     width: 100%;
     height: 100%;
 }
-/* line graph axis */
-/* X */
-.lineGraph-back-axisX{
-    width: 100%;
-    height: 100%;
-    display: flex;
-}
-.lineGraph-back-axisX-box{
-    width: 100%;
-    height: 1px;
-    display: flex;
-}
-.axisX-point{
-    flex: 1;
-    background: #00ffd7;
-}
-/* Y */
-.lineGraph-back-axisY{
-    width: 100%;
-    height: 100%;
-    display: flex;
-}
-.lineGraph-back-axisY-box{
-    width: 4px;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-.axisY-point{
-    /* flex: 1; */
-    height: 1px;
-    background: #00ffd7;
-}
 /* line graph lines */
 .lineGraph-back-lines{
     position: relative;

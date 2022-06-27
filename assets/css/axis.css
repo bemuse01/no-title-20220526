@@ -1,0 +1,33 @@
+/* axis x */
+.axisX{
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+.axisX-box{
+    width: 100%;
+    height: 1px;
+    display: flex;
+}
+.axisX-point{
+    flex: 1;
+    background: #00ffd7;
+}
+/* axis y */
+.axisY{
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+.axisY-box{
+    width: 4px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.axisY-point{
+    /* flex: 1; */
+    height: 1px;
+    background: #00ffd7;
+}

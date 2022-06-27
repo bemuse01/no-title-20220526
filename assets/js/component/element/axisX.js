@@ -1,8 +1,8 @@
 export default {
     template: `
-        <div class="lineGraph-back-axisX" :style="rootStyle">
+        <div class="axisX" :style="rootStyle">
 
-            <div class="lineGraph-back-axisX-box" :style="boxStyle">
+            <div class="axisX-box" :style="boxStyle">
 
                 <div
                     class="axisX-point"

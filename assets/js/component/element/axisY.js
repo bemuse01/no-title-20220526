@@ -1,13 +1,14 @@
 export default {
     template: `
-        <div class="lineGraph-back-axisY" :style="rootStyle">
+        <div class="axisY" :style="rootStyle">
 
-            <div class="lineGraph-back-axisY-box" :style="boxStyle">
+            <div class="axisY-box" :style="boxStyle">
 
                 <div
                     class="axisY-point"
                     v-for="item in items"
                     :key="item.key"
+                    :style="item.style"
                 >
                 </div>
 
@@ -16,8 +17,10 @@ export default {
         </div>
     `,
     props: {
+        width: String,
         len: Number,
         gap: String,
+        pointHeight: String,
         justifyItems: String,
         justifyContent: String,
         alignItems: String,
@@ -26,12 +29,15 @@ export default {
     setup(props){
         const {ref, toRefs} = Vue
 
-        const {len, gap, justifyContent, justifyItems, alignItems, alignContent} = toRefs(props)
+        const {len, width, gap, justifyContent, justifyItems, alignItems, alignContent, pointHeight} = toRefs(props)
 
         const rootStyle = ref({justifyContent, justifyItems, alignItems, alignContent})
-        const boxStyle = ref({gap})
+        const boxStyle = ref({width, gap})
 
-        const items = ref(Array.from({length: len.value}, (_, key) => ({key})))
+        const items = ref(Array.from({length: len.value}, (_, key) => ({
+            key,
+            style: {height: pointHeight}
+        })))
 
         return{
             rootStyle,

@@ -2,8 +2,8 @@ import vColumns from '../column/vColumns.js'
 import vColumn from '../column/vColumn.js'
 import vRows from '../row/vRows.js'
 import vRow from '../row/vRow.js'
-import LineGraphBackAxisX from './lineGraphBackAxisX.js'
-import LineGraphBackAxisY from './lineGraphBackAxisY.js'
+import axisX from './axisX.js'
+import axisY from './axisY.js'
 import lineGraphBackLines from './lineGraphBackLines.js'
 
 export default {
@@ -12,8 +12,8 @@ export default {
         'v-columns': vColumns,
         'v-row': vRow,
         'v-rows': vRows,
-        'lineGraph-back-axisX': LineGraphBackAxisX,
-        'lineGraph-back-axisY': LineGraphBackAxisY,
+        'axisX': axisX,
+        'axisY': axisY,
         'lineGraph-back-lines': lineGraphBackLines
     },
     template: `
@@ -24,15 +24,15 @@ export default {
                 <v-columns class="lineGraph-back-columns">
 
                     <v-column flex="none" height="12px">
-                        <lineGraph-back-axisX :len="4" gap="25%" />
+                        <axisX :len="4" gap="25%" />
                     </v-column>
 
                     <v-column flex="1">
 
                         <v-rows class="lineGraph-back-rows">
 
-                            <v-row flex="none" width="8px">
-                                <lineGraph-back-axisY :len="10" gap="10%" />
+                            <v-row flex="none" width="12px">
+                                <axisY :len="10" gap="10%" />
                             </v-row>
 
                             <v-row flex="1">
@@ -40,7 +40,7 @@ export default {
                             </v-row>
 
                             <v-row flex="none" width="12px">
-                                <lineGraph-back-axisY :len="10" gap="10%" justifyContent="flex-end" />
+                                <axisY :len="10" gap="10%" justifyContent="flex-end" />
                             </v-row>
 
                         </v-rows>
@@ -48,7 +48,7 @@ export default {
                     </v-column>
 
                     <v-column flex="none" height="10px">
-                        <lineGraph-back-axisX :len="3" gap="40%" alignItems="flex-end" />
+                        <axisX :len="3" gap="40%" alignItems="flex-end" />
                     </v-column>
 
                 </v-columns>

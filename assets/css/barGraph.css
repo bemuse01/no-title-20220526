@@ -1,0 +1,67 @@
+.barGraph{
+    position: absolute;
+    color: #00ffd7;
+    font-family: rainyhearts;
+    font-size: 4px;
+    white-space: nowrap;
+}
+.barGraph-object{
+    width: 100%;
+    height: 100%;
+    transform: translateZ(0);
+    transform-style: preserve-3d;
+}
+.barGraph-element{
+    width: 100%;
+    height: 100%;
+    opacity: 0.5;
+}
+
+
+/* bar graph back */
+.barGraph-back{
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+.barGraph-back-box{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 92%;
+    height: 88%;
+}
+.barGraph-back-rows{
+    width: 100%;
+    height: 100%;
+}
+/* bar graph back bars */
+.barGraph-back-bars{
+    width: 100%;
+    height: 100%;
+}
+.barGraph-back-bars-box{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    gap: 4%;
+}
+.barGraph-back-bar-box{
+    flex: 1;
+    height: 100%;
+    position: relative;
+}
+.barGraph-back-bar-box > div{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #00ffd7;
+}
+.barGraph-back-bar-track{
+    opacity: 0.3;
+}
+.barGraph-back-bar{
+    transition: transform 0.3s;
+    transform-origin: bottom;
+}
