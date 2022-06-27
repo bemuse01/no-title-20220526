@@ -139,6 +139,7 @@ export default class{
         // const left = rect.left
         // const bottom = this.renderer.domElement.clientHeight - rect.bottom
 
+        // performance issue
         this.renderer.setSize(width, height)
 
         // this.renderer.setScissor(left, bottom, width, height)
