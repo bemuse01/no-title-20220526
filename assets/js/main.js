@@ -1,22 +1,15 @@
 import Store from './store/index.js'
 
-import App from './class/app/app.js'
-
-import ObjectContainer from './component/container/objectContainer.js'
 import GridContainer from './component/container/gridContainer.js'
+import CanvasContainer from './component/container/canvasContainer.js'
 
 const vueApp = Vue.createApp({
     components: {
-        'object-container': ObjectContainer,
-        'grid-container': GridContainer
+        'grid-container': GridContainer,
+        'canvas-container': CanvasContainer
     },
     setup(){
-        const {onMounted, nextTick} = Vue
-        const store = Vuex.useStore()
-
-        nextTick(() => {
-            store.dispatch('setApp', new App())
-        })
+        const {onMounted} = Vue
 
         const animate = () => {
             TWEEN.update()

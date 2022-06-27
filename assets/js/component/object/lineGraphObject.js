@@ -2,8 +2,8 @@ import LineGraph from '../../class/lineGraph/lineGraph.js'
 
 export default {
     template: `
-        <div class="object lineGraph lineGraph-object" :ref="el => element = el">
-            <canvas :ref="el => canvas = el"/>
+        <div class="object lineGraph lineGraph-object" >
+            <div :ref="el => element = el"></div>
         </div>
     `,
     setup(){

@@ -1,7 +1,8 @@
 import * as THREE from '../../lib/three.module.js'
 
 export default class{
-    constructor(){
+    constructor(canvas){
+        this.canvas = canvas
         this.wrap = document.getElementById('wrap')
 
         const {width, height} = this.wrap.getBoundingClientRect()
@@ -16,7 +17,7 @@ export default class{
     init(){
         this.create()
 
-        // this.animate()
+        this.animate()
         window.addEventListener('resize', () => this.resize())
     }
 
@@ -27,7 +28,7 @@ export default class{
 
         this.scene = new THREE.Scene()
     
-        this.renderer = new THREE.WebGLRenderer({antialias: true, alpha: true})
+        this.renderer = new THREE.WebGLRenderer({antialias: true, alpha: true, canvas: this.canvas})
         this.renderer.setSize(this.width, this.height)
         this.renderer.setPixelRatio(RATIO)
         this.renderer.setClearColor(0x000000, 0.0)

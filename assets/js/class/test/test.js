@@ -9,18 +9,10 @@ import Lines from './build/test.lines.build.js'
 import Wave from './build/test.wave.build.js'
 
 export default class{
-    constructor({app, src, element, canvas, openTime}){
-        this.src = src
+    constructor({app, element, openTime}){
         this.renderer = app.renderer
         this.element = element
         this.openTime = openTime
-
-        const {width, height} = this.element.getBoundingClientRect()
-        this.canvas = canvas
-        this.canvas.width = width * RATIO
-        this.canvas.height = height * RATIO
-
-        this.context = this.canvas.getContext('2d')
 
         this.modules = {
             // Core,
@@ -86,7 +78,7 @@ export default class{
             const instance = this.modules[module]
             const group = this.group[module]
 
-            this.comp[module] = new instance({group, size: this.size, name: module, src: this.src, openTime: this.openTime})
+            this.comp[module] = new instance({group, size: this.size, name: module, openTime: this.openTime})
         }
 
         for(const group in this.group) this.build.add(this.group[group])
@@ -136,21 +128,14 @@ export default class{
         const rect = this.element.getBoundingClientRect()
         const width = rect.right - rect.left
         const height = rect.bottom - rect.top
-        // const left = rect.left
-        // const bottom = this.renderer.domElement.clientHeight - rect.bottom
+        const left = rect.left
+        const bottom = this.renderer.domElement.clientHeight - rect.bottom
 
-        this.renderer.setSize(width, height)
-
-        // this.renderer.setScissor(left, bottom, width, height)
-        // this.renderer.setViewport(left, bottom, width, height)
-
-        this.renderer.clear()
+        this.renderer.setScissor(left, bottom, width, height)
+        this.renderer.setViewport(left, bottom, width, height)
 
         this.camera.lookAt(this.scene.position)
         this.renderer.render(this.scene, this.camera)
-
-        this.context.clearRect(0, 0, this.canvas.width, this.canvas.height)
-        this.context.drawImage(this.renderer.domElement, 0, 0, this.canvas.width, this.canvas.height, 0, 0, this.canvas.width, this.canvas.height)
     }
     animateObject(){
         for(const comp in this.comp){
@@ -177,9 +162,6 @@ export default class{
         this.size.el.h = height
         this.size.obj.w = PublicMethod.getVisibleWidth(this.camera, 0)
         this.size.obj.h = PublicMethod.getVisibleHeight(this.camera, 0)
-
-        this.canvas.width = width * RATIO
-        this.canvas.height = height * RATIO
     }
     resizeObject(){
         for(const comp in this.comp){

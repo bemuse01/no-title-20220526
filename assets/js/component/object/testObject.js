@@ -2,8 +2,8 @@ import Test from '../../class/test/test.js'
 
 export default {
     template: `
-        <div class="object test test-object" :ref="el => element = el">
-            <canvas :ref="el => canvas = el"/>
+        <div class="object test test-object" >
+            <div :ref="el => element = el" ></div>
         </div>
     `,
     props: {
@@ -20,12 +20,10 @@ export default {
         const app = computed(() => store.getters['getApp'])
         const openTimeToMs = computed(() => store.getters['test/getOpenTime'] * 1000)
         const element = ref()
-        const canvas = ref()
-        const src = ''
         let object = null
 
         const createObject = () => {
-            object = new Test({app: app.value, src, element: element.value, canvas: canvas.value, openTime: openTimeToMs.value})
+            object = new Test({app: app.value, element: element.value, canvas: canvas.value, openTime: openTimeToMs.value})
         }
 
         onMounted(() => {
@@ -34,7 +32,6 @@ export default {
 
         return{
             element,
-            canvas
         }
     }
 }
