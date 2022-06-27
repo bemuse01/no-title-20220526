@@ -85,6 +85,16 @@ export default class{
     }
 
 
+    // dispose
+    dispose(){
+        this.lines.forEach(line => {
+            line.dispose()
+        })
+        
+        this.group.clear()
+    }
+
+
     // animate
     animate(){
         const time = window.performance.now()
