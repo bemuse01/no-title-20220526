@@ -19,7 +19,7 @@ export default {
             </template>
 
             <template v-else>
-                <!--<lineGraph-object />-->
+                <lineGraph-object />
                 <!--<lineGraph-element />-->
             </template>
 

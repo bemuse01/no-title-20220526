@@ -8,6 +8,8 @@
 .lineGraph-object{
     width: 100%;
     height: 100%;
+    transform: translateZ(0);
+    transform-style: preserve-3d;
 }
 .lineGraph-element{
     width: 100%;

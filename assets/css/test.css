@@ -8,6 +8,8 @@
 .test-object{
     width: 100%;
     height: 100%;
+    transform: translateZ(0);
+    transform-style: preserve-3d;
 }
 .test-object canvas{
     width: 100%;
