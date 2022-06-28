@@ -36,8 +36,8 @@ export default {
 
         const idx = props.idx
 
-        const headStyle = ref({opacity: Math.random()})
-        const tailStyle = ref({opacity: Math.random()})
+        const headStyle = ref({opacity: Math.random() * 0.9 + 0.1})
+        const tailStyle = ref({opacity: Math.random() * 0.9 + 0.1})
         const rangeStyle = ref({
             transition: `transform 0.6s ${idx * 0.1}s`,
             transform: `scaleX(${Math.random()})`,
