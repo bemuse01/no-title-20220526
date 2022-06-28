@@ -24,7 +24,7 @@ export default {
 
         const {width, height, gap, reverse} = toRefs(props)
         
-        const style = ref({width, height, gap, flexDirection: reverse ? 'row-reverse' : 'row'})
+        const style = ref({width, height, gap, flexDirection: reverse.value ? 'row-reverse' : 'row'})
 
         return {style}
     }

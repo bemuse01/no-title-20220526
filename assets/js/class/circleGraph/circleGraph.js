@@ -3,6 +3,8 @@ import * as THREE from '../../lib/three.module.js'
 import Param from './param/circleGraph.param.js'
 import PublicMethod from '../../method/method.js'
 
+import Circle from './build/circleGraph.circle.build.js'
+
 export default class{
     constructor({app, element, openTime, box}){
         this.renderer = app.renderer
@@ -11,6 +13,7 @@ export default class{
         this.box = document.querySelector(box)
 
         this.modules = {
+            Circle
         }
         this.group = {}
         this.comp = {}

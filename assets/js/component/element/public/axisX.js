@@ -8,6 +8,7 @@ export default {
                     class="axisX-point"
                     v-for="item in items"
                     :key="item.key"
+                    :style="item.style"
                 >
                 </div>
 
@@ -16,6 +17,7 @@ export default {
         </div>
     `,
     props: {
+        height: String,
         len: Number,
         gap: String,
         justifyItems: String,
@@ -26,12 +28,14 @@ export default {
     setup(props){
         const {ref, toRefs} = Vue
 
-        const {len, gap, justifyContent, justifyItems, alignItems, alignContent} = toRefs(props)
+        const {len, gap, height, justifyContent, justifyItems, alignItems, alignContent} = toRefs(props)
 
         const rootStyle = ref({justifyContent, justifyItems, alignItems, alignContent})
-        const boxStyle = ref({gap})
+        const boxStyle = ref({gap, height})
 
-        const items = ref(Array.from({length: len.value}, (_, key) => ({key})))
+        const items = ref(Array.from({length: len.value}, (_, key) => ({
+            key,
+        })))
 
         return{
             rootStyle,

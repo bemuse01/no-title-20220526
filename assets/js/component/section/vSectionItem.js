@@ -4,6 +4,7 @@ import LineGraphObject from '../object/lineGraphObject.js'
 import LineGraphElement from '../element/lineGraph/lineGraphElement.js'
 import BarGraphElement from '../element/barGraph/barGraphElement.js'
 import BarRangeElement from '../element/barRange/barRangeElement.js'
+import CircleGraphObject from '../object/circleGraphObject.js'
 import CircleGraphElement from '../element/circleGraph/circleGraphElement.js'
 
 export default {
@@ -14,6 +15,7 @@ export default {
         'lineGraph-element': LineGraphElement,
         'barGraph-element': BarGraphElement,
         'barRange-element': BarRangeElement,
+        'circleGraph-object': CircleGraphObject,
         'circleGraph-element': CircleGraphElement
     },
     template: `
@@ -40,6 +42,7 @@ export default {
                 </template>
 
                 <template v-else-if="rand === 3">
+                    <circleGraph-object />
                     <circleGraph-element />
                 </template>
                 

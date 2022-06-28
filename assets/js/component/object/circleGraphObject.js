@@ -1,4 +1,4 @@
-import CircleGraph from '../../class/lineGraph/circleGraph.js'
+import CircleGraph from '../../class/circleGraph/circleGraph.js'
 
 export default {
     template: `
@@ -15,12 +15,12 @@ export default {
         const openTimeToMs = computed(() => store.getters['test/getOpenTime'] * 1000)
         const element = ref()
         const canvas = ref()
-        const box = '.lineGraph-back-lines'
+        const box = '.circleGraph-back-circle'
 
         let object = null
 
         const createObject = () => {
-            // object = new CineGraph({app: app.value, element: element.value, canvas: canvas.value, openTime: openTimeToMs.value, box})
+            object = new CircleGraph({app: app.value, element: element.value, canvas: canvas.value, openTime: openTimeToMs.value, box})
         }
 
         onMounted(() => {
