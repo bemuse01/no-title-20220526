@@ -4,10 +4,10 @@ const getCount = ({width, height, s, sw, sh}) => {
     const squareWidth = s * sw
     const squareHeight = s * sh
 
-    const rw = Math.round(width / squareWidth)
+    const rw = Math.floor(width / squareWidth)
     const pw = rw === 0 ? 1 : rw
 
-    const rh = Math.round(height / squareHeight)
+    const rh = Math.floor(height / squareHeight)
     const ph = rh === 0 ? 1 : rh
 
     return {pw, ph, squareWidth, squareHeight}
