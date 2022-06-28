@@ -1,10 +1,11 @@
 import * as THREE from '../../lib/three.module.js'
 
 export default class{
-    constructor({innerRadius, outerRadius, seg, materialOpt}){
+    constructor({innerRadius, outerRadius, seg, materialName, materialOpt}){
         this.innerRadius = innerRadius
         this.outerRadius = outerRadius
         this.seg = seg
+        this.materialName = materialName
         this.materialOpt = materialOpt
     
         this.init()
@@ -27,11 +28,7 @@ export default class{
         return new THREE.RingGeometry(this.innerRadius, this.outerRadius, this.seg)
     }
     createMaterial(){
-        if(this.materialOpt.vertexShader){
-            this.material = new THREE.ShaderMaterial(this.materialOpt)
-        }else{
-            this.material = new THREE.MeshBasicMaterial(this.materialOpt)
-        }
+        this.material = new THREE[this.materialName](this.materialOpt)
     }
 
     

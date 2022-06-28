@@ -13,6 +13,7 @@ export default {
         uniform vec3 uColor;
         uniform float uLightOpacity;
         uniform float uDefaultOpacity;
+        uniform float uOpacity;
 
         varying vec2 vUv;
 
@@ -23,7 +24,7 @@ export default {
                 opacity = uLightOpacity;
             }
 
-            gl_FragColor = vec4(uColor, opacity);
+            gl_FragColor = vec4(uColor, opacity * uOpacity);
         }
     `
 }

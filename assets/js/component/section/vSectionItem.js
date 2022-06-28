@@ -58,8 +58,8 @@ export default {
 
         const type = props.type
 
-        // const rand = ref(~~(Math.random() * 4))
-        const rand = ref(3)
+        const rand = ref(~~(Math.random() * 4))
+        // const rand = ref(3)
 
         return{
             type,

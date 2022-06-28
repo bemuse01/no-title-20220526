@@ -11,18 +11,32 @@
 @import url('axis.css');
 
 
-@font-face {
+@font-face{
     font-family: OxaniumRegular;
     src: url('../font/Oxanium-Regular.ttf');
 }
-@font-face {
+@font-face{
     font-family: OxaniumSemiBold;
     src: url('../font/Oxanium-SemiBold.ttf');
 }
-@font-face {
+@font-face{
     font-family: rainyhearts;
     src: url('../font/rainyhearts.ttf');
 }
+/* @font-face{
+    font-family: RobotoRegular;
+    src: url('../font/Roboto-Regular.ttf');
+} */
+@font-face{
+    font-family: RobotoLight;
+    src: url('../font/Roboto-Light.ttf');
+}
+@font-face{
+    font-family: RobotoMedium;
+    src: url('../font/Roboto-Medium.ttf');
+}
+
+
 
 
 /* init */

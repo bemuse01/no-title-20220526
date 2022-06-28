@@ -4,16 +4,19 @@ import Param from './param/circleGraph.param.js'
 import PublicMethod from '../../method/method.js'
 
 import Circle from './build/circleGraph.circle.build.js'
+import Ring from './build/circleGraph.ring.build.js'
 
 export default class{
-    constructor({app, element, openTime, box}){
+    constructor({app, element, openTime, box, num}){
         this.renderer = app.renderer
         this.element = element
         this.openTime = openTime
         this.box = document.querySelector(box)
+        this.num = num
 
         this.modules = {
-            Circle
+            Circle,
+            Ring
         }
         this.group = {}
         this.comp = {}
@@ -72,7 +75,7 @@ export default class{
             const instance = this.modules[module]
             const group = this.group[module]
 
-            this.comp[module] = new instance({group, size: this.size, name: module, src: this.src, openTime: this.openTime, box: this.box})
+            this.comp[module] = new instance({group, size: this.size, name: module, src: this.src, openTime: this.openTime, box: this.box, num: this.num})
         }
 
         for(const group in this.group) this.build.add(this.group[group])
