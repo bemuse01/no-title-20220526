@@ -8,10 +8,10 @@ const getCount = ({width, height, size, sw, sh}) => {
     const squareWidth = size * sw
     const squareHeight = size * sh
 
-    const rw = Math.ceil(width / squareWidth)
+    const rw = Math.round(width / squareWidth)
     const pw = rw === 0 ? 1 : rw
 
-    const rh = Math.ceil(height / squareHeight)
+    const rh = Math.round(height / squareHeight)
     const ph = rh === 0 ? 1 : rh
     const count = pw * ph
 
@@ -52,9 +52,9 @@ export default {
         const {ref, onMounted} = Vue
 
         const positions = ['center', 'top', 'right', 'bottom', 'left']
-        const size = ref(100)
-        const sw = 3
-        const sh = 2
+        const size = ref(SIZE)
+        const sw = SW
+        const sh = SH
 
         const sections = ref(positions.map((position, key) => ({
             key,

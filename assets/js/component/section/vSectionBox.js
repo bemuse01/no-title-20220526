@@ -4,10 +4,10 @@ const getCount = ({width, height, s, sw, sh}) => {
     const squareWidth = s * sw
     const squareHeight = s * sh
 
-    const rw = Math.ceil(width / squareWidth)
+    const rw = Math.round(width / squareWidth)
     const pw = rw === 0 ? 1 : rw
 
-    const rh = Math.ceil(height / squareHeight)
+    const rh = Math.round(height / squareHeight)
     const ph = rh === 0 ? 1 : rh
 
     return {pw, ph, squareWidth, squareHeight}
@@ -33,8 +33,8 @@ export default {
         const {size, position} = toRefs(props)
 
         const s = computed(() => position.value === 'center' ? undefined : size.value)
-        const sw = 3
-        const sh = 2
+        const sw = SW
+        const sh = SH
 
         const box = ref()
         const boxStyle = ref({
@@ -47,10 +47,10 @@ export default {
 
             const {pw, ph, squareWidth, squareHeight} = getCount({width, height, s: s.value, sw, sh})
             
-            boxStyle.value.gridTemplateColumns = `repeat(${pw}, ${squareWidth}px)`
-            boxStyle.value.gridTemplateRows = `repeat(${ph}, ${squareHeight}px)`
-            // boxStyle.value.gridTemplateColumns = `repeat(${pw}, 1fr)`
-            // boxStyle.value.gridTemplateRows = `repeat(${ph}, 1fr)`
+            // boxStyle.value.gridTemplateColumns = `repeat(${pw}, ${squareWidth}px)`
+            // boxStyle.value.gridTemplateRows = `repeat(${ph}, ${squareHeight}px)`
+            boxStyle.value.gridTemplateColumns = `repeat(${pw}, minmax(${squareWidth}px, 1fr))`
+            boxStyle.value.gridTemplateRows = `repeat(${ph}, minmax(${squareHeight}px, 1fr))`
         }
 
         onMounted(() => {

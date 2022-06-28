@@ -3,18 +3,23 @@ import Shader from '../shader/lineGraph.lines2.shader.js'
 import Line from '../../objects/line.js'
 
 export default class{
-    constructor({group, size, openTime}){
+    constructor({group, size, openTime, box}){
         this.group = group
         this.size = size
         this.openTime = openTime
+        this.box = box
+
+        const {width, height} = this.box.getBoundingClientRect()
 
         this.count = 6
         this.seg = 2
-        this.ratio = 154 / 200
-        this.height = this.size.obj.h * this.ratio
-        this.wh = this.size.obj.w / 2
-        this.ratioX = 0.8
-        this.rangeX = this.wh * this.ratioX
+
+        this.ratioW = width / this.size.el.w
+        this.width = this.size.obj.w * this.ratioW
+        this.ratioH = height / this.size.el.h
+        this.height = this.size.obj.h * this.ratioH
+
+        this.wh = this.width / 2
         this.str = 3
         this.vel = 0.0002
 
@@ -45,7 +50,7 @@ export default class{
                 transparent: true,
                 uniforms: {
                     uStr: {value: Math.random() * this.str},
-                    uRangeX: {value: this.rangeX},
+                    uRangeX: {value: this.wh},
                     uColor: {value: new THREE.Color(MAIN_COLOR_HEX)},
                     uTime: {value: 0},
                     uVel: {value: this.vel},
@@ -80,12 +85,19 @@ export default class{
 
     // resize
     resize(size){
+        const {width, height} = this.box.getBoundingClientRect()
+
         this.size = size
-        this.wh = this.size.obj.w / 2
-        this.rangeX = this.wh * this.ratioX
+
+        this.ratioW = width / this.size.el.w
+        this.width = this.size.obj.w * this.ratioW
+        this.ratioH = height / this.size.el.h
+        this.height = this.size.obj.h * this.ratioH
+
+        this.wh = this.width / 2
 
         this.lines.forEach(line => {
-            line.setUniform('uRangeX', this.rangeX)
+            line.setUniform('uRangeX', this.wh)
         })
     }
 

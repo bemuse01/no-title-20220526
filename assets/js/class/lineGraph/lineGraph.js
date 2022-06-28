@@ -7,10 +7,11 @@ import Lines from './build/lineGraph.lines.build.js'
 import Lines2 from './build/lineGraph.lines2.build.js'
 
 export default class{
-    constructor({app, element, openTime}){
+    constructor({app, element, openTime, box}){
         this.renderer = app.renderer
         this.element = element
         this.openTime = openTime
+        this.box = document.querySelector(box)
 
         this.modules = {
             Lines,
@@ -73,7 +74,7 @@ export default class{
             const instance = this.modules[module]
             const group = this.group[module]
 
-            this.comp[module] = new instance({group, size: this.size, name: module, src: this.src, openTime: this.openTime})
+            this.comp[module] = new instance({group, size: this.size, name: module, src: this.src, openTime: this.openTime, box: this.box})
         }
 
         for(const group in this.group) this.build.add(this.group[group])

@@ -15,11 +15,12 @@ export default {
         const openTimeToMs = computed(() => store.getters['test/getOpenTime'] * 1000)
         const element = ref()
         const canvas = ref()
+        const box = '.lineGraph-back-lines'
 
         let object = null
 
         const createObject = () => {
-            object = new LineGraph({app: app.value, element: element.value, canvas: canvas.value, openTime: openTimeToMs.value})
+            object = new LineGraph({app: app.value, element: element.value, canvas: canvas.value, openTime: openTimeToMs.value, box})
         }
 
         onMounted(() => {
