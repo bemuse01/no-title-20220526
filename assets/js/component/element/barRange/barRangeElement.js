@@ -7,7 +7,7 @@ export default {
     template: `
         <div class="element barRange barRange-element">
             
-            <barGraph-back />
+            <barRange-back />
 
         </div>
     `,

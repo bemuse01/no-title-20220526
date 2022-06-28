@@ -1,22 +1,25 @@
 import vColumns from '../../column/vColumns.js'
 import vColumn from '../../column/vColumn.js'
+import BarRangeBackBar from './barRangeBackBar.js'
 
 export default {
     components: {
         'v-column': vColumn,
-        'v-columns': vColumns
+        'v-columns': vColumns,
+        'barRange-back-bar': BarRangeBackBar
     },
     template: `
         <div class="barRange-back">
 
             <div class="barRange-back-box">
 
-                <v-columns class="barRange-back-columns" gap="5%">
+                <v-columns class="barRange-back-columns" gap="12%">
 
                     <v-column
                         v-for="item in items"
                         :key="item.key"
                     >
+                        <barRange-back-bar :idx="item.key" />
                     </v-column>
 
                 </v-columns>
@@ -28,7 +31,7 @@ export default {
     setup(){
         const {ref} = Vue
 
-        const len = 7
+        const len = 8
         
         const items = ref(Array.from({length: len}, (_, key) => ({key})))
 

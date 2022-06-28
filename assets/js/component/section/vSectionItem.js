@@ -32,7 +32,11 @@ export default {
                 <template v-else-if="rand === 1">
                     <barGraph-element />
                 </template>
-            
+
+                <template v-else-if="rand === 2">
+                    <barRange-element />
+                </template>
+                
             </template>
 
         </div>
@@ -45,7 +49,7 @@ export default {
 
         const type = props.type
 
-        const rand = ref(~~(Math.random() * 2))
+        const rand = ref(~~(Math.random() * 3))
 
         return{
             type,
