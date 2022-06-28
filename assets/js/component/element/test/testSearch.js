@@ -1,4 +1,4 @@
-import Method from '../../method/method.js'
+import Method from '../../../method/method.js'
 
 export default {
     template: `

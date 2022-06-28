@@ -1,8 +1,8 @@
 import TestObject from '../object/testObject.js'
-import TestElement from '../element/testElement.js'
+import TestElement from '../element/test/testElement.js'
 import LineGraphObject from '../object/lineGraphObject.js'
-import LineGraphElement from '../element/lineGraphElement.js'
-import BarGraphElement from '../element/barGraphElement.js'
+import LineGraphElement from '../element/lineGraph/lineGraphElement.js'
+import BarGraphElement from '../element/barGraph/barGraphElement.js'
 
 export default {
     components: {

@@ -1,6 +1,6 @@
-import vRows from '../row/vRows.js'
-import vRow from '../row/vRow.js'
-import axisY from './axisY.js'
+import vRows from '../../row/vRows.js'
+import vRow from '../../row/vRow.js'
+import axisY from '../public/axisY.js'
 import BarGraphBackBars from './barGraphBackBars.js'
 
 export default {

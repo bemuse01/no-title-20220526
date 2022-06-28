@@ -2,8 +2,8 @@ import TestSearch from './testSearch.js'
 import TestVertNums from './testVertNums.js'
 import TestTop from './testTop.js'
 import TestBottom from './testBottom.js'
-import vRow from '../row/vRow.js'
-import vRows from '../row/vRows.js'
+import vRow from '../../row/vRow.js'
+import vRows from '../../row/vRows.js'
 
 export default {
     components: {
