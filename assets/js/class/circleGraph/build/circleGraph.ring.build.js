@@ -45,8 +45,6 @@ export default class{
             }
         })
 
-        console.log('work')
-
         this.group.add(this.ring.get())
     }
 
