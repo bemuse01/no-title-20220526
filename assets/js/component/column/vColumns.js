@@ -8,14 +8,16 @@ export default {
         reverse: {
             default: false,
             type: Boolean
-        }  
+        },
+        gap: String
     },
     setup(props){
         const {ref} = Vue
         
         const reverse = props.reverse
+        const gap = props.gap
 
-        const style = ref({flexDirection: reverse ? 'column-reverse' : 'column'})
+        const style = ref({gap, flexDirection: reverse ? 'column-reverse' : 'column'})
 
         return {style}
     }

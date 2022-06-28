@@ -3,6 +3,7 @@ import TestElement from '../element/test/testElement.js'
 import LineGraphObject from '../object/lineGraphObject.js'
 import LineGraphElement from '../element/lineGraph/lineGraphElement.js'
 import BarGraphElement from '../element/barGraph/barGraphElement.js'
+import BarRangeElement from '../element/barRange/barRangeElement.js'
 
 export default {
     components: {
@@ -10,7 +11,8 @@ export default {
         'test-element': TestElement,
         'lineGraph-object': LineGraphObject,
         'lineGraph-element': LineGraphElement,
-        'barGraph-element': BarGraphElement
+        'barGraph-element': BarGraphElement,
+        'barRange-element': BarRangeElement
     },
     template: `
         <div class="vSection-item">
