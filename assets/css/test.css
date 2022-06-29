@@ -48,6 +48,8 @@
     width: auto;
     height: 100%;
     /* background: #00ffd7; */
+    transform: translateX(-50%) translateZ(0);
+    transform-style: preserve-3d;
 }
 .search-box-texts{
     position: absolute;

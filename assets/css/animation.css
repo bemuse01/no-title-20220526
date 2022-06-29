@@ -74,3 +74,58 @@
         left: 100%;
     }
 }
+@keyframes scaling{
+    0%{
+        transform: scaleX(0);
+    }
+    20%{
+        transform: scaleX(0.5);
+    }
+    40%{
+        transform: scaleX(0.1);
+    }
+    60%{
+        transform: scaleX(0.7);
+    }
+    80%{
+        transform: scaleX(1);
+    }
+    100%{
+        transform: scaleX(0);
+    }
+}
+@keyframes translating2{
+    0%{
+        left: 85%;
+    }
+    10%{
+        left: 75%;
+    }
+    20%{
+        left: 65%;
+    }
+    30%{
+        left: 80%;
+    }
+    40%{
+        left: 60%;
+    }
+    50%{
+        left: 50%;
+    }
+    60%{
+        left: 35%;
+    }
+    70%{
+        left: 15%;
+    }
+    80%{
+        left: 50%;
+    }
+    90%{
+        left: 70%;
+    }
+    100%{
+        left: 85%;
+    }
+}

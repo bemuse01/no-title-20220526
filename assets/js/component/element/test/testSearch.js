@@ -2,7 +2,7 @@ import Method from '../../../method/method.js'
 
 export default {
     template: `
-        <div class="test-search" :ref="el => root = el">
+        <div class="test-search" :ref="el => root = el" :style="rootStyle">
 
             <div class="search-box" :style="searchBoxStyle">
                             
@@ -68,7 +68,7 @@ export default {
         const bars = ref(Array.from({length: 3}, (_, key) => ({
             key,
             style1: {
-                transform: `scaleX(${Math.random() * 0.5 + 0.5})`
+                animation: `scaling 3s ${Math.random()}s infinite`
             },
             style2: {
                 opacity: `${0.5 * key}`,
@@ -76,10 +76,12 @@ export default {
             }
         })))
 
-        const searchBoxStyle = ref({
+        const rootStyle = ref({
             opacity: '0',
-            transform: 'none',
-            animation: 'none'
+            animation: 'none',
+        })
+        const searchBoxStyle = ref({
+            animation: 'translating2 20s infinite ease-in-out',
         })
 
         const generateRandNum = () => {
@@ -92,43 +94,18 @@ export default {
             setTimeout(generateRandNum, 1000)
         }
 
-        const scaleBar = (time) => {
-            bars.value.forEach((bar, i) => {
-                const r = SIMPLEX.noise2D(i * 0.5, time * 0.0005)
-                const p = Method.normalize(r, 0.1, 1, -1, 1)
-
-                bar.style1.transform = `scaleX(${p}) translateZ(0)`
-            })
-        }
-
-        const moveSearchBox = (width, time) => {
-            const r = SIMPLEX.noise2D(0.1, time * 0.000075)
-            const p = Method.normalize(r, width * 0.1, width * 0.9, -1, 1)
-
-            searchBoxStyle.value.transform = `translate(${p}px, 0) translateZ(0)`
-        }
-
-        const animate = () => {
-            const {width} = root.value.getBoundingClientRect()
-            const time = window.performance.now()
-
-            moveSearchBox(width, time)
-            scaleBar(time)
-            requestAnimationFrame(animate)
-        }
-
         const open = () => {
-            searchBoxStyle.value.animation = `blink2 0.06s ${openTime.value}s 2 forwards`
+            rootStyle.value.animation = `blink2 0.06s ${openTime.value}s 2 forwards`
         }
 
         onMounted(() => {
-            // animate()
             generateRandNum()
             open()
         })
 
         return{
             root,
+            rootStyle,
             searchBoxStyle,
             numbers,
             bars
