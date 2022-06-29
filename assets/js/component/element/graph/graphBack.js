@@ -48,7 +48,7 @@ export default {
                             </v-row>
 
                             <v-row flex="1">
-                                <div class="graph-back-child"></div>
+                                <axisY class="graph-back-child" :len="9" gap="12%" width="100%" />
                             </v-row>
 
                             <v-row flex="none" width="6px">
