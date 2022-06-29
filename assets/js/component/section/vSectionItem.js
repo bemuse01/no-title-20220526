@@ -6,6 +6,7 @@ import BarGraphElement from '../element/barGraph/barGraphElement.js'
 import BarRangeElement from '../element/barRange/barRangeElement.js'
 import CircleGraphObject from '../object/circleGraphObject.js'
 import CircleGraphElement from '../element/circleGraph/circleGraphElement.js'
+import GraphElement from '../element/graph/graphElement.js'
 
 export default {
     components: {
@@ -16,7 +17,8 @@ export default {
         'barGraph-element': BarGraphElement,
         'barRange-element': BarRangeElement,
         'circleGraph-object': CircleGraphObject,
-        'circleGraph-element': CircleGraphElement
+        'circleGraph-element': CircleGraphElement,
+        'graph-element': GraphElement,
     },
     template: `
         <div class="vSection-item">
@@ -45,6 +47,10 @@ export default {
                     <circleGraph-object />
                     <circleGraph-element />
                 </template>
+
+                <template v-else-if="rand === 4">
+                    <graph-element />
+                </template>
                 
             </template>
 
@@ -58,8 +64,8 @@ export default {
 
         const type = props.type
 
-        const rand = ref(~~(Math.random() * 4))
-        // const rand = ref(3)
+        // const rand = ref(~~(Math.random() * 4))
+        const rand = ref(4)
 
         return{
             type,
