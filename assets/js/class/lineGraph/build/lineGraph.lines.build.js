@@ -3,13 +3,19 @@ import Line from '../../objects/line.js'
 import Shader from '../shader/lineGraph.lines.shader.js'
 
 export default class{
-    constructor({group, openTime}){
+    constructor({group, size, openTime, box}){
+        this.size = size
         this.group = group
         this.openTime = openTime
+        this.box = box
+
+        const {width} = this.box.getBoundingClientRect()
+        
+        this.ratioW = width / this.size.el.w
+        this.width = this.size.obj.w * this.ratioW
 
         this.count = 4
         this.seg = 64
-        this.width = 140
         this.rangeY = 20
         this.str = 0.05
 
