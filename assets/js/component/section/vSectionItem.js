@@ -50,7 +50,7 @@ export default {
                     <circleGraph-element />
                 </template>
 
-                <template v-else-if="rand === 4">
+                <template v-else>
                     <graph-object />
                     <graph-element />
                 </template>

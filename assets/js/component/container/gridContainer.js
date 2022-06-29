@@ -17,6 +17,13 @@ const getCount = ({width, height, size, sw, sh}) => {
 
     return {count}
 }
+const generateItem = (key, openTime, position) => ({
+    key,
+    style: position === 'center' ? {} : {
+        opacity: '0',
+        animation: `blink2 0.06s ${openTime + Math.random()}s 2 forwards`
+    }
+})
 
 export default {
     components: {
@@ -42,6 +49,7 @@ export default {
                     <v-section-item
                         v-for="item in section.items"
                         :type="section.type"
+                        :style="item.style"
                     />
                 </v-section-box>
             </v-section>
@@ -49,7 +57,12 @@ export default {
         </div>
     `,
     setup(){
-        const {ref, onMounted} = Vue
+        const {ref, onMounted, computed} = Vue
+        const {useStore} = Vuex
+
+        const store = useStore()
+
+        const openTime = computed(() => store.getters['test/getOpenTime'])
 
         const positions = ['center', 'top', 'right', 'bottom', 'left']
         const size = ref(SIZE)
@@ -77,20 +90,20 @@ export default {
 
                 const {count} = getCount({width, height, size: s, sw, sh})
 
-                updateItems(items, count)
+                updateItems(items, count, position)
             })
         }
 
-        const updateItems = (items, count) => {
+        const updateItems = (items, count, position) => {
             const len = items.length
 
             if(len > count){
                 for(let i = 0; i < len - count; i++) items.pop()
             }else{
-                for(let i = 0; i < count - len; i++) items.push({key: len + i})
+                for(let i = 0; i < count - len; i++) items.push(generateItem(len + i, openTime.value, position))
             }
         }
-        
+
         onMounted(() => {
             resize()
             window.addEventListener('resize', () => resize())

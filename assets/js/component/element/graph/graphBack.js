@@ -15,7 +15,7 @@ export default {
         'axisY': AxisY
     },
     template: `
-        <div class="graph-back">
+        <div class="graph-back" :style="rootStyle">
 
             <div class="graph-back-box">
             
@@ -84,6 +84,5 @@ export default {
         </div>
     `,
     setup(){
-        
     }
 }

@@ -31,6 +31,7 @@ export default class{
     init(){
         this.create()
         this.interval()
+        setTimeout(() => this.open(), this.openTime + ~~(Math.random() * 1000))
     }
 
 
@@ -45,7 +46,7 @@ export default class{
             materialOpt: {
                 color: MAIN_COLOR_HEX,
                 transparent: true,
-                opacity: this.opacity
+                opacity: 0
             }
         })
 
@@ -73,6 +74,12 @@ export default class{
         this.width = this.size.obj.w * this.ratioW
         this.ratioH = height / this.size.el.h
         this.height = this.size.obj.h * this.ratioH
+    }
+
+
+    // open
+    open(){
+        this.createOpenTween()
     }
 
 
@@ -115,5 +122,18 @@ export default class{
         }
 
         position.needsUpdate = true
+    }
+
+    createOpenTween(){
+        const start = {opacity: 0}
+        const end = {opacity: this.opacity}
+
+        const tw = new TWEEN.Tween(start)
+        .to(end, 600)
+        .onUpdate(() => this.onUpdateOpenTween(start))
+        .start()
+    }
+    onUpdateOpenTween({opacity}){
+        this.plane.getMaterial().opacity = opacity
     }
 }

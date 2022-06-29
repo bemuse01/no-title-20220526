@@ -29,33 +29,14 @@ export default {
         </div>
     `,
     setup(){
-        const {ref, onMounted, computed} = Vue
-        const {useStore} = Vuex
-
-        const store = useStore()
-
-        const openTime = computed(() => store.getters['test/getOpenTime'])
+        const {ref} = Vue
 
         const len = 8
 
-        const boxStyle = ref({
-            opacity: '0',
-            animation: 'none'
-        })
-        
         const items = ref(Array.from({length: len}, (_, key) => ({key})))
-
-        const open = () => {
-            boxStyle.value.animation = `blink2 0.06s ${openTime.value + Math.random()}s 2 forwards`
-        }
-
-        onMounted(() => {
-            open()
-        })
 
         return{
             items,
-            boxStyle
         }
     }
 }
