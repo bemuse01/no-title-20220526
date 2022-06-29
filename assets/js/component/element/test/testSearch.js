@@ -89,7 +89,7 @@ export default {
                 })
             })
 
-            setTimeout(generateRandNum, 500)
+            setTimeout(generateRandNum, 1000)
         }
 
         const scaleBar = (time) => {
@@ -122,7 +122,7 @@ export default {
         }
 
         onMounted(() => {
-            animate()
+            // animate()
             generateRandNum()
             open()
         })

@@ -42,7 +42,7 @@ export default {
         const interval = () => {
             update()
 
-            setTimeout(interval, 3000)
+            setTimeout(interval, 3000 + ~~(Math.random() * 3000))
         }
 
         onMounted(() => {

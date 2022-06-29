@@ -62,7 +62,7 @@ export default {
         const interval = () => {
             initTween()
 
-            setTimeout(interval, 3000)
+            setTimeout(interval, 3000 + ~~(Math.random() * 3000))
         }
 
         const open = () => {

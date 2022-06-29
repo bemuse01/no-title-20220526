@@ -52,7 +52,7 @@ export default {
                 number.text = ~~(Math.random() * 100000)
             })
 
-            setTimeout(generateRandNum, 500)
+            setTimeout(generateRandNum, 1000)
         }
 
         const open = () => {
