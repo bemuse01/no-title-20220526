@@ -19,7 +19,7 @@ const getCount = ({width, height, size, sw, sh}) => {
 }
 const generateItem = (key, openTime, position) => ({
     key,
-    style: position === 'center' ? {} : {
+    style: {
         opacity: '0',
         animation: `blink2 0.06s ${openTime + Math.random()}s 2 forwards`
     }
