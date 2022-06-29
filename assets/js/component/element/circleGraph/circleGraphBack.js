@@ -15,7 +15,7 @@ export default {
         'axisX': AxisX
     },
     template: `
-        <div class="circleGraph-back" :style="rootStyle">
+        <div class="circleGraph-back">
             
             <div class="circleGraph-back-box">
 
@@ -70,26 +70,5 @@ export default {
             </div>
 
         </div>
-    `,
-    setup(){
-        const {ref, onMounted, computed} = Vue
-        const {useStore} = Vuex
-
-        const rootStyle = ref({opacity: '0', animation: 'none'})
-
-        const store = useStore()
-        const openTime = computed(() => store.getters['test/getOpenTime'])
-
-        const open = () => {
-            rootStyle.value.animation = `blink2 0.06s ${openTime.value + Math.random()}s 2 forwards`
-        }
-
-        onMounted(() => {
-            open()
-        })
-
-        return{
-            rootStyle
-        }
-    }
+    `
 }

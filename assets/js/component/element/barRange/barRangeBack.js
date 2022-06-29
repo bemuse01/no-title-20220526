@@ -11,7 +11,7 @@ export default {
     template: `
         <div class="barRange-back">
 
-            <div class="barRange-back-box" :style="boxStyle">
+            <div class="barRange-back-box">
 
                 <v-columns class="barRange-back-columns" gap="12%">
 
@@ -36,7 +36,7 @@ export default {
         const items = ref(Array.from({length: len}, (_, key) => ({key})))
 
         return{
-            items,
+            items
         }
     }
 }
