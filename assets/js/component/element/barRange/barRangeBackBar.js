@@ -45,7 +45,7 @@ export default {
         })
 
         const update = () => {
-            rangeStyle.value.transform = `scaleX(${Math.random()})`
+            rangeStyle.value.transform = `scaleX(${Math.random()}) translate3d(0, 0, 0)`
             // rangeStyle.value.transformOrigin = `${Math.random() * 100}%`
         }
 

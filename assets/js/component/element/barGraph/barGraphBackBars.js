@@ -35,7 +35,7 @@ export default {
             bars.value.forEach(bar => {
                 const height = Math.random() * 1
 
-                if(Math.random() > 0.5) bar.style.transform = `scaleY(${height})`
+                if(Math.random() > 0.5) bar.style.transform = `scaleY(${height}) translate3d(0, 0, 0)`
             })
         }
 

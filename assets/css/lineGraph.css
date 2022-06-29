@@ -4,6 +4,8 @@
     font-family: rainyhearts;
     font-size: 4px;
     white-space: nowrap;
+    transform: translateZ(0);
+    transform-style: preserve-3d;
 }
 .lineGraph-object{
     width: 100%;

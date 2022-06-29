@@ -8,8 +8,6 @@
 .circleGraph-object{
     width: 100%;
     height: 100%;
-    /* transform: translateZ(0);
-    transform-style: preserve-3d; */
 }
 .circleGraph-object > div{
     position: absolute;
