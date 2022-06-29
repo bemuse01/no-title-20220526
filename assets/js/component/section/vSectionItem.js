@@ -6,6 +6,7 @@ import BarGraphElement from '../element/barGraph/barGraphElement.js'
 import BarRangeElement from '../element/barRange/barRangeElement.js'
 import CircleGraphObject from '../object/circleGraphObject.js'
 import CircleGraphElement from '../element/circleGraph/circleGraphElement.js'
+import GraphObject from '../object/graphObject.js'
 import GraphElement from '../element/graph/graphElement.js'
 
 export default {
@@ -18,6 +19,7 @@ export default {
         'barRange-element': BarRangeElement,
         'circleGraph-object': CircleGraphObject,
         'circleGraph-element': CircleGraphElement,
+        'graph-object': GraphObject,
         'graph-element': GraphElement,
     },
     template: `
@@ -49,6 +51,7 @@ export default {
                 </template>
 
                 <template v-else-if="rand === 4">
+                    <graph-object />
                     <graph-element />
                 </template>
                 
@@ -64,8 +67,8 @@ export default {
 
         const type = props.type
 
-        // const rand = ref(~~(Math.random() * 4))
-        const rand = ref(4)
+        const rand = ref(~~(Math.random() * 5))
+        // const rand = ref(4)
 
         return{
             type,

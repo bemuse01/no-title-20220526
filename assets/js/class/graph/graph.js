@@ -3,6 +3,8 @@ import * as THREE from '../../lib/three.module.js'
 import Param from './param/graph.param.js'
 import PublicMethod from '../../method/method.js'
 
+import Plane from './build/graph.plane.build.js'
+
 export default class{
     constructor({app, element, openTime, box}){
         this.renderer = app.renderer
@@ -11,6 +13,7 @@ export default class{
         this.box = document.querySelector(box)
 
         this.modules = {
+            Plane
         }
         this.group = {}
         this.comp = {}
