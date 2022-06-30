@@ -34,7 +34,7 @@ export default {
             <template v-else>
 
                 <template v-if="rand === 0">
-                    <lineGraph-object :parent="root" :uuid="uuid" />
+                    <lineGraph-object :uuid="uuid" />
                     <lineGraph-element />
                 </template>
 

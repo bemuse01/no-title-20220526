@@ -1,5 +1,5 @@
 import Plane from '../../objects/plane.js'
-import {MathUtils} from '../../../lib/three.module.js'
+import {MathUtils, PlaneGeometry} from '../../../lib/three.module.js'
 
 export default class{
     constructor({group, size, openTime, box}){
@@ -76,6 +76,20 @@ export default class{
         this.width = this.size.obj.w * this.ratioW
         this.ratioH = height / this.size.el.h
         this.height = this.size.obj.h * this.ratioH
+
+        const nArray = new PlaneGeometry(this.width, this.height, this.seg, 1).addAttribute.position.array
+
+        const position = this.plane.getGeometry().attributes.position
+        const array = position.array
+        const count = position.count
+
+        for(let i = 0; i < count; i++){
+            const idx = i * 3
+
+            array[idx] = nArray[idx]
+        }
+
+        position.needsUpdate = true
     }
 
 
