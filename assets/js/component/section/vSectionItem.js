@@ -70,6 +70,7 @@ export default {
 
         const uuid = ref(`s-${Method.uuidv4()}`)
         const rand = ref(~~(Math.random() * 5))
+        // const rand = ref(0)
         const className = `vSection-item ${uuid.value}`
 
         return{
