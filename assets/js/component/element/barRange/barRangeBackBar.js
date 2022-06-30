@@ -45,7 +45,8 @@ export default {
         })
 
         const update = () => {
-            rangeStyle.value.transform = `scaleX(${Math.random()}) translate3d(0, 0, 0)`
+            if(Math.random() > 0.5) return
+            rangeStyle.value.transform = `scaleX(${Math.random()})`
         }
 
         const interval = () => {

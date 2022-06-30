@@ -32,11 +32,11 @@
 @keyframes moveBottomToTop{
     from{
         top: 100%;
-        transform: translate(0, 0);
+        transform: translate(0, 0) translate3d(0, 0, 0);
     }
     to{
         top: 0;
-        transform: translate(0, -100%);
+        transform: translate(0, -100%) translate3d(0, 0, 0);
     }
 }
 @keyframes translating{

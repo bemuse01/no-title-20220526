@@ -15,7 +15,7 @@ export default {
 
             <div class="barGraph-back-box">
 
-                <v-rows class="barGraph-back-rows" gap="2%">
+                <v-rows class="barGraph-back-rows" gap="4%">
 
                     <v-row flex="none" width="12px">
                         <axisY width="80%" pointHeight="2px" :len="5" gap="23%" />

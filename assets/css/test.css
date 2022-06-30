@@ -48,8 +48,9 @@
     width: auto;
     height: 100%;
     /* background: #00ffd7; */
-    transform: translateX(-50%) translateZ(0);
-    transform-style: preserve-3d;
+    /* transform: translateX(-50%) translate3d(0, 0, 0);
+    transform-style: preserve-3d; */
+    will-change: left;
 }
 .search-box-texts{
     position: absolute;
@@ -162,7 +163,7 @@
     height: 100%;
     display: flex;
     flex-direction: column;
-    transform: scale(0.6) translate(0, 50%) ;
+    transform: scale(0.6) translate(0, 50%);
     transform-origin: left;
     position: relative;
 }
@@ -253,8 +254,8 @@
 .code-flow-text{
     position: absolute;
     top: 100%;
-    transform: translate(0, 0);
     letter-spacing: 2px;
+    will-change: top;
 }
 .code-flow-text p{
     transform-origin: left;

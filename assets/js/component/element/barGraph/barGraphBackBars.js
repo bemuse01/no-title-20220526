@@ -20,7 +20,7 @@ export default {
     setup(){
         const {ref, onMounted} = Vue 
 
-        const len = 21
+        const len = 15
 
         const bars = ref(Array.from({length: len}, (_, key) => ({
             key,
@@ -35,7 +35,7 @@ export default {
             bars.value.forEach(bar => {
                 const height = Math.random() * 1
 
-                if(Math.random() > 0.5) bar.style.transform = `scaleY(${height}) translate3d(0, 0, 0)`
+                if(Math.random() > 0.5) bar.style.transform = `scaleY(${height})`
             })
         }
 

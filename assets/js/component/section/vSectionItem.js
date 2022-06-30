@@ -50,7 +50,7 @@ export default {
                     <circleGraph-element />
                 </template>
 
-                <template v-else>
+                <template v-else-if="rand === 4">
                     <graph-object />
                     <graph-element />
                 </template>
@@ -68,7 +68,7 @@ export default {
         const type = props.type
 
         const rand = ref(~~(Math.random() * 5))
-        // const rand = ref(4)
+        // const rand = ref(3)
 
         return{
             type,

@@ -70,6 +70,8 @@ export default class{
     resize(size){
         this.size = size
 
+        const {width, height} = this.box.getBoundingClientRect()
+
         this.ratioW = width / this.size.el.w
         this.width = this.size.obj.w * this.ratioW
         this.ratioH = height / this.size.el.h
