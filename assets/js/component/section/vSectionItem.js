@@ -1,3 +1,4 @@
+import Method from '../../method/method.js'
 import TestObject from '../object/testObject.js'
 import TestElement from '../element/test/testElement.js'
 import LineGraphObject from '../object/lineGraphObject.js'
@@ -23,7 +24,7 @@ export default {
         'graph-element': GraphElement,
     },
     template: `
-        <div class="vSection-item">
+        <div :class="className">
 
             <template v-if="type === false">
                 <test-object />
@@ -33,7 +34,7 @@ export default {
             <template v-else>
 
                 <template v-if="rand === 0">
-                    <lineGraph-object />
+                    <lineGraph-object :parent="root" :uuid="uuid" />
                     <lineGraph-element />
                 </template>
 
@@ -67,12 +68,15 @@ export default {
 
         const type = props.type
 
+        const uuid = ref(`s-${Method.uuidv4()}`)
         const rand = ref(~~(Math.random() * 5))
-        // const rand = ref(3)
+        const className = `vSection-item ${uuid.value}`
 
         return{
             type,
-            rand
+            rand,
+            uuid,
+            className
         }
     }
 }

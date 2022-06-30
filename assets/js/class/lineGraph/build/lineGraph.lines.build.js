@@ -75,6 +75,19 @@ export default class{
 
         return {position, seed}
     }
+    createPosition(){
+        const position = []
+
+        const wh = this.width / 2
+        const step = this.width / (this.seg - 1)
+
+        for(let i = 0; i < this.seg; i++){
+            const x = -wh + step * i
+            position.push(x, 0, 0)
+        }
+
+        return position
+    }
 
     
     // dispose
@@ -84,6 +97,33 @@ export default class{
         })
         
         this.group.clear()
+    }
+
+
+
+    // resize
+    resize(size){
+        this.size = size
+
+        const {width} = this.box.getBoundingClientRect()
+        
+        this.ratioW = width / this.size.el.w
+        this.width = this.size.obj.w * this.ratioW
+
+        const pos = this.createPosition()
+
+        this.lines.forEach(line => {
+            const position = line.getGeometry().attributes.position
+            const array = position.array
+            const count = position.count
+
+            for(let i = 0; i < count; i++){
+                const idx = i * 3
+                array[idx] = pos[idx]
+            }
+
+            position.needsUpdate = true
+        })
     }
 
 

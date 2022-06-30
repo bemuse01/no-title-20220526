@@ -1,4 +1,5 @@
 import Test from './test.js'
+import Section from './section.js'
 
 export default Vuex.createStore({
     state: {
@@ -18,6 +19,7 @@ export default Vuex.createStore({
         }
     },
     modules: {
-        test: Test
+        test: Test,
+        section: Section
     }
 })

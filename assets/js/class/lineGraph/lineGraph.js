@@ -7,7 +7,7 @@ import Lines from './build/lineGraph.lines.build.js'
 import Lines2 from './build/lineGraph.lines2.build.js'
 
 export default class{
-    constructor({app, element, openTime, box}){
+    constructor({app, element, openTime, box, parent}){
         this.renderer = app.renderer
         this.element = element
         this.openTime = openTime

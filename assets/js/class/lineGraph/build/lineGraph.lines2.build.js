@@ -96,8 +96,22 @@ export default class{
 
         this.wh = this.width / 2
 
+        const {position} = this.createAttributes()
+
         this.lines.forEach(line => {
             line.setUniform('uRangeX', this.wh)
+
+            const pos = line.getGeometry().attributes.position
+            const array = pos.array
+            const count = pos.count
+
+            for(let i = 0; i < count; i++){
+                const idx = i * 3
+
+                array[idx + 1] = position[idx + 1]
+            }
+
+            pos.needsUpdate = true
         })
     }
 

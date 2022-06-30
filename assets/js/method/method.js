@@ -60,7 +60,7 @@ export default {
         const d2 = x - x1
         return d2 / d1
     },
-    uuidv4(str){
+    uuidv4(str = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'){
         return str.replace(/[xy]/g, c => {
             const r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8)
             return v.toString(16)

@@ -79,6 +79,14 @@ export default class{
     }
 
 
+    // dispose
+    dispose(){
+        this.plane.dispose()
+
+        this.group.clear()
+    }
+
+
     // open
     open(){
         this.createOpenTween()

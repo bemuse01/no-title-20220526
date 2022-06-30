@@ -6,16 +6,23 @@ export default {
             <div :ref="el => element = el"></div>
         </div>
     `,
-    setup(){
-        const {ref, onMounted, computed, onUnmounted} = Vue
+    props: {
+        uuid: String,
+        parent: Object,
+    },
+    setup(props){
+        const {ref, onMounted, computed, onUnmounted, watch, watchEffect} = Vue
         const {useStore} = Vuex
+
+        const uuid = props.uuid
+        // const parent = props.parent
 
         const store = useStore()
         const app = computed(() => store.getters['getApp'])
         const openTimeToMs = computed(() => store.getters['test/getOpenTime'] * 1000)
         const element = ref()
         const canvas = ref()
-        const box = '.lineGraph-back-lines'
+        const box = `.${uuid} .lineGraph-back-lines`
 
         let object = null
 
