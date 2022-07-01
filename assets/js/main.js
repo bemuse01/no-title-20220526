@@ -23,5 +23,5 @@ const vueApp = Vue.createApp({
     }
 })
 
-vueApp.use(Store)
+vueApp.use(MainStore)
 vueApp.mount('#wrap')
