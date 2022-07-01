@@ -1,9 +1,9 @@
-import vRows from '../../row/vRows.js'
-import vRow from '../../row/vRow.js'
-import axisY from '../public/axisY.js'
-import BarGraphBackBars from './barGraphBackBars.js'
+// import vRows from '../../row/vRows.js'
+// import vRow from '../../row/vRow.js'
+// import axisY from '../public/axisY.js'
+// import BarGraphBackBars from './barGraphBackBars.js'
 
-export default {
+const BarGraphBack = {
     components: {
         'v-rows': vRows,
         'v-row': vRow,

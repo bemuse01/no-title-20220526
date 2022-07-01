@@ -1,6 +1,6 @@
-import ShaderMethod from '../../../method/method.shader.js'
+// import ShaderMethod from '../../../method/method.shader.js'
 
-export default {
+const TestDnaShader = {
     bone: {
         vertex: `
             attribute float aPointSize;

@@ -1,6 +1,6 @@
-import Method from '../../../method/method.js'
+// import Method from '../../../method/method.js'
 
-export default {
+const TestSearch = {
     template: `
         <div class="test-search" :ref="el => root = el" :style="rootStyle">
 

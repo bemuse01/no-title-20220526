@@ -1,4 +1,4 @@
-export default {
+const GraphParam = {
     fov: 60,
     near: 0.1,
     far: 10000,

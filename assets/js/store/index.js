@@ -1,7 +1,4 @@
-import Test from './test.js'
-import Section from './section.js'
-
-export default Vuex.createStore({
+const MainStore = Vuex.createStore({
     state: {
         app: null
     },
@@ -19,7 +16,7 @@ export default Vuex.createStore({
         }
     },
     modules: {
-        test: Test,
-        section: Section
+        test: TestStore,
+        section: SectionStore
     }
 })

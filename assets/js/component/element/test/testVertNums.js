@@ -1,4 +1,4 @@
-export default {
+const TestVertNums = {
     template: `
         <div class="test-child test-vertNums" :style="rootStyle">
 

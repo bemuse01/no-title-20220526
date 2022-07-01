@@ -1,4 +1,4 @@
-export default {
+const vRow = {
     template: `
         <div class="vRow" :style="style">
             <slot></slot>

@@ -1,4 +1,4 @@
-export default {
+const TestTopCode = {
     template: `
         <div class="top-code">
 

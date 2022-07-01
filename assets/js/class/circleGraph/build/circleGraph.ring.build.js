@@ -1,6 +1,6 @@
-import Ring from '../../objects/ring.js'
+// import Ring from '../../objects/ring.js'
 
-export default class{
+const CircleGraphRingBuild = class{
     constructor({group, size, openTime, box}){
         this.group = group
         this.size = size

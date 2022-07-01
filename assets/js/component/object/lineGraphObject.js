@@ -1,6 +1,6 @@
 import LineGraph from '../../class/lineGraph/lineGraph.js'
 
-export default {
+const LineGraphObject = {
     template: `
         <div class="object lineGraph lineGraph-object" >
             <div :ref="el => element = el"></div>

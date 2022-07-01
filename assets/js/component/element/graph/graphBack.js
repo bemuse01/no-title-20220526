@@ -1,11 +1,11 @@
-import vColumns from '../../column/vColumns.js'
-import vColumn from '../../column/vColumn.js'
-import vRows from '../../row/vRows.js'
-import vRow from '../../row/vRow.js'
-import AxisX from '../public/axisX.js'
-import AxisY from '../public/axisY.js'
+// import vColumns from '../../column/vColumns.js'
+// import vColumn from '../../column/vColumn.js'
+// import vRows from '../../row/vRows.js'
+// import vRow from '../../row/vRow.js'
+// import AxisX from '../public/axisX.js'
+// import AxisY from '../public/axisY.js'
 
-export default {
+const GraphBack = {
     components: {
         'v-columns': vColumns,
         'v-column': vColumn,

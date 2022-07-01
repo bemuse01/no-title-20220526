@@ -1,4 +1,4 @@
-export default {
+const vColumn = {
     template: `
         <div class="vColumn" :style="style">
             <slot></slot>

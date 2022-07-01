@@ -1,6 +1,6 @@
 import * as THREE from '../../lib/three.module.js'
 
-export default class{
+const App = class{
     constructor(canvas){
         this.canvas = canvas
         this.wrap = document.getElementById('wrap')

@@ -1,6 +1,6 @@
-import ShaderMethod from '../../../method/method.shader.js'
+// import ShaderMethod from '../../../method/method.shader.js'
 
-export default {
+const LineGraphLinesShader = {
     vertex: `
         uniform float uTime;
         uniform float uRangeY;

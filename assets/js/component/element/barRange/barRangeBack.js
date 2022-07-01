@@ -1,8 +1,8 @@
-import vColumns from '../../column/vColumns.js'
-import vColumn from '../../column/vColumn.js'
-import BarRangeBackBar from './barRangeBackBar.js'
+// import vColumns from '../../column/vColumns.js'
+// import vColumn from '../../column/vColumn.js'
+// import BarRangeBackBar from './barRangeBackBar.js'
 
-export default {
+const BarRangeBack = {
     components: {
         'v-column': vColumn,
         'v-columns': vColumns,

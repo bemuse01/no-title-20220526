@@ -1,4 +1,4 @@
-export default {
+const AxisY = {
     template: `
         <div class="axisY" :style="rootStyle">
 

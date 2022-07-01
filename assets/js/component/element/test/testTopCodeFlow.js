@@ -1,10 +1,10 @@
-import Method from '../../../method/method.js'
+// import Method from '../../../method/method.js'
 
 const genRand = (max) => {
     return ~~(Math.random() * max)
 }
 
-export default {
+const TestTopCodeFlow = {
     template: `
         <div class="top-code-flow">
 
@@ -23,7 +23,7 @@ export default {
         </div>
     `,
     setup(){
-        const {ref, onMounted} = Vue
+        const {ref} = Vue
 
         const uuid = [
             'xxxx_xxxx_xxxx_xxxx_xxxxxx',

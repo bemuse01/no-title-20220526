@@ -1,11 +1,11 @@
-import vRows from '../../row/vRows.js'
-import vRow from '../../row/vRow.js'
-import vColumns from '../../column/vColumns.js'
-import vColumn from '../../column/vColumn.js'
-import AxisY from '../public/axisY.js'
-import AxisX from '../public/axisX.js'
+// import vRows from '../../row/vRows.js'
+// import vRow from '../../row/vRow.js'
+// import vColumns from '../../column/vColumns.js'
+// import vColumn from '../../column/vColumn.js'
+// import AxisY from '../public/axisY.js'
+// import AxisX from '../public/axisX.js'
 
-export default {
+const CircleGraphBack = {
     components: {
         'v-rows': vRows,
         'v-row': vRow,

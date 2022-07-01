@@ -17,7 +17,7 @@ const getCount = ({width, height, size, sw, sh}) => {
 
     return {count}
 }
-const generateItem = (key, openTime, position) => ({
+const generateItem = (key, openTime) => ({
     key,
     style: {
         opacity: '0',
@@ -25,7 +25,7 @@ const generateItem = (key, openTime, position) => ({
     }
 })
 
-export default {
+const gridContainer = {
     components: {
         'v-section': vSection,
         'v-section-box': vSectionBox,
@@ -90,17 +90,17 @@ export default {
 
                 const {count} = getCount({width, height, size: s, sw, sh})
 
-                updateItems(items, count, position)
+                updateItems(items, count)
             })
         }
 
-        const updateItems = (items, count, position) => {
+        const updateItems = (items, count) => {
             const len = items.length
 
             if(len > count){
                 for(let i = 0; i < len - count; i++) items.pop()
             }else{
-                for(let i = 0; i < count - len; i++) items.push(generateItem(len + i, openTime.value, position))
+                for(let i = 0; i < count - len; i++) items.push(generateItem(len + i, openTime.value))
             }
         }
 

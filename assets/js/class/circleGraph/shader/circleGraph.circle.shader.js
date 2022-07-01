@@ -1,4 +1,4 @@
-export default {
+const CircleGraphCircleShader = {
     vertex: `
         varying vec2 vUv;
 

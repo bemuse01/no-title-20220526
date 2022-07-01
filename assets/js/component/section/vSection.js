@@ -1,4 +1,4 @@
-export default {
+const vSection = {
     template: `
         <div class="vSection" :style="sectionStyle" :ref="el => box = el">
             <slot></slot>

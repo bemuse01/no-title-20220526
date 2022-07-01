@@ -1,7 +1,7 @@
-import Plane from '../../objects/plane.js'
-import {MathUtils, PlaneGeometry} from '../../../lib/three.module.js'
+// import Plane from '../../objects/plane.js'
+// import {MathUtils, PlaneGeometry} from '../../../lib/three.module.js'
 
-export default class{
+const GraphPlaneBuild = class{
     constructor({group, size, openTime, box}){
         this.group = group
         this.size = size
@@ -59,7 +59,7 @@ export default class{
     createNextPoint(count, idx){
         const hh = this.height / 2
             
-        const y = MathUtils.randFloat(hh * 0.1, hh)
+        const y = THREE.Math.randFloat(hh * 0.1, hh)
 
         if(idx < count / 2) return y
         else return -y
@@ -77,7 +77,7 @@ export default class{
         this.ratioH = height / this.size.el.h
         this.height = this.size.obj.h * this.ratioH
 
-        const nArray = new PlaneGeometry(this.width, this.height, this.seg, 1).addAttribute.position.array
+        const nArray = new THREE.PlaneGeometry(this.width, this.height, this.seg, 1).addAttribute.position.array
 
         const position = this.plane.getGeometry().attributes.position
         const array = position.array
@@ -140,7 +140,7 @@ export default class{
 
             const cy = array[idx + 1]
             const ny = this.next[i]
-            const y = MathUtils.lerp(cy, ny, process)
+            const y = THREE.Math.lerp(cy, ny, process)
 
             array[idx + 1] = y
         }

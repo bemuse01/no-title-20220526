@@ -1,4 +1,4 @@
-export default {
+const SectionStore = {
     namespaced: true,
     state: {
         items: []

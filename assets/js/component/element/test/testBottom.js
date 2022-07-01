@@ -11,7 +11,7 @@ const genRand = (max) => {
     return ~~(Math.random() * max)
 }
 
-export default {
+const TestBottom = {
     template: `
         <div class="test-child test-bottom">
 

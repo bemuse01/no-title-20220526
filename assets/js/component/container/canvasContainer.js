@@ -1,6 +1,6 @@
 import App from '../../class/app/app.js'
 
-export default {
+const canvasContainer = {
     template: `
         <div id="canvas-container">
             <canvas id="canvas" :ref="el => canvas = el"/>

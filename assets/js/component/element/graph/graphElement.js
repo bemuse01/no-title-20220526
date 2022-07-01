@@ -1,6 +1,6 @@
-import GraphBack from './graphBack.js'
+// import GraphBack from './graphBack.js'
 
-export default {
+const GraphElement = {
     components: {
         'graph-back': GraphBack
     },

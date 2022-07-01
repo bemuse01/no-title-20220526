@@ -1,8 +1,8 @@
-import * as THREE from '../../../lib/three.module.js'
-import Line from '../../objects/line.js'
-import Shader from '../shader/lineGraph.lines.shader.js'
+// import * as THREE from '../../../lib/three.module.js'
+// import Line from '../../objects/line.js'
+// import Shader from '../shader/lineGraph.lines.shader.js'
 
-export default class{
+const LineGraphLinesBuild = class{
     constructor({group, size, openTime, box}){
         this.size = size
         this.group = group

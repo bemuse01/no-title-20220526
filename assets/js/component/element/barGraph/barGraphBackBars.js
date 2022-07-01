@@ -1,4 +1,4 @@
-export default {
+const BarGraphBackBars = {
     template: `
         <div class="barGraph-back-bars">
 

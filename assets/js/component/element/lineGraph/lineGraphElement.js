@@ -1,6 +1,6 @@
-import LineGraphBack from './lineGraphBack.js'
+// import LineGraphBack from './lineGraphBack.js'
 
-export default {
+const LineGraphElement = {
     components: {
         'lineGraph-back': LineGraphBack
     },

@@ -1,8 +1,8 @@
-import {Color} from '../../../lib/three.module.js'
-import Circle from '../../objects/circle.js'
-import Shader from '../shader/circleGraph.circle.shader.js'
+// import {Color} from '../../../lib/three.module.js'
+// import Circle from '../../objects/circle.js'
+// import Shader from '../shader/circleGraph.circle.shader.js'
 
-export default class{
+const CircleGraphCircleBuild = class{
     constructor({group, size, openTime, box, num}){
         this.group = group
         this.size = size
@@ -44,7 +44,7 @@ export default class{
                 fragmentShader: Shader.fragment,
                 transparent: true,
                 uniforms: {
-                    uColor: {value: new Color(MAIN_COLOR_HEX)},
+                    uColor: {value: new THREE.Color(MAIN_COLOR_HEX)},
                     uBound: {value: 0.5},
                     uLightOpacity: {value: this.lightOpacity},
                     uDefaultOpacity: {value: this.defaultOpacity},

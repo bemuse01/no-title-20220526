@@ -2,7 +2,7 @@ const genRand = (max) => {
     return ~~(Math.random() * max)
 }
 
-export default {
+const TestTopCodeNumbers = {
     template: `
         <div class="code-numbers" :style="rootStyle">
 

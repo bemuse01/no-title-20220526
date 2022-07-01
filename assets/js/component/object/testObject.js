@@ -1,6 +1,6 @@
 import Test from '../../class/test/test.js'
 
-export default {
+const TestObject = {
     template: `
         <div class="object test test-object" >
             <div :ref="el => element = el" ></div>

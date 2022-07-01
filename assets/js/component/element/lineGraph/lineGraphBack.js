@@ -1,12 +1,12 @@
-import vColumns from '../../column/vColumns.js'
-import vColumn from '../../column/vColumn.js'
-import vRows from '../../row/vRows.js'
-import vRow from '../../row/vRow.js'
-import axisX from '../public/axisX.js'
-import axisY from '../public/axisY.js'
-import lineGraphBackLines from './lineGraphBackLines.js'
+// import vColumns from '../../column/vColumns.js'
+// import vColumn from '../../column/vColumn.js'
+// import vRows from '../../row/vRows.js'
+// import vRow from '../../row/vRow.js'
+// import axisX from '../public/axisX.js'
+// import axisY from '../public/axisY.js'
+// import lineGraphBackLines from './lineGraphBackLines.js'
 
-export default {
+const LineGraphBack = {
     components: {
         'v-column': vColumn,
         'v-columns': vColumns,

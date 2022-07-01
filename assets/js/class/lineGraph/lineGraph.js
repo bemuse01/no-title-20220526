@@ -1,13 +1,13 @@
-import * as THREE from '../../lib/three.module.js'
+// import * as THREE from '../../lib/three.module.js'
 
-import Param from './param/lineGraph.param.js'
-import PublicMethod from '../../method/method.js'
+// import LineGraphParam from './LineGraphParam/lineGraph.LineGraphParam.js'
+// import Method from '../../method/method.js'
 
-import Lines from './build/lineGraph.lines.build.js'
-import Lines2 from './build/lineGraph.lines2.build.js'
+// import Lines from './build/lineGraph.lines.build.js'
+// import Lines2 from './build/lineGraph.lines2.build.js'
 
-export default class{
-    constructor({app, element, openTime, box, parent}){
+const LineGraph = class{
+    constructor({app, element, openTime, box}){
         this.renderer = app.renderer
         this.element = element
         this.openTime = openTime
@@ -52,8 +52,8 @@ export default class{
 
         this.scene = new THREE.Scene()
 
-        this.camera = new THREE.PerspectiveCamera(Param.fov, w / h, Param.near, Param.far)
-        this.camera.position.z = Param.pos
+        this.camera = new THREE.PerspectiveCamera(LineGraphParam.fov, w / h, LineGraphParam.near, LineGraphParam.far)
+        this.camera.position.z = LineGraphParam.pos
         
         this.size = {
             el: {
@@ -61,8 +61,8 @@ export default class{
                 h: height
             },
             obj: {
-                w: PublicMethod.getVisibleWidth(this.camera, 0),
-                h: PublicMethod.getVisibleHeight(this.camera, 0)
+                w: Method.getVisibleWidth(this.camera, 0),
+                h: Method.getVisibleHeight(this.camera, 0)
             }
         }
     }
@@ -85,7 +85,7 @@ export default class{
 
     // 
     // expand(){
-    //     this.build.scale.set(Param.scale, Param.scale, Param.scale)
+    //     this.build.scale.set(LineGraphParam.scale, LineGraphParam.scale, LineGraphParam.scale)
     // }
 
 
@@ -157,8 +157,8 @@ export default class{
 
         this.size.el.w = width
         this.size.el.h = height
-        this.size.obj.w = PublicMethod.getVisibleWidth(this.camera, 0)
-        this.size.obj.h = PublicMethod.getVisibleHeight(this.camera, 0)
+        this.size.obj.w = Method.getVisibleWidth(this.camera, 0)
+        this.size.obj.h = Method.getVisibleHeight(this.camera, 0)
     }
     resizeObject(){
         for(const comp in this.comp){

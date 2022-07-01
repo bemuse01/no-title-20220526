@@ -1,4 +1,4 @@
-export default {
+const CircleGraphParam = {
     fov: 60,
     near: 0.1,
     far: 10000,

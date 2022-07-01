@@ -1,6 +1,6 @@
-import BarGraphBack from './barGraphBack.js'
+// import BarGraphBack from './barGraphBack.js'
 
-export default {
+const BarGraphElement = {
     components: {
         'barGraph-Back': BarGraphBack
     },

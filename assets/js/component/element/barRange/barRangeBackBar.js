@@ -1,7 +1,7 @@
-import vRows from '../../row/vRows.js'
-import vRow from '../../row/vRow.js'
+// import vRows from '../../row/vRows.js'
+// import vRow from '../../row/vRow.js'
 
-export default {
+const BarRangeBackBar = {
     components: {
         'v-rows': vRows,
         'v-row': vRow

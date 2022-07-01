@@ -10,7 +10,7 @@ import CircleGraphElement from '../element/circleGraph/circleGraphElement.js'
 import GraphObject from '../object/graphObject.js'
 import GraphElement from '../element/graph/graphElement.js'
 
-export default {
+const vSectionItem = {
     components: {
         'test-object': TestObject,
         'test-element': TestElement,

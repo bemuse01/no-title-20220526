@@ -1,6 +1,6 @@
 import CircleGraph from '../../class/circleGraph/circleGraph.js'
 
-export default {
+const CircleGraphObject = {
     template: `
         <div class="object circleGraph circleGraph-object" :style="rootStyle">
             <div :ref="el => element = el"></div>

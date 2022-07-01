@@ -1,6 +1,6 @@
-import BarRangeBack from './barRangeBack.js'
+// import BarRangeBack from './barRangeBack.js'
 
-export default {
+const BarRangeElement = {
     components: {
         'barRange-back': BarRangeBack
     },

@@ -13,7 +13,7 @@ const getCount = ({width, height, s, sw, sh}) => {
     return {pw, ph, squareWidth, squareHeight}
 }
 
-export default {
+const vSectionBox = {
     template: `
         <div 
             class="vSection-box" 

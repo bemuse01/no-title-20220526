@@ -1,6 +1,6 @@
-import CircleGraphBack from './circleGraphBack.js'
+// import CircleGraphBack from './circleGraphBack.js'
 
-export default {
+const CircleGraphElement = {
     components: {
         'circleGraph-back': CircleGraphBack
     },

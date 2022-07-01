@@ -1,8 +1,8 @@
-import TestTopCode from './testTopCode.js'
-import TestTopCodeNumbers from './testTopCodeNumbers.js'
-import TestTopCodeFlow from './testTopCodeFlow.js'
+// import TestTopCode from './testTopCode.js'
+// import TestTopCodeNumbers from './testTopCodeNumbers.js'
+// import TestTopCodeFlow from './testTopCodeFlow.js'
 
-export default {
+const TestTop = {
     components: {
         'test-top-code': TestTopCode,
         'test-top-code-numbers': TestTopCodeNumbers,

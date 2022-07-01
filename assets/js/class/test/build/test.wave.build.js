@@ -1,8 +1,8 @@
-import * as THREE from '../../../lib/three.module.js'
-import Particle from '../../objects/particle.js'
-import Shader from '../shader/test.wave.shader.js'
+// import * as THREE from '../../../lib/three.module.js'
+// import Particle from '../../objects/particle.js'
+// import Shader from '../shader/test.wave.shader.js'
 
-export default class{
+const TestWaveBuild = class{
     constructor({group, openTime}){
         this.group = group
         this.openTime = openTime

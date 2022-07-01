@@ -1,6 +1,6 @@
 import Graph from '../../class/graph/graph.js'
 
-export default {
+const GraphObject = {
     template: `
         <div class="object graph graph-object" >
             <div :ref="el => element = el"></div>

@@ -3,7 +3,7 @@ import Particle from '../../objects/particle.js'
 import Shader from '../shader/test.dna.shader.js'
 import Method from '../../../method/method.js'
 
-export default class{
+const TestDnaBuild = class{
     constructor({group, openTime}){
         this.group = group
         this.openTime = openTime

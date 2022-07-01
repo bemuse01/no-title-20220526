@@ -1,8 +1,8 @@
-import Particle from '../../objects/particle.js'
-import Line from '../../objects/line.js'
-import { AdditiveBlending } from '../../../lib/three.module.js'
+// import Particle from '../../objects/particle.js'
+// import Line from '../../objects/line.js'
+// import { AdditiveBlending } from '../../../lib/three.module.js'
 
-export default class{
+const TestLinesBuild = class{
     constructor({group, openTime}){
         this.group = group
         this.openTime = openTime

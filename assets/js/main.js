@@ -1,7 +1,7 @@
-import Store from './store/index.js'
+// import Store from './store/index.js'
 
-import GridContainer from './component/container/gridContainer.js'
-import CanvasContainer from './component/container/canvasContainer.js'
+// import GridContainer from './component/container/gridContainer.js'
+// import CanvasContainer from './component/container/canvasContainer.js'
 
 const vueApp = Vue.createApp({
     components: {
