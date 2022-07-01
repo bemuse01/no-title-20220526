@@ -1,30 +1,6 @@
-import vSection from '../section/vSection.js'
-import vSectionBox from '../section/vSectionBox.js'
-import vSectionItem from '../section/vSectionItem.js'
-
-const getCount = ({width, height, size, sw, sh}) => {
-    if(!size) return {count: 1}
-
-    const squareWidth = size * sw
-    const squareHeight = size * sh
-
-    const rw = Math.floor(width / squareWidth)
-    const pw = rw === 0 ? 1 : rw
-
-    const rh = Math.floor(height / squareHeight)
-    const ph = rh === 0 ? 1 : rh
-    const count = pw * ph
-
-    return {count}
-}
-const generateItem = (key, openTime) => ({
-    key,
-    style: {
-        opacity: '0',
-        animation: `blink2 0.06s ${openTime + Math.random()}s 2 forwards`
-    }
-})
-
+// import vSection from '../section/vSection.js'
+// import vSectionBox from '../section/vSectionBox.js'
+// import vSectionItem from '../section/vSectionItem.js'
 const gridContainer = {
     components: {
         'v-section': vSection,
@@ -57,6 +33,35 @@ const gridContainer = {
         </div>
     `,
     setup(){
+        // method
+        const getCount = ({width, height, size, sw, sh}) => {
+            if(!size) return {count: 1}
+        
+            const squareWidth = size * sw
+            const squareHeight = size * sh
+        
+            const rw = Math.floor(width / squareWidth)
+            const pw = rw === 0 ? 1 : rw
+        
+            const rh = Math.floor(height / squareHeight)
+            const ph = rh === 0 ? 1 : rh
+            const count = pw * ph
+        
+            return {count}
+        }
+        
+        const generateItem = (key, openTime) => ({
+            key,
+            style: {
+                opacity: '0',
+                animation: `blink2 0.06s ${openTime + Math.random()}s 2 forwards`
+            }
+        })
+
+
+
+
+
         const {ref, onMounted, computed} = Vue
         const {useStore} = Vuex
 

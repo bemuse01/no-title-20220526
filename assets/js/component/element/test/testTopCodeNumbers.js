@@ -1,7 +1,3 @@
-const genRand = (max) => {
-    return ~~(Math.random() * max)
-}
-
 const TestTopCodeNumbers = {
     template: `
         <div class="code-numbers" :style="rootStyle">
@@ -20,6 +16,15 @@ const TestTopCodeNumbers = {
         gap: String,
     },
     setup(props){
+        // method
+        const genRand = (max) => {
+            return ~~(Math.random() * max)
+        }
+
+        
+
+
+        
         const {ref} = Vue
 
         const gap = props.gap

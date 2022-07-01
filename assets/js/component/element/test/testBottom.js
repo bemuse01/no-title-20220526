@@ -1,16 +1,3 @@
-const generateStyle = (size, gap) => {
-    return{
-        width: `${size}px`,
-        height: `${size}px`,
-        marginLeft: `${gap}px`,
-        transform: 'translateZ(0)',
-        animation: `blink ${Math.random() * 2 + 2}s infinite`
-    }
-}
-const genRand = (max) => {
-    return ~~(Math.random() * max)
-}
-
 const TestBottom = {
     template: `
         <div class="test-child test-bottom">
@@ -73,6 +60,25 @@ const TestBottom = {
         </div>
     `,
     setup(){
+        // method
+        const generateStyle = (size, gap) => {
+            return{
+                width: `${size}px`,
+                height: `${size}px`,
+                marginLeft: `${gap}px`,
+                transform: 'translateZ(0)',
+                animation: `blink ${Math.random() * 2 + 2}s infinite`
+            }
+        }
+        
+        const genRand = (max) => {
+            return ~~(Math.random() * max)
+        }
+        
+
+
+
+        
         const {ref, onMounted, computed} = Vue
         const {useStore} = Vuex
 

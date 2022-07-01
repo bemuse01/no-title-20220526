@@ -1,9 +1,4 @@
 // import Method from '../../../method/method.js'
-
-const genRand = (max) => {
-    return ~~(Math.random() * max)
-}
-
 const TestTopCodeFlow = {
     template: `
         <div class="top-code-flow">
@@ -23,6 +18,15 @@ const TestTopCodeFlow = {
         </div>
     `,
     setup(){
+        // method
+        const genRand = (max) => {
+            return ~~(Math.random() * max)
+        }
+
+
+        
+
+
         const {ref} = Vue
 
         const uuid = [

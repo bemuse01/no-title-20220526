@@ -1,18 +1,3 @@
-const getCount = ({width, height, s, sw, sh}) => {
-    if(!s) return {pw: 1, ph: 1, squareWidth: width, squareHeight: height}
-
-    const squareWidth = s * sw
-    const squareHeight = s * sh
-
-    const rw = Math.floor(width / squareWidth)
-    const pw = rw === 0 ? 1 : rw
-
-    const rh = Math.floor(height / squareHeight)
-    const ph = rh === 0 ? 1 : rh
-
-    return {pw, ph, squareWidth, squareHeight}
-}
-
 const vSectionBox = {
     template: `
         <div 
@@ -28,6 +13,26 @@ const vSectionBox = {
         position: String
     },
     setup(props){
+        // method
+        const getCount = ({width, height, s, sw, sh}) => {
+            if(!s) return {pw: 1, ph: 1, squareWidth: width, squareHeight: height}
+        
+            const squareWidth = s * sw
+            const squareHeight = s * sh
+        
+            const rw = Math.floor(width / squareWidth)
+            const pw = rw === 0 ? 1 : rw
+        
+            const rh = Math.floor(height / squareHeight)
+            const ph = rh === 0 ? 1 : rh
+        
+            return {pw, ph, squareWidth, squareHeight}
+        }
+
+        
+
+
+        
         const {ref, toRefs, onMounted, computed} = Vue
 
         const {size, position} = toRefs(props)
