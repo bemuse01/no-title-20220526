@@ -15,8 +15,8 @@ const CircleGraph = class{
         this.num = num
 
         this.modules = {
-            Circle,
-            Ring
+            Circle: CircleGraphCircleBuild,
+            Ring: CircleGraphRingBuild
         }
         this.group = {}
         this.comp = {}

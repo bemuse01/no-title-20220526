@@ -12,9 +12,9 @@ const LineGraphBack = {
         'v-columns': vColumns,
         'v-row': vRow,
         'v-rows': vRows,
-        'axisX': axisX,
-        'axisY': axisY,
-        'lineGraph-back-lines': lineGraphBackLines
+        'axisX': AxisX,
+        'axisY': AxisY,
+        'lineGraph-back-lines': LineGraphBackLines
     },
     template: `
         <div class="lineGraph-back">

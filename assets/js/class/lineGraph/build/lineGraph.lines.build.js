@@ -1,6 +1,6 @@
 // import * as THREE from '../../../lib/three.module.js'
 // import Line from '../../objects/line.js'
-// import Shader from '../shader/lineGraph.lines.shader.js'
+// import Shader from '../shader/lineGraph.lines.LineGraphLinesShader.js'
 
 const LineGraphLinesBuild = class{
     constructor({group, size, openTime, box}){
@@ -38,8 +38,8 @@ const LineGraphLinesBuild = class{
             meshName: 'Line',
             materialName: 'ShaderMaterial',
             materialOpt: {
-                vertexShader: Shader.vertex,
-                fragmentShader: Shader.fragment,
+                vertexShader: LineGraphLinesShader.vertex,
+                fragmentShader: LineGraphLinesShader.fragment,
                 transparent: true,
                 uniforms: {
                     uStr: {value: Math.random() * this.str},

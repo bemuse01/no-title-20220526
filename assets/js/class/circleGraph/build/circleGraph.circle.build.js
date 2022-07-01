@@ -1,6 +1,6 @@
 // import {Color} from '../../../lib/three.module.js'
 // import Circle from '../../objects/circle.js'
-// import Shader from '../shader/circleGraph.circle.shader.js'
+// import Shader from '../shader/circleGraph.circle.CircleGraphCircleShader.js'
 
 const CircleGraphCircleBuild = class{
     constructor({group, size, openTime, box, num}){
@@ -40,8 +40,8 @@ const CircleGraphCircleBuild = class{
             seg: this.seg,
             materialName: 'ShaderMaterial',
             materialOpt: {
-                vertexShader:  Shader.vertex,
-                fragmentShader: Shader.fragment,
+                vertexShader:  CircleGraphCircleShader.vertex,
+                fragmentShader: CircleGraphCircleShader.fragment,
                 transparent: true,
                 uniforms: {
                     uColor: {value: new THREE.Color(MAIN_COLOR_HEX)},

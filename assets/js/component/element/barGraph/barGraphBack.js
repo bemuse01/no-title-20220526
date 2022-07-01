@@ -7,7 +7,7 @@ const BarGraphBack = {
     components: {
         'v-rows': vRows,
         'v-row': vRow,
-        'axisY': axisY,
+        'axisY': AxisY,
         'barGraph-back-bars': BarGraphBackBars
     },
     template: `

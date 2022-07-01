@@ -13,7 +13,7 @@ const Graph = class{
         this.box = document.querySelector(box)
 
         this.modules = {
-            Plane
+            Plane: GraphPlaneBuild
         }
         this.group = {}
         this.comp = {}

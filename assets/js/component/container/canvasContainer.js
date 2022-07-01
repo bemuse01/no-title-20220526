@@ -1,6 +1,6 @@
-import App from '../../class/app/app.js'
+// import App from '../../class/app/app.js'
 
-const canvasContainer = {
+const CanvasContainer = {
     template: `
         <div id="canvas-container">
             <canvas id="canvas" :ref="el => canvas = el"/>

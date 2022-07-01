@@ -1,4 +1,4 @@
-import Graph from '../../class/graph/graph.js'
+// import Graph from '../../class/graph/graph.js'
 
 const GraphObject = {
     template: `

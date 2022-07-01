@@ -14,8 +14,8 @@ const LineGraph = class{
         this.box = document.querySelector(box)
 
         this.modules = {
-            Lines,
-            Lines2
+            Lines: LineGraphLinesBuild,
+            Lines2: LineGraphLines2Build
         }
         this.group = {}
         this.comp = {}

@@ -1,4 +1,4 @@
-import LineGraph from '../../class/lineGraph/lineGraph.js'
+// import LineGraph from '../../class/lineGraph/lineGraph.js'
 
 const LineGraphObject = {
     template: `

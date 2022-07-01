@@ -16,9 +16,9 @@ const Test = class{
 
         this.modules = {
             // Core,
-            Lines,
-            Dna,
-            Wave
+            Lines: TestLinesBuild,
+            Dna: TestDnaBuild,
+            Wave: TestWaveBuild
         }
         this.group = {}
         this.comp = {}

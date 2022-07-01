@@ -1,6 +1,6 @@
 // import * as THREE from '../../../lib/three.module.js'
 // import Particle from '../../objects/particle.js'
-// import Shader from '../shader/test.wave.shader.js'
+// import Shader from '../shader/test.wave.TestWaveShader.js'
 
 const TestWaveBuild = class{
     constructor({group, openTime}){
@@ -41,8 +41,8 @@ const TestWaveBuild = class{
         const particle = new Particle({
             materialName: 'ShaderMaterial',
             materialOpt: {
-                vertexShader: Shader.vertex,
-                fragmentShader: Shader.fragment,
+                vertexShader: TestWaveShader.vertex,
+                fragmentShader: TestWaveShader.fragment,
                 transparent: true,
                 uniforms: {
                     uPointSize: {value: 2.5},

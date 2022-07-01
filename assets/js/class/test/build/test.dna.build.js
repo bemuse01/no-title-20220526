@@ -1,7 +1,7 @@
-import * as THREE from '../../../lib/three.module.js'
-import Particle from '../../objects/particle.js'
-import Shader from '../shader/test.dna.shader.js'
-import Method from '../../../method/method.js'
+// import * as THREE from '../../../lib/three.module.js'
+// import Particle from '../../objects/particle.js'
+// import Shader from '../shader/test.dna.TestDnaShader.js'
+// import Method from '../../../method/method.js'
 
 const TestDnaBuild = class{
     constructor({group, openTime}){
@@ -47,8 +47,8 @@ const TestDnaBuild = class{
             maxY: 50,
             radius: 10,
             materialOpt: {
-                vertexShader: Shader.bone.vertex,
-                fragmentShader: Shader.bone.fragment,
+                vertexShader: TestDnaShader.bone.vertex,
+                fragmentShader: TestDnaShader.bone.fragment,
                 transparent: true,
                 depthWrite: false,
                 depthTest: false,
@@ -65,8 +65,8 @@ const TestDnaBuild = class{
             pCount: 30,
             stepIdx: 2,
             materialOpt: {
-                vertexShader: Shader.nucleo.vertex,
-                fragmentShader: Shader.nucleo.fragment,
+                vertexShader: TestDnaShader.nucleo.vertex,
+                fragmentShader: TestDnaShader.nucleo.fragment,
                 transparent: true,
                 depthWrite: false,
                 depthTest: false,

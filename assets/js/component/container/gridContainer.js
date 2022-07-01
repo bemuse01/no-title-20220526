@@ -1,7 +1,8 @@
 // import vSection from '../section/vSection.js'
 // import vSectionBox from '../section/vSectionBox.js'
 // import vSectionItem from '../section/vSectionItem.js'
-const gridContainer = {
+
+const GridContainer = {
     components: {
         'v-section': vSection,
         'v-section-box': vSectionBox,
@@ -49,7 +50,7 @@ const gridContainer = {
         
             return {count}
         }
-        
+
         const generateItem = (key, openTime) => ({
             key,
             style: {

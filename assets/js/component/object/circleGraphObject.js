@@ -1,4 +1,4 @@
-import CircleGraph from '../../class/circleGraph/circleGraph.js'
+// import CircleGraph from '../../class/circleGraph/circleGraph.js'
 
 const CircleGraphObject = {
     template: `
